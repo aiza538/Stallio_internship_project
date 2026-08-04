@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-white via-slate-50/50 to-white text-ink font-body antialiased transition-colors duration-300 dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800/50 dark:to-slate-900 dark:text-white;
+    min-height: 100vh;
+  }
+
+  /* Background glow effect for body */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -40%;
+    left: 50%;
+    width: 40rem;
+    height: 40rem;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dark body::before {
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
+  }
+
+  /* Secondary glow for depth */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 30rem;
+    height: 30rem;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dark body::after {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.500');
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
