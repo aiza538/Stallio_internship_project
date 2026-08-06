@@ -1,33 +1,34 @@
-<<<<<<< HEAD
-View Live Site ([https://stallio-internship.netlify.app/](https://stallio-project.netlify.app/))
-=======
-View Live Site ([https://stallio-internship.netlify.app/](https://stallio-internship-project.netlify.app/))
->>>>>>> 9417710266d5fd8b5479d6191035c3a1f44bfdc8
+## Live Demo
+
+**Visit the live website:** [Stallio - Live Demo](https://stallio-shop.netlify.app/)
 
 # Stallio 
 
 One link, a real storefront — turn your catalog into a shop customers can order from directly.
 
 
-## 📖 About
+## About
 
-<<<<<<< HEAD
-Stallio is a modern marketing website built with React.js and Tailwind CSS. It features a responsive navbar, dark/light mode toggle, and a clean footer design, alongwith the hero, whoitfits and before after implementations.
-=======
-Stallio is a modern marketing website built with React.js and Tailwind CSS. It features a responsive navbar, dark/light mode toggle, and a clean footer design, update hero section, complete all required sections.
->>>>>>> 9417710266d5fd8b5479d6191035c3a1f44bfdc8
+Stallio is a modern marketing website built with React.js and Tailwind CSS. It features a responsive navbar, dark/light mode toggle, and a clean footer design, update hero section, complete all the sections successfully.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 React.js, TailwindCSS, Vite, React Router DOM, Lucide React
 
 
-## ✨ Features
+## Features
 
 - Responsive Navbar with hamburger menu
 - Dark/Light mode toggle
+- Language switcher (EN/ES/AR)
 - Hero Section with animations
 - Who It Fits section
 - Before vs After comparison
+- How It Works section
+- Inside The Box features
+- What's Included section
+- Why It Lands section
+- Final CTA section
+- Theme-aware components
 - Scroll animations
 - Mouse follower hover effects
