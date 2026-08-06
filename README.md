@@ -1,6 +1,6 @@
 ## Live Demo
 
-**Visit the live website:** [Stallio - Live Demo](https://stallio-shop.netlify.app/)
+**Visit the live website:** [Stallio - Live Demo](https://stallio-internships.netlify.app/)
 
 # Stallio 
 
