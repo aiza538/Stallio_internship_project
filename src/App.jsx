@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Layout from "./components/layout/Layout";

@@ -1,14 +1,18 @@
-// src/components/ui/Logo.jsx
 import { Link } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
+import stallioLogo from "/Stallio_Logo.png";
 
 export default function Logo() {
   return (
-    <Link to="/" className="group flex items-center gap-2">
-      <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-500 text-white shadow-md shadow-brand-500/25 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-brand-500/40">
-        <ShoppingBag className="h-4 w-4" strokeWidth={2.5} />
-      </div>
-      <span className="font-script text-2xl font-semibold text-slate-800 transition-colors duration-300 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400">
+    <Link to="/" className="group flex items-center gap-2.5">
+      {/* Bag Icon */}
+      <img 
+        src={stallioLogo} 
+        alt="Stallio" 
+        className="h-9 w-9 rounded-xl object-cover"
+      />
+      
+      {/* ✅ Stallio Text - Thinner (font-medium) */}
+      <span className="font-logo text-2xl font-medium text-slate-800 dark:text-white">
         Stallio
       </span>
     </Link>

@@ -1,4 +1,3 @@
-// src/sections/BeforeAfter.jsx
 import { X, Check, ArrowRight, AlertCircle } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState, useRef } from "react";

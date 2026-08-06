@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.jsx
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
@@ -28,7 +27,7 @@ export default function Navbar() {
   }, []);
 
   const baseLinkClasses =
-    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-all duration-300 ease-snappy";
+    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-xs font-medium transition-all duration-300 ease-snappy";
   const inactiveLinkClasses =
     "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
   const activeLinkClasses =
@@ -36,20 +35,21 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 backdrop-blur-md transition-colors duration-300 dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80">
-      {/* Enhanced Purple Glow - Navbar */}
+      {/* Glow Effects */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/6 to-transparent dark:from-indigo-400/15 dark:via-purple-400/8" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
-      <nav className="relative mx-auto flex max-w-content items-center justify-between gap-2 px-5 py-3.5 lg:px-6">
+      <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
+        {/* Logo - Left (Bag Icon + Text) */}
         <Logo />
 
-        {/* Desktop links */}
-        <div className="hidden items-center gap-0.5 lg:flex">
+        {/* Desktop Links - Center */}
+        <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
               return (
                 <a key={label} href={to} className={`${baseLinkClasses} ${inactiveLinkClasses}`}>
-                  <Icon className="h-4 w-4 transition-transform duration-300 ease-snappy group-hover/link:scale-110" strokeWidth={2} />
+                  <Icon className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
                   {label}
                 </a>
               );
@@ -63,29 +63,29 @@ export default function Navbar() {
                   `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`
                 }
               >
-                <Icon className="h-4 w-4 transition-transform duration-300 ease-snappy group-hover/link:scale-110" strokeWidth={2} />
+                <Icon className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
                 {label}
               </NavLink>
             );
           })}
         </div>
 
-        {/* Right controls */}
+        {/* Right Controls */}
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
-          <div className="h-6 w-px bg-indigo-200/30 dark:bg-white/10" />
+          <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
           <ThemeToggle />
-          <Button as="a" href="#login" variant="outline">
-            <LogIn className="h-4 w-4" strokeWidth={2} />
+          <Button as="a" href="#login" variant="outline" className="text-xs">
+            <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
             Log In
           </Button>
-          <Button as="a" href="#start-free">
-            <UserPlus className="h-4 w-4" strokeWidth={2} />
+          <Button as="a" href="#start-free" className="text-xs">
+            <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
             Start Free
           </Button>
         </div>
 
-        {/* Mobile controls */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
@@ -102,7 +102,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile panel */}
+      {/* Mobile Panel */}
       <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
         <div className="flex flex-col gap-1 px-6 py-4">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
@@ -113,7 +113,7 @@ export default function Navbar() {
             if (!isRoute) {
               return (
                 <a key={label} href={to} onClick={() => setIsOpen(false)} className={`${mobileBase} ${mobileInactive}`}>
-                  <Icon className="h-4 w-4" strokeWidth={2} />
+                  <Icon className="h-4 w-4 transition-none" strokeWidth={2} />
                   {label}
                 </a>
               );
@@ -126,7 +126,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) => `${mobileBase} ${isActive ? mobileActive : mobileInactive}`}
               >
-                <Icon className="h-4 w-4" strokeWidth={2} />
+                <Icon className="h-4 w-4 transition-none" strokeWidth={2} />
                 {label}
               </NavLink>
             );
@@ -137,12 +137,12 @@ export default function Navbar() {
           </div>
 
           <div className="mt-2 flex flex-col gap-2">
-            <Button as="a" href="#login" variant="outline" className="w-full">
-              <LogIn className="h-4 w-4" strokeWidth={2} />
+            <Button as="a" href="#login" variant="outline" className="w-full text-xs">
+              <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
               Log In
             </Button>
-            <Button as="a" href="#start-free" className="w-full">
-              <UserPlus className="h-4 w-4" strokeWidth={2} />
+            <Button as="a" href="#start-free" className="w-full text-xs">
+              <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
               Start Free
             </Button>
           </div>

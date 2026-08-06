@@ -25,6 +25,7 @@ export default {
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
         body: ["'Inter'", "sans-serif"],
+        logo: ["'Great Vibes'", "cursive"],
         script: ["'Dancing Script'", "cursive"],
         mono: ["'JetBrains Mono'", "monospace"],
       },

@@ -1,4 +1,3 @@
-// src/sections/WhoItFits.jsx
 import { Home, ShoppingBag, Shirt, HandMetal, Store as StoreIcon } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState, useRef } from "react";
