@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* ✅ DARK THEME CLASS - HTML PE LAGEGI */
   .dark {
     color-scheme: dark;
   }
@@ -14,16 +15,19 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white antialiased transition-colors duration-300 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900 dark:text-white;
+    @apply bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white antialiased transition-colors duration-300;
     min-height: 100vh;
     color: #1E1B2E;
     font-family: 'Inter', sans-serif;
   }
 
+  /* ✅ DARK THEME BODY STYLES */
   .dark body {
+    @apply bg-gradient-to-br from-indigo-950/40 via-purple-950/30 to-slate-900;
     color: #ffffff;
   }
 
+  /* ✅ BACKGROUND GLOW EFFECTS - LIGHT */
   body::before {
     content: '';
     position: fixed;
@@ -35,12 +39,15 @@
     background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
     pointer-events: none;
     z-index: -1;
+    transition: background 0.3s ease;
   }
 
+  /* ✅ BACKGROUND GLOW EFFECTS - DARK */
   .dark body::before {
     background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.08) 40%, transparent 70%);
   }
 
+  /* ✅ SECOND GLOW - LIGHT */
   body::after {
     content: '';
     position: fixed;
@@ -51,8 +58,10 @@
     background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.03) 40%, transparent 70%);
     pointer-events: none;
     z-index: -1;
+    transition: background 0.3s ease;
   }
 
+  /* ✅ SECOND GLOW - DARK */
   .dark body::after {
     background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0.05) 40%, transparent 70%);
   }
@@ -67,7 +76,7 @@
   }
 }
 
-/* ✅ SCROLL REVEAL - JAB SCROLL KAREIN TO APPEAR HO */
+/* ✅ SCROLL REVEAL */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(60px);
@@ -79,7 +88,7 @@
   transform: translateY(0);
 }
 
-/* ✅ STAGGER CHILDREN - ANDAR WALE ELEMENTS ALAG ALAG AYEIN */
+/* ✅ STAGGER CHILDREN */
 .stagger-children > * {
   opacity: 0;
   transform: translateY(40px);

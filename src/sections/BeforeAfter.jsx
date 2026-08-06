@@ -53,7 +53,6 @@ function MouseFollower({ children, className = "", color = "indigo" }) {
         isHovering ? borderColorMap[color] : ''
       } ${className}`}
     >
-      {/* Mouse Follower Glow - Only Box Background */}
       {isHovering && (
         <div
           className={`pointer-events-none absolute h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r ${colorMap[color]} blur-2xl transition-all duration-200`}
@@ -85,7 +84,7 @@ export default function BeforeAfter() {
             Before vs After
           </span>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            See The Difference
+            See The <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Difference</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
             See how Stallio transforms your selling experience.
@@ -93,7 +92,6 @@ export default function BeforeAfter() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {/* Before - Without Stallio */}
           <MouseFollower 
             color="red" 
             className={`bg-gradient-to-br from-red-100/60 to-red-200/30 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-950/50 dark:to-red-900/30 dark:shadow-red-500/10 ${
@@ -121,7 +119,6 @@ export default function BeforeAfter() {
             </div>
           </MouseFollower>
 
-          {/* After - With Stallio */}
           <MouseFollower 
             color="green" 
             className={`bg-gradient-to-br from-green-100/60 to-green-200/30 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-950/50 dark:to-green-900/30 dark:shadow-green-500/10 ${
@@ -165,7 +162,6 @@ export default function BeforeAfter() {
           </div>
         </div>
 
-        {/* CTA */}
         <div className={`mt-10 text-center transition-all duration-700 delay-400 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -177,9 +173,6 @@ export default function BeforeAfter() {
             <ArrowRight className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-violet-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
-          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            No credit card required. Get started in minutes.
-          </p>
         </div>
       </div>
     </section>

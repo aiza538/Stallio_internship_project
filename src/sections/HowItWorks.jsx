@@ -84,7 +84,6 @@ export default function HowItWorks() {
       <div className="pointer-events-none absolute -bottom-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
       
       <div className="relative mx-auto max-w-content">
-        {/* Section Header */}
         <div className={`mb-12 text-center transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -112,7 +111,6 @@ export default function HowItWorks() {
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 <div className="relative flex min-h-[280px] flex-col items-center justify-center text-center">
-                  {/* ✅ Step Number - Normal Size + Black */}
                   <div className="mb-2 text-2xl font-display font-bold text-black dark:text-white">
                     Step {index + 1}
                   </div>
@@ -127,12 +125,10 @@ export default function HowItWorks() {
                     {step.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                     {step.description}
                   </p>
 
-                  {/* Highlight Badge */}
                   <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-indigo-100/80 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
                     <Zap className="h-3 w-3" />
                     {step.highlight}
@@ -140,7 +136,6 @@ export default function HowItWorks() {
                 </div>
               </MouseFollower>
 
-              {/* Arrow */}
               {index < STEPS.length - 1 && (
                 <div className="absolute -right-4 top-1/2 hidden -translate-y-1/2 md:block">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-lg dark:bg-slate-800">
@@ -152,11 +147,10 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Bottom Line - Purple Color */}
         <div className={`mt-10 text-center transition-all duration-700 delay-300 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <p className="text-base font-medium text-indigo-600 dark:text-indigo-400">
+          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
             Three moves. You're live. No staging servers. No theme rabbit holes.
           </p>
         </div>

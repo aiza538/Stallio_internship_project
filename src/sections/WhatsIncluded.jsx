@@ -162,12 +162,10 @@ export default function WhatsIncluded() {
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      {/* Background Glow - Purple Theme */}
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
       <div className="pointer-events-none absolute -bottom-20 left-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
       <div className="relative mx-auto max-w-content">
-        {/* Section Header - Purple Theme */}
         <div className={`mb-12 text-center transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
@@ -182,7 +180,6 @@ export default function WhatsIncluded() {
           </p>
         </div>
 
-        {/* Features Grid - 3 Columns */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature, index) => (
             <MouseFollower
@@ -195,12 +192,11 @@ export default function WhatsIncluded() {
               style={{ transitionDelay: `${index * 0.05}s` }}
             >
               <div className="relative flex items-start gap-3">
-                {/* Icon */}
+
                 <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${feature.iconBg} transition-all duration-300 group-hover:scale-110`}>
                   <feature.icon className="h-4 w-4" />
                 </div>
 
-                {/* Content */}
                 <div>
                   <h4 className="font-display text-sm font-semibold text-slate-800 dark:text-white">
                     {feature.title}
@@ -214,20 +210,9 @@ export default function WhatsIncluded() {
           ))}
         </div>
 
-        {/* Bottom CTA - Purple Theme */}
         <div className={`mt-10 text-center transition-all duration-700 delay-300 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <a
-            href="#start-free"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-violet-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/35"
-          >
-            Start Your Free Trial
-            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            No credit card required. Get started in minutes.
-          </p>
         </div>
       </div>
     </section>
