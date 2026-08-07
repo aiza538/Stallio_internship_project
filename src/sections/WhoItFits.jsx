@@ -50,7 +50,6 @@ const TARGET_AUDIENCE = [
   },
 ];
 
-// Mouse Follower Component - Same as BeforeAfter
 function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -96,16 +95,16 @@ export default function WhoItFits() {
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/8 blur-3xl dark:bg-purple-400/12" />
       
-      <div className="relative mx-auto max-w-content">
+      <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         {/* Section Header */}
-        <div className={`mb-12 text-center transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className="mb-12 text-center">
           <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
             WHO IT FITS
           </span>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            Your audience already follows you. <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Give them a shelf.</span>
+            Your audience already follows you. <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+            Give them a shelf.
+          </span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
             For people who sell from kitchens, studios, and counters — not for teams who live inside enterprise dashboards.

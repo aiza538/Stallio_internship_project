@@ -90,7 +90,6 @@ const FEATURES = [
   },
 ];
 
-// Mouse Follower Component
 function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -137,15 +136,15 @@ export default function InsideTheBox() {
       <div className="pointer-events-none absolute -bottom-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
       <div className="pointer-events-none absolute -top-20 left-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
-      <div className="relative mx-auto max-w-content">
-        <div className={`mb-10 text-center transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+      <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        <div className="mb-10 text-center">
           <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">
             Inside The Box
           </span>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            What buyers actually <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">tap through</span>
+            What buyers actually <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+            tap through
+          </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
             Grid, product detail, cart cues — tight enough to feel premium, simple enough to ship today.
@@ -158,10 +157,7 @@ export default function InsideTheBox() {
               key={index}
               borderColor={feature.borderColor}
               glowColor={feature.glowColor}
-              className={`bg-gradient-to-br ${feature.bg} p-4 shadow-lg shadow-violet-500/5 transition-all duration-500 hover:shadow-xl hover:shadow-violet-500/15 dark:shadow-violet-500/5 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 0.04}s` }}
+              className={`bg-gradient-to-br ${feature.bg} p-4 shadow-lg shadow-violet-500/5 transition-all duration-500 hover:shadow-xl hover:shadow-violet-500/15 dark:shadow-violet-500/5`}
             >
               <div className="relative flex items-center gap-3">
                 <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${feature.iconBg} transition-all duration-300 group-hover:scale-110`}>
@@ -181,15 +177,13 @@ export default function InsideTheBox() {
           ))}
         </div>
 
-        <div className={`mt-10 text-center transition-all duration-700 delay-300 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className="mt-10 text-center">
           <a
             href="#demo"
-            className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/35"
+            className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-violet-500/35 hover:brightness-110"
           >
             Browse Demo
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="h-4 w-4 transition-none" />
           </a>
           <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
             You mark paid and ship; payments stay with you and the buyer.

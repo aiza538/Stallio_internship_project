@@ -17,10 +17,10 @@ function FooterLink({ href, children }) {
   return (
     <a
       href={href}
-      className="group/link relative inline-flex w-fit items-center text-xs text-slate-600 transition-colors duration-300 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+      className="relative inline-flex w-fit items-center text-xs text-slate-600 transition-colors duration-300 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
     >
       {children}
-      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-brand-500 transition-all duration-300 group-hover/link:w-full" />
+
     </a>
   );
 }
@@ -35,9 +35,7 @@ export default function Footer() {
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
       <div className="relative mx-auto max-w-content px-6 py-4 lg:px-8">
-        {/* Two Column Layout - Compact */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {/* Left Column - Brand */}
           <div className="flex flex-col items-center justify-center md:items-end md:pr-4">
             <div className="w-full max-w-lg">
               <Logo />
@@ -46,15 +44,14 @@ export default function Footer() {
               </p>
               <a
                 href="#start-free"
-                className="group mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-600 to-violet-600 px-4 py-1.5 text-xs font-medium text-white shadow-md shadow-brand-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
+                className="group mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-600 to-violet-600 px-4 py-1.5 text-xs font-medium text-white shadow-md shadow-brand-500/25 transition-all duration-300 hover:shadow-lg hover:shadow-brand-500/40 hover:brightness-110"
               >
                 Get Started Free
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+                <ArrowRight className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
               </a>
             </div>
           </div>
 
-          {/* Right Column - Contact - Compact */}
           <div className="flex flex-col items-center justify-center md:items-start md:pl-4">
             <div className="w-full max-w-lg rounded-2xl border border-slate-200/60 bg-white/50 p-3.5 backdrop-blur-sm transition-all duration-300 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-white/5 dark:hover:border-brand-400/30">
               <h3 className="font-mono text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">
@@ -64,18 +61,17 @@ export default function Footer() {
                 href="mailto:contact@stallio.shop"
                 className="group mt-1 inline-flex items-center gap-1.5 text-sm text-slate-600 transition-colors duration-300 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
               >
-                <Mail className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={2} />
+                <Mail className="h-3.5 w-3.5 shrink-0 transition-none" strokeWidth={2} />
                 <span className="break-all">contact@stallio.shop</span>
               </a>
 
-              {/* Social Icons - Smaller */}
               <div className="mt-1.5 flex items-center gap-2">
                 {SOCIALS.map(({ label, short, href }) => (
                   <a
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-slate-200/60 text-[10px] font-semibold text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:bg-gradient-to-r hover:from-brand-600 hover:to-violet-600 hover:text-white hover:shadow-md hover:shadow-brand-500/30 dark:border-white/10 dark:text-slate-300"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-slate-200/60 text-[10px] font-semibold text-slate-600 transition-all duration-300 hover:border-transparent hover:bg-gradient-to-r hover:from-brand-600 hover:to-violet-600 hover:text-white hover:shadow-md hover:shadow-brand-500/30 dark:border-white/10 dark:text-slate-300"
                   >
                     {short}
                   </a>
@@ -85,7 +81,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar - Compact */}
         <div className="relative mt-4 flex flex-col items-center justify-center gap-1.5 border-t border-indigo-200/30 pt-3 dark:border-indigo-800/20">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {LEGAL_LINKS.map((link) => (

@@ -1,4 +1,3 @@
-// src/hooks/useScrollReveal.js
 import { useEffect, useRef, useState } from "react";
 
 export function useScrollReveal() {
@@ -8,13 +7,8 @@ export function useScrollReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Scroll down OR up dono mein kaam karega
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          // Scroll up karne par element chhupa (optional)
-          // Agar chahti hain ke scroll up par bhi dikhe toh ise comment kar dein
-          // setIsVisible(false);
         }
       },
       {

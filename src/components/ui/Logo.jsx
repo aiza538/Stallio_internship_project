@@ -11,7 +11,6 @@ export default function Logo() {
         className="h-9 w-9 rounded-xl object-cover"
       />
       
-      {/* ✅ Stallio Text - Thinner (font-medium) */}
       <span className="font-logo text-2xl font-medium text-slate-800 dark:text-white">
         Stallio
       </span>

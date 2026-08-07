@@ -118,7 +118,6 @@ const FEATURES = [
   },
 ];
 
-// Mouse Follower Component
 function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -165,15 +164,13 @@ export default function WhatsIncluded() {
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
       <div className="pointer-events-none absolute -bottom-20 left-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
-      <div className="relative mx-auto max-w-content">
-        <div className={`mb-12 text-center transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+      <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        <div className="mb-12 text-center">
           <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">
             What's Included
           </span>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            One plan. <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">The full seller toolkit.</span>
+            One plan. <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">The full seller toolkit.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
             Everything below is part of Stallio, not add-ons. Start free, then pick monthly or yearly when you are ready.
@@ -186,17 +183,12 @@ export default function WhatsIncluded() {
               key={index}
               borderColor={feature.borderColor}
               glowColor={feature.glowColor}
-              className={`bg-gradient-to-br ${feature.bg} p-4 shadow-xl shadow-violet-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/20 dark:shadow-violet-500/10 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 0.05}s` }}
+              className={`bg-gradient-to-br ${feature.bg} p-4 shadow-xl shadow-violet-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/20 dark:shadow-violet-500/10`}
             >
               <div className="relative flex items-start gap-3">
-
                 <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${feature.iconBg} transition-all duration-300 group-hover:scale-110`}>
                   <feature.icon className="h-4 w-4" />
                 </div>
-
                 <div>
                   <h4 className="font-display text-sm font-semibold text-slate-800 dark:text-white">
                     {feature.title}
@@ -208,11 +200,6 @@ export default function WhatsIncluded() {
               </div>
             </MouseFollower>
           ))}
-        </div>
-
-        <div className={`mt-10 text-center transition-all duration-700 delay-300 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
         </div>
       </div>
     </section>

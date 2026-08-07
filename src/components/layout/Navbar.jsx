@@ -35,15 +35,12 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 backdrop-blur-md transition-colors duration-300 dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80">
-      {/* Glow Effects */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/6 to-transparent dark:from-indigo-400/15 dark:via-purple-400/8" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
       <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
-        {/* Logo - Left (Bag Icon + Text) */}
         <Logo />
 
-        {/* Desktop Links - Center */}
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
@@ -70,22 +67,33 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right Controls */}
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
+          
           <ThemeToggle />
-          <Button as="a" href="#login" variant="outline" className="text-xs">
+          
+          <Button 
+            as="a" 
+            href="#login" 
+            variant="outline" 
+            className="text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400"
+          >
             <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
             Log In
           </Button>
-          <Button as="a" href="#start-free" className="text-xs">
+          
+          {/* ✅ Start Free - Sirf Highlight, No Move */}
+          <Button 
+            as="a" 
+            href="#start-free" 
+            className="text-xs transition-colors duration-300 hover:brightness-110"
+          >
             <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
             Start Free
           </Button>
         </div>
 
-        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
@@ -102,7 +110,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Panel */}
       <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
         <div className="flex flex-col gap-1 px-6 py-4">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
@@ -137,11 +144,11 @@ export default function Navbar() {
           </div>
 
           <div className="mt-2 flex flex-col gap-2">
-            <Button as="a" href="#login" variant="outline" className="w-full text-xs">
+            <Button as="a" href="#login" variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
               <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
               Log In
             </Button>
-            <Button as="a" href="#start-free" className="w-full text-xs">
+            <Button as="a" href="#start-free" className="w-full text-xs transition-colors duration-300 hover:brightness-110">
               <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
               Start Free
             </Button>
