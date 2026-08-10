@@ -1,62 +1,67 @@
 import { 
-  Infinity, Smartphone, Zap, Shield, Users, 
-  ArrowRight, Link, Package, ShoppingCart, 
-  Tag, FileText, Truck, BarChart, MessageCircle,
-  CreditCard, Globe
+  Store, Link, Package, LayoutDashboard, Smartphone, 
+  Tag, FileText, Truck, Layers, CreditCard, BarChart, 
+  MessageCircle, Headphones
 } from "lucide-react";
-import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
 
 const FEATURES = [
   {
-    icon: Link,
-    title: "Hosted stallio.shop link",
-    description: "Get your own stallio.shop link no domain needed.",
+    icon: Store,
+    title: "A storefront, not a science project",
+    description: "Buyers browse categories, pick variants, apply coupons, and place orders on their phone. Share one link tonight with no hosting bill, custom domain, or deploy keys.",
+    subItems: [
+      "Hosted on stallio.shop/yourname",
+      "English, Spanish, or Arabic storefront",
+      "About, contact, and home page included"
+    ],
     bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
     iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
+    isLarge: true 
   },
   {
-    icon: Infinity,
-    title: "Unlimited products, photos & orders",
-    description: "Add as many products, photos, and orders as you want no limits.",
+    icon: Link,
+    title: "Custom Store Link",
+    description: "One path for bio, WhatsApp, stories, and QR. Copy and paste; we host the shop.",
     bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
     iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
   {
-    icon: Smartphone,
-    title: "Mobile storefront, cart & checkout",
-    description: "Your store looks beautiful on every device phone, tablet, or desktop.",
+    icon: Package,
+    title: "Product Catalog",
+    description: "Unlimited products and images. Variants, sale prices, stock, and hide/show without deleting.",
     bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
     iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",
     glowColor: "from-purple-500/40 via-purple-400/20 to-transparent",
   },
   {
-    icon: Tag,
-    title: "Variants, sale prices & stock",
-    description: "Manage product variants, set sale prices, and track stock levels.",
-    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
-    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
-    borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
-    glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
-  },
-  {
-    icon: FileText,
-    title: "About & Contact pages",
-    description: "Add custom About and Contact pages to build trust with your customers.",
+    icon: LayoutDashboard,
+    title: "Order Dashboard",
+    description: "Every order in one inbox. Search, filter, mark paid, set delivery status, add tracking.",
     bg: "from-rose-50 to-rose-100/50 dark:from-rose-950/30 dark:to-rose-900/20",
     iconBg: "bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400",
     borderColor: "border-rose-500/70 dark:border-rose-400/60",
     glowColor: "from-rose-500/40 via-rose-400/20 to-transparent",
   },
   {
-    icon: ShoppingCart,
-    title: "Coupons & delivery fees",
-    description: "Create coupons, set delivery fees, and offer discounts to customers.",
+    icon: Smartphone,
+    title: "Mobile-First Storefront",
+    description: "Grid, product pages, and checkout tuned for thumbs, where your buyers actually are.",
+    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
+    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
+    borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
+    glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
+  },
+  {
+    icon: Tag,
+    title: "Coupons and Promos",
+    description: "Percent or fixed-off codes with optional expiry. Buyers apply them at checkout.",
     bg: "from-cyan-50 to-cyan-100/50 dark:from-cyan-950/30 dark:to-cyan-900/20",
     iconBg: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-400",
     borderColor: "border-cyan-500/70 dark:border-cyan-400/60",
@@ -64,8 +69,8 @@ const FEATURES = [
   },
   {
     icon: FileText,
-    title: "PDF invoice per order",
-    description: "Generate professional PDF invoices for every order automatically.",
+    title: "PDF Invoices",
+    description: "Download a professional invoice per order to send on WhatsApp or email.",
     bg: "from-indigo-50 to-indigo-100/50 dark:from-indigo-950/30 dark:to-indigo-900/20",
     iconBg: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400",
     borderColor: "border-indigo-500/70 dark:border-indigo-400/60",
@@ -73,44 +78,53 @@ const FEATURES = [
   },
   {
     icon: Truck,
-    title: "Mark paid, ship & export CSV",
-    description: "Mark orders as paid, manage shipping, and export data to CSV.",
+    title: "Delivery and COD",
+    description: "Fixed or free-above-minimum delivery, ETA text, checkout notes, and cash on delivery toggle.",
     bg: "from-teal-50 to-teal-100/50 dark:from-teal-950/30 dark:to-teal-900/20",
     iconBg: "bg-teal-100 text-teal-600 dark:bg-teal-900/50 dark:text-teal-400",
     borderColor: "border-teal-500/70 dark:border-teal-400/60",
     glowColor: "from-teal-500/40 via-teal-400/20 to-transparent",
   },
   {
-    icon: Globe,
-    title: "Shop & dashboard in EN, ES & AR",
-    description: "Your store and dashboard are available in English, Spanish, and Arabic.",
+    icon: Layers,
+    title: "Categories and Pages",
+    description: "Group products, run a custom home hero, trust lines, reviews, plus About and Contact.",
     bg: "from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20",
     iconBg: "bg-orange-100 text-orange-600 dark:bg-orange-900/50 dark:text-orange-400",
     borderColor: "border-orange-500/70 dark:border-orange-400/60",
     glowColor: "from-orange-500/40 via-orange-400/20 to-transparent",
   },
   {
-    icon: BarChart,
-    title: "Revenue & order charts",
-    description: "Track your business growth with powerful revenue and order analytics.",
+    icon: CreditCard,
+    title: "You Control Payment",
+    description: "Tell buyers how to pay by bank, link, or COD. Stallio tracks the order; you confirm when money arrives.",
     bg: "from-violet-50 to-violet-100/50 dark:from-violet-950/30 dark:to-violet-900/20",
     iconBg: "bg-violet-100 text-violet-600 dark:bg-violet-900/50 dark:text-violet-400",
     borderColor: "border-violet-500/70 dark:border-violet-400/60",
     glowColor: "from-violet-500/40 via-violet-400/20 to-transparent",
   },
   {
-    icon: MessageCircle,
-    title: "Buyer messages & support chat",
-    description: "Connect with customers through built-in messaging and support chat.",
+    icon: BarChart,
+    title: "Revenue Overview",
+    description: "Charts and totals for paid orders across today, the week, or a custom range.",
     bg: "from-pink-50 to-pink-100/50 dark:from-pink-950/30 dark:to-pink-900/20",
     iconBg: "bg-pink-100 text-pink-600 dark:bg-pink-900/50 dark:text-pink-400",
     borderColor: "border-pink-500/70 dark:border-pink-400/60",
     glowColor: "from-pink-500/40 via-pink-400/20 to-transparent",
   },
   {
-    icon: CreditCard,
-    title: "First month free, no card required",
-    description: "Start your free trial today. No credit card needed to get started.",
+    icon: MessageCircle,
+    title: "Buyer Messages",
+    description: "Contact form submissions land in your inbox so nothing sits only on Instagram.",
+    bg: "from-sky-50 to-sky-100/50 dark:from-sky-950/30 dark:to-sky-900/20",
+    iconBg: "bg-sky-100 text-sky-600 dark:bg-sky-900/50 dark:text-sky-400",
+    borderColor: "border-sky-500/70 dark:border-sky-400/60",
+    glowColor: "from-sky-500/40 via-sky-400/20 to-transparent",
+  },
+  {
+    icon: Headphones,
+    title: "Seller Support",
+    description: "Chat with the Stallio team from your dashboard when you need a hand.",
     bg: "from-lime-50 to-lime-100/50 dark:from-lime-950/30 dark:to-lime-900/20",
     iconBg: "bg-lime-100 text-lime-600 dark:bg-lime-900/50 dark:text-lime-400",
     borderColor: "border-lime-500/70 dark:border-lime-400/60",
@@ -156,46 +170,61 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
   );
 }
 
-export default function WhatsIncluded() {
+export default function FeaturesGrid() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
-      <div className="pointer-events-none absolute -bottom-20 left-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
+      <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
-      <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+      <div className={`relative mx-auto max-w-7xl scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
-          <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">
-            What's Included
+          <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+            Catalog, checkout, orders, and invoices
           </span>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            One plan. <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">The full seller toolkit.</span>
+            Everything in{" "} 
+             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+                     one dashboard loop.
+                </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
-            Everything below is part of Stallio, not add-ons. Start free, then pick monthly or yearly when you are ready.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature, index) => (
             <MouseFollower
               key={index}
               borderColor={feature.borderColor}
               glowColor={feature.glowColor}
-              className={`bg-gradient-to-br ${feature.bg} p-4 shadow-xl shadow-violet-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/20 dark:shadow-violet-500/10`}
+              className={`bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              } ${feature.isLarge ? 'sm:col-span-2 lg:col-span-2 row-span-2' : ''}`} 
+              style={{ transitionDelay: `${index * 0.05}s` }}
             >
-              <div className="relative flex items-start gap-3">
-                <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${feature.iconBg} transition-all duration-300 group-hover:scale-110`}>
-                  <feature.icon className="h-4 w-4" />
+              <div className="relative flex h-full flex-col items-start gap-4">
+                
+
+                <div className={`inline-flex rounded-2xl ${feature.iconBg} p-3 transition-all duration-300 group-hover:scale-110`}>
+                  <feature.icon className="h-6 w-6" />
                 </div>
-                <div>
-                  <h4 className="font-display text-sm font-semibold text-slate-800 dark:text-white">
+                
+                <div className={`${feature.isLarge ? 'space-y-4' : 'space-y-2'}`}>
+                  <h3 className={`font-display font-semibold text-slate-800 dark:text-white ${feature.isLarge ? 'text-5xl' : 'text-lg'}`}>
                     {feature.title}
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300">
+                  </h3>
+                  <p className={`leading-relaxed text-slate-600 dark:text-slate-300 ${feature.isLarge ? 'text-lg' : 'text-sm'}`}>
                     {feature.description}
                   </p>
+                  {feature.subItems && (
+                    <ul className={`mt-3 space-y-1.5 text-slate-500 dark:text-slate-400 ${feature.isLarge ? 'text-base' : 'text-xs'}`}>
+                      {feature.subItems.map((sub, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-indigo-400 shrink-0" />
+                          {sub}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             </MouseFollower>

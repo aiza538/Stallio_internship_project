@@ -6,7 +6,7 @@ const STEPS = [
   {
     icon: Store,
     title: "Open Your Shop",
-    description: "Name it, add basics, pick your URL path — no staging servers, no theme rabbit holes.",
+    description: "Name it, add basics, pick your URL path no staging servers, no theme rabbit holes.",
     bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
     iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
@@ -26,7 +26,7 @@ const STEPS = [
   {
     icon: Link,
     title: "Drop the Link",
-    description: "Bio, stories, DMs — same link everywhere. Orders land in your dashboard.",
+    description: "Bio, stories, DMs same link everywhere. Orders land in your dashboard.",
     bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
     iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",

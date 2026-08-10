@@ -107,7 +107,7 @@ export default function WhoItFits() {
           </span>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
-            For people who sell from kitchens, studios, and counters — not for teams who live inside enterprise dashboards.
+            For people who sell from kitchens, studios, and counters not for teams who live inside enterprise dashboards.
           </p>
         </div>
 

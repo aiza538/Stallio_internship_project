@@ -1,7 +1,7 @@
+// src/components/layout/Navbar.jsx
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
-import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "Home", to: "/", icon: HomeIcon, isRoute: true },
   { label: "About", to: "/about", icon: Info, isRoute: true },
   { label: "How It Works", to: "#", icon: ListChecks, isRoute: false },
-  { label: "Features", to: "#", icon: Zap, isRoute: false },
+  { label: "Features", to: "/features", icon: Zap, isRoute: true },
   { label: "Pricing", to: "#", icon: CreditCard, isRoute: false },
   { label: "Contact", to: "#", icon: Mail, isRoute: false },
 ];
@@ -39,8 +39,21 @@ export default function Navbar() {
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
       <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
-        <Logo />
+        
+        {/* ✅ SIRF YAHAN 2 CHANGES KIYE HAIN. BAKI SAB WAISA HI */}
+        <a href="/" className="flex items-center gap-2.5 no-underline">
+          <img src="/Stallio_Logo.png" alt="Stallio" className="h-8 w-auto block" />
+          {/* Size theek kiya aur text ko ekdum center lane ke liye mt-1 lagaya */}
+          <span 
+            className="text-2xl tracking-wide text-slate-800 dark:text-white mt-1"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Stallio
+          </span>
+        </a>
+        {/* ✅ LOGO ENDS HERE */}
 
+        {/* Desktop Links */}
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
@@ -67,12 +80,11 @@ export default function Navbar() {
           })}
         </div>
 
+        {/* Right Controls */}
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
-          
           <ThemeToggle />
-          
           <Button 
             as="a" 
             href="#login" 
@@ -82,8 +94,6 @@ export default function Navbar() {
             <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
             Log In
           </Button>
-          
-          {/* ✅ Start Free - Sirf Highlight, No Move */}
           <Button 
             as="a" 
             href="#start-free" 
@@ -94,6 +104,7 @@ export default function Navbar() {
           </Button>
         </div>
 
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
@@ -110,6 +121,7 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* Mobile Panel */}
       <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
         <div className="flex flex-col gap-1 px-6 py-4">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {

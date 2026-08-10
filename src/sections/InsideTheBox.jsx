@@ -55,7 +55,7 @@ const FEATURES = [
   {
     icon: Globe,
     title: "Multi-Language Store",
-    description: "Your store in English, Spanish, or Arabic — reach more customers in their language.",
+    description: "Your store in English, Spanish, or Arabic reach more customers in their language.",
     bg: "from-orange-100/80 to-orange-200/40 dark:from-orange-900/40 dark:to-orange-800/20",
     iconBg: "bg-orange-100 text-orange-600 dark:bg-orange-800/50 dark:text-orange-300",
     borderColor: "border-orange-400/50 dark:border-orange-600/30",
@@ -147,7 +147,7 @@ export default function InsideTheBox() {
           </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
-            Grid, product detail, cart cues — tight enough to feel premium, simple enough to ship today.
+            Grid, product detail, cart cues tight enough to feel premium, simple enough to ship today.
           </p>
         </div>
 

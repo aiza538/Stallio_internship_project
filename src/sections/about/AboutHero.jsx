@@ -102,9 +102,9 @@ export default function AboutHero() {
       <div className={`relative z-10 mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-indigo-600 backdrop-blur-sm dark:border-indigo-800/20 dark:bg-white/15 dark:text-white">
-              <Sparkles className="h-4 w-4" />
-              <span>About Stallio</span>
+            <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
+                <Sparkles className="h-4 w-4" strokeWidth={2} />
+                    About Stallio
             </div>
 
             <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
