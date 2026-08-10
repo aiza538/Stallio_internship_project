@@ -1,6 +1,6 @@
 ## Live Demo
 
-**Visit the live website:** [Stallio - Live Demo](https://stallio-shop-project.netlify.app/)
+**Visit the live website:** [Stallio - Live Demo](https://stallio-internships-project.netlify.app/)
 
 # Stallio 
 
@@ -20,7 +20,6 @@ React.js, TailwindCSS, Vite, React Router DOM, Lucide React
 
 - Responsive Navbar with hamburger menu
 - Dark/Light mode toggle
-- Language switcher (EN/ES/AR)
 - Hero Section with animations
 - Who It Fits section
 - Before vs After comparison
