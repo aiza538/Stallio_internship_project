@@ -1,6 +1,6 @@
 ## Live Demo
 
-**Visit the live website:** [Stallio - Live Demo](https://stallio-internships.netlify.app/)
+**Visit the live website:** [Stallio - Live Demo](https://stallio-shop-project.netlify.app/)
 
 # Stallio 
 
@@ -32,3 +32,9 @@ React.js, TailwindCSS, Vite, React Router DOM, Lucide React
 - Theme-aware components
 - Scroll animations
 - Mouse follower hover effects
+- Navbar Logo Alignment
+- Footer Logo Alignment
+- Features Hero
+- Features Grid
+- Features CTA Section
+- Footer Links Navigation
