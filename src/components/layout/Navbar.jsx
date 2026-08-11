@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
+import Logo from "../ui/Logo"; // ✅ Logo Component Import
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
@@ -9,7 +10,7 @@ import LanguageSwitcher from "../ui/LanguageSwitcher";
 const NAV_LINKS = [
   { label: "Home", to: "/", icon: HomeIcon, isRoute: true },
   { label: "About", to: "/about", icon: Info, isRoute: true },
-  { label: "How It Works", to: "#", icon: ListChecks, isRoute: false },
+  { label: "How It Works", to: "/howitworks", icon: ListChecks, isRoute: true },
   { label: "Features", to: "/features", icon: Zap, isRoute: true },
   { label: "Pricing", to: "#", icon: CreditCard, isRoute: false },
   { label: "Contact", to: "#", icon: Mail, isRoute: false },
@@ -40,20 +41,9 @@ export default function Navbar() {
 
       <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
         
-        {/* ✅ SIRF YAHAN 2 CHANGES KIYE HAIN. BAKI SAB WAISA HI */}
-        <a href="/" className="flex items-center gap-2.5 no-underline">
-          <img src="/Stallio_Logo.png" alt="Stallio" className="h-8 w-auto block" />
-          {/* Size theek kiya aur text ko ekdum center lane ke liye mt-1 lagaya */}
-          <span 
-            className="text-2xl tracking-wide text-slate-800 dark:text-white mt-1"
-            style={{ fontFamily: "'Great Vibes', cursive" }}
-          >
-            Stallio
-          </span>
-        </a>
-        {/* ✅ LOGO ENDS HERE */}
+        {/* ✅ Logo Component - Clean and Aligned */}
+        <Logo />
 
-        {/* Desktop Links */}
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
@@ -80,7 +70,6 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right Controls */}
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />

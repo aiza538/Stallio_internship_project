@@ -1,5 +1,7 @@
+// src/components/layout/Footer.jsx
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom"; 
+import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 
 export default function Footer() {
@@ -10,16 +12,7 @@ export default function Footer() {
           
           {/* Branding Column */}
           <div className="flex flex-col gap-4 lg:col-span-1">
-            {/* ✅ FIX: mt-1 add kiya taake text exact center mein aa jaye */}
-            <div className="flex items-center gap-2.5">
-              <img src="/Stallio_Logo.png" alt="Stallio" className="h-8 w-auto" />
-              <span 
-                className="text-2xl text-slate-800 dark:text-white transition-colors duration-300 mt-1"
-                style={{ fontFamily: "'Great Vibes', cursive" }}
-              >
-                Stallio
-              </span>
-            </div>
+            <Logo />
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
               One link for your catalog and orders, so customers know where to buy and you stay organized.
             </p>
@@ -47,7 +40,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">COMPANY</h3>
             <ul className="flex flex-col gap-2.5 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link to="/how-it-works" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">How It Works</Link></li>
+              <li><Link to="/howitworks" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">How It Works</Link></li>
               <li><Link to="/contact" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</Link></li>
               <li><Link to="/careers" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Careers</Link></li>
             </ul>

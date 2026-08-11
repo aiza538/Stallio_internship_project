@@ -144,3 +144,16 @@
   .animate-moving-line, .animate-moving-line-vertical { animation: none !important; }
   .animate-arrow-pulse { animation: none !important; opacity: 1 !important; }
 }
+
+@keyframes floatStep {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-step {
+  animation: floatStep 3.5s ease-in-out infinite;
+}
