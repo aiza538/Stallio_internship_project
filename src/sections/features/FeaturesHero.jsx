@@ -1,3 +1,4 @@
+// src/sections/features/FeaturesHero.jsx
 import { useState, useRef } from "react";
 import { 
   LayoutDashboard, 
@@ -5,8 +6,10 @@ import {
   Tag, 
   FileText, 
   Check,
-  Sparkles
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const features = [
   {
@@ -74,25 +77,25 @@ function FeatureCard({ feature }) {
 
   return (
     <div 
-      className="relative flex items-start gap-4 group"
+      className="relative flex items-center gap-2 sm:gap-4 group"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <div className={`${feature.numberBg} flex h-10 w-10 items-center justify-center rounded-full text-white text-sm font-bold shadow-md dark:shadow-[0_0_15px_rgba(0,0,0,0.5)] shrink-0 z-10 transition-colors duration-300`}>
+      <div className={`${feature.numberBg} flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full text-white text-[10px] sm:text-sm font-bold shadow-md dark:shadow-[0_0_15px_rgba(0,0,0,0.5)] shrink-0 z-10 transition-colors duration-300`}>
         {feature.id}
       </div>
 
       <div 
         ref={cardRef}
-        className={`relative flex-1 rounded-xl border ${feature.boxBorder} ${feature.boxBg} p-4 overflow-hidden transition-all duration-300`}
+        className={`relative flex-1 sm:flex-1 w-full rounded-xl border ${feature.boxBorder} ${feature.boxBg} p-3 sm:p-4 overflow-hidden transition-all duration-300`}
         style={{
           borderColor: isHovering ? (document.documentElement.classList.contains('dark') ? feature.darkThemeColor : feature.themeColor) : undefined
         }}
       >
         {isHovering && (
           <div 
-            className="absolute pointer-events-none w-24 h-24 rounded-full blur-xl transition-all duration-[20ms] ease-linear"
+            className="absolute pointer-events-none w-20 h-20 sm:w-24 sm:h-24 rounded-full blur-xl transition-all duration-[20ms] ease-linear"
             style={{
               background: document.documentElement.classList.contains('dark') 
                 ? `radial-gradient(circle, ${feature.darkThemeColor}40 0%, transparent 70%)`
@@ -103,13 +106,15 @@ function FeatureCard({ feature }) {
           />
         )}
 
-        <div className="relative z-10 flex items-start gap-3">
-          <div className={`${feature.iconBg} ${feature.iconColor} flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors duration-300`}>
-            <feature.icon className="h-5 w-5" strokeWidth={2} />
+        <div className="relative z-10 flex items-center gap-2 sm:gap-3">
+          <div className={`${feature.iconBg} ${feature.iconColor} flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg transition-colors duration-300`}>
+            <feature.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={2} />
           </div>
-          <p className="text-[0.95rem] text-slate-800 dark:text-white pt-0.5 leading-relaxed font-medium">
-            {feature.title}
-          </p>
+          <div>
+            <p className="text-[0.8rem] leading-snug sm:text-[0.95rem] text-slate-800 dark:text-white font-medium">
+              {feature.title}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -117,8 +122,10 @@ function FeatureCard({ feature }) {
 }
 
 export default function FeaturesHero() {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
-    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section ref={ref} className="relative overflow-hidden px-3 py-10 sm:px-4 sm:py-12 lg:py-20">
       
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-70 blur-sm dark:opacity-60"
@@ -134,67 +141,77 @@ export default function FeaturesHero() {
       
       <div className="pointer-events-none absolute -top-40 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-indigo-400/15 blur-3xl dark:bg-indigo-400/20" />
       <div className="pointer-events-none absolute -bottom-40 right-0 z-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/12 blur-3xl dark:bg-purple-400/15" />
-      
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
+
+      <div className={`relative z-10 mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 lg:px-8">
           
-          <div className="flex flex-col justify-center gap-6 animate-on-load">
-            <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
-                <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    Features
+          {/* Left Column */}
+          <div className="flex flex-col justify-center">
+            
+            <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
+              <Sparkles className="h-4 w-4" strokeWidth={2} />
+              Features
             </div>
-            
-            <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white">
-              Everything you need
-              <br />
+
+            <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              Everything you need <br />
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-                    to sell from one link.
-                </span>
+                to sell from one link.
+              </span>
             </h1>
-            
-            <p className="mt-2 text-lg text-slate-900 dark:text-white leading-relaxed max-w-lg">
+
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-slate-800 dark:text-slate-100">
               Storefront, dashboard, and seller tools in one place: hosted link, unlimited catalog and orders, no buyer payment gateway required.
             </p>
 
-            <ul className="flex flex-col gap-3 mt-4">
+            <ul className="mt-4 flex flex-col gap-2">
               {[
                 "stallio.shop link, no domain purchase",
                 "Unlimited products, photos, and orders",
                 "PDF invoices and order export",
                 "Coupons, delivery fees, and COD at checkout"
               ].map((item, index) => (
-                <li key={index} className="flex items-start gap-3 text-slate-900 dark:text-white">
+                <li key={index} className="flex items-start gap-2 text-base text-slate-800 dark:text-slate-100">
                   <Check className="h-5 w-5 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" strokeWidth={3} />
-                  <span className="text-[0.95rem]">{item}</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4">
+            {/* Desktop: side by side | Mobile: stack */}
+            <div className="mt-6 flex flex-col sm:flex-row items-start gap-4">
               <a
                 href="#start-free"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
               >
                 Start Free
-                <Sparkles className="h-4 w-4 transition-none" />
+                <Sparkles className="h-3.5 w-3.5 transition-none" />
               </a>
               <a
                 href="#demo"
-                className="group inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-2.5 text-sm font-semibold text-slate-600 transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
               >
                 View Demo Store
+                <ArrowRight className="h-3.5 w-3.5 transition-none" />
               </a>
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center mt-8 lg:mt-0 animate-on-load">
-            <div className="w-full max-w-md rounded-3xl bg-indigo-950/40 dark:bg-indigo-950/60 backdrop-blur-lg border border-white/15 dark:border-white/10 p-8 shadow-2xl shadow-black/30">
-              <div className="flex flex-col gap-5">
-                {features.map((feature) => (
-                  <FeatureCard key={feature.id} feature={feature} />
-                ))}
+          {/* Right Column - Cards */}
+          <div className="flex flex-col justify-center gap-4">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`transform transition-all duration-700 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 0.15}s`
+                }}
+              >
+                <FeatureCard feature={feature} />
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

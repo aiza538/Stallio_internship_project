@@ -98,7 +98,7 @@ export default function WhyItLands() {
           </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
-            Everything you need to start, grow, and scale your business — all in one place.
+            Everything you need to start, grow, and scale your business all in one place.
           </p>
         </div>
 

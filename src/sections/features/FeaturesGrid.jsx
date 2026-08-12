@@ -4,7 +4,7 @@ import {
   MessageCircle, Headphones
 } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const FEATURES = [
   {
@@ -172,12 +172,27 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function FeaturesGrid() {
   const { ref, isVisible } = useScrollReveal();
+  const [isMobile, setIsMobile] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    // Load animation trigger
+    setHasLoaded(true);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
-      <div className={`relative mx-auto max-w-7xl scroll-reveal ${isVisible ? 'visible' : ''}`}>
+      <div className={`relative mx-auto max-w-7xl scroll-reveal ${(isVisible || isMobile || hasLoaded) ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
           <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
             Catalog, checkout, orders, and invoices
@@ -196,27 +211,29 @@ export default function FeaturesGrid() {
               key={index}
               borderColor={feature.borderColor}
               glowColor={feature.glowColor}
-              className={`bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } ${feature.isLarge ? 'sm:col-span-2 lg:col-span-2 row-span-2' : ''}`} 
-              style={{ transitionDelay: `${index * 0.05}s` }}
+              className={`bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${
+                (isVisible || isMobile || hasLoaded) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+              } ${feature.isLarge ? 'sm:col-span-2 lg:col-span-2 row-span-1 sm:row-span-2' : ''}`} 
+              style={{ 
+                transitionDelay: `${index * 0.08}s`,
+                transitionProperty: 'all',
+                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
             >
               <div className="relative flex h-full flex-col items-start gap-4">
-                
-
                 <div className={`inline-flex rounded-2xl ${feature.iconBg} p-3 transition-all duration-300 group-hover:scale-110`}>
                   <feature.icon className="h-6 w-6" />
                 </div>
                 
-                <div className={`${feature.isLarge ? 'space-y-4' : 'space-y-2'}`}>
-                  <h3 className={`font-display font-semibold text-slate-800 dark:text-white ${feature.isLarge ? 'text-5xl' : 'text-lg'}`}>
+                <div className={`${feature.isLarge ? 'space-y-3 sm:space-y-4' : 'space-y-2'}`}>
+                  <h3 className={`font-display font-semibold text-slate-800 dark:text-white ${feature.isLarge ? 'text-2xl sm:text-4xl lg:text-5xl' : 'text-lg'}`}>
                     {feature.title}
                   </h3>
-                  <p className={`leading-relaxed text-slate-600 dark:text-slate-300 ${feature.isLarge ? 'text-lg' : 'text-sm'}`}>
+                  <p className={`leading-relaxed text-slate-600 dark:text-slate-300 ${feature.isLarge ? 'text-base sm:text-lg' : 'text-sm'}`}>
                     {feature.description}
                   </p>
                   {feature.subItems && (
-                    <ul className={`mt-3 space-y-1.5 text-slate-500 dark:text-slate-400 ${feature.isLarge ? 'text-base' : 'text-xs'}`}>
+                    <ul className={`mt-3 space-y-1.5 text-slate-500 dark:text-slate-400 ${feature.isLarge ? 'text-sm sm:text-base' : 'text-xs'}`}>
                       {feature.subItems.map((sub, idx) => (
                         <li key={idx} className="flex items-center gap-2">
                           <span className="h-1 w-1 rounded-full bg-indigo-400 shrink-0" />

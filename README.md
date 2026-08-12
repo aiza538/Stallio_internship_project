@@ -1,6 +1,10 @@
 ## Live Demo
 
+<<<<<<< HEAD
 **Visit the live website:** [Stallio - Live Demo](https://stallio-projects.netlify.app/)
+=======
+**Visit the live website:** [Stallio - Live Demo](https://stallio-internships-project.netlify.app/)
+>>>>>>> 32527cff1f8c3f934b492d0a92b3740d1dfe0b70
 
 # Stallio 
 
@@ -38,8 +42,17 @@ React.js, TailwindCSS, Vite, React Router DOM, Lucide React
 - Theme-aware components
 - Scroll animations
 - Mouse follower hover effects
+<<<<<<< HEAD
 - Blurry background images
 - Button hover effects (highlight only)
 - Dark mode background: Black + Purple mix
 - Full responsive design
 - Netlify deployment
+=======
+- Navbar Logo Alignment
+- Footer Logo Alignment
+- Features Hero
+- Features Grid
+- Features CTA Section
+- Footer Links Navigation
+>>>>>>> 32527cff1f8c3f934b492d0a92b3740d1dfe0b70
