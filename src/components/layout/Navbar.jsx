@@ -1,8 +1,8 @@
 // src/components/layout/Navbar.jsx
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom"; // ✅ Step 1: import Link
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
-import Logo from "../ui/Logo"; // ✅ Logo Component Import
+import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
@@ -41,9 +41,9 @@ export default function Navbar() {
 
       <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
         
-        {/* ✅ Logo Component - Clean and Aligned */}
         <Logo />
 
+        {/* Desktop Links */}
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
@@ -70,27 +70,31 @@ export default function Navbar() {
           })}
         </div>
 
+        {/* Right Controls */}
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
           <ThemeToggle />
-          <Button 
-            as="a" 
-            href="#login" 
-            variant="outline" 
-            className="text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400"
-          >
-            <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-            Log In
-          </Button>
-          <Button 
-            as="a" 
-            href="#start-free" 
-            className="text-xs transition-colors duration-300 hover:brightness-110"
-          >
-            <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-            Start Free
-          </Button>
+          
+          {/* ✅ FIX: Button ko Link wrapper mein wrap kar diya */}
+          <Link to="/login">
+            <Button 
+              variant="outline" 
+              className="text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400"
+            >
+              <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
+              Log In
+            </Button>
+          </Link>
+
+          <Link to="/#start-free">
+            <Button 
+              className="text-xs transition-colors duration-300 hover:brightness-110"
+            >
+              <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
+              Start Free
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Controls */}
@@ -145,14 +149,20 @@ export default function Navbar() {
           </div>
 
           <div className="mt-2 flex flex-col gap-2">
-            <Button as="a" href="#login" variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
-              <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
-              Log In
-            </Button>
-            <Button as="a" href="#start-free" className="w-full text-xs transition-colors duration-300 hover:brightness-110">
-              <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
-              Start Free
-            </Button>
+            {/* ✅ Mobile par bhi Link wrap kar diya */}
+            <Link to="/login" className="w-full">
+              <Button variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
+                <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
+                Log In
+              </Button>
+            </Link>
+            
+            <Link to="/#start-free" className="w-full">
+              <Button className="w-full text-xs transition-colors duration-300 hover:brightness-110">
+                <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
+                Start Free
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
