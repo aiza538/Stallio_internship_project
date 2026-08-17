@@ -22,9 +22,9 @@
   }
 
   .dark body {
-    background: radial-gradient(ellipse at 50% 30%, #1a0a2e 0%, #0f0a1a 50%, #050308 100%);
-    color: #ffffff;
-  }
+  background: #050308;   /* sirf solid fallback rakhein */
+  color: #ffffff;
+}
 
   body, body * {
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;

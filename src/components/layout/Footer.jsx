@@ -7,7 +7,6 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 pt-6 sm:pt-16 pb-4 sm:pb-8 transition-colors duration-300 dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* ✅ HEIGHT CHHOTI KI: Mobile par gap aur margin aur kam kar diya */}
         <div className="grid grid-cols-2 gap-y-3 gap-x-2 sm:gap-6 md:grid-cols-4 lg:gap-10">
           
           {/* Branding Column */}

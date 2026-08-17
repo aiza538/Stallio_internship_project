@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "About", to: "/about", icon: Info, isRoute: true },
   { label: "How It Works", to: "/howitworks", icon: ListChecks, isRoute: true },
   { label: "Features", to: "/features", icon: Zap, isRoute: true },
-  { label: "Pricing", to: "#", icon: CreditCard, isRoute: false },
+  { label: "Pricing", to: "/pricing", icon: CreditCard, isRoute: true },
   { label: "Contact", to: "#", icon: Mail, isRoute: false },
 ];
 
