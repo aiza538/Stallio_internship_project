@@ -34,15 +34,19 @@ export default function Signup() {
   };
 
   return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-[#0d071a] px-3 py-10 sm:px-6 lg:px-8 relative overflow-hidden">
+      
+      {/* ========== NEW SHADES (SAME AS VERIFYHERO) ========== */}
+      {/* LIGHT MODE PURPLISH BACKGROUND SHADE */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-100/70 via-white to-white block dark:hidden" />
+      
+      {/* DARK MODE BACKGROUND GLOW */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2d1045] via-[#150b2e] to-[#0d071a] hidden dark:block" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10" />
+      {/* ====================================================== */}
 
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-indigo-30 via-purple-35 to-white dark:bg-[radial-gradient(circle_farthest-corner_at_center,_#2d1045_0%,_#25103c_20%,_#1a0b2e_40%,_#120a22_60%,_#0d071a_80%,_#0a0614_100%)] px-3 py-10 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* ✅ Center Radial Glow for Dark Mode only */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2d1045] via-[#0d071a] to-[#0d071a] hidden dark:block" />
-
-      {/* ✅ Card */}
       <div className="relative z-10 w-full max-w-3xl space-y-8 bg-white/90 dark:bg-[#18132a]/90 backdrop-blur-lg border border-indigo-200/50 dark:border-indigo-800/40 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-indigo-500/10 dark:shadow-black/40 animate-on-load">
         
-        {/* Logo Static & Aligned */}
         <div className="flex flex-col items-center text-center">
           <div className="mb-6 flex items-center gap-2.5">
             <img src="/Stallio_Logo.png" alt="Stallio" className="h-8 w-auto" />
@@ -66,7 +70,6 @@ export default function Signup() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Email <span className="text-rose-500">*</span>
@@ -88,7 +91,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Shop Name */}
             <div>
               <label htmlFor="shopName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Shop Name <span className="text-rose-500">*</span>
@@ -110,7 +112,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Username (Store URL) */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Username (Store URL) <span className="text-rose-500">*</span>
@@ -135,7 +136,6 @@ export default function Signup() {
               </p>
             </div>
 
-            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Password (Min 8 characters) <span className="text-rose-500">*</span>
@@ -164,7 +164,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Confirm Password */}
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Confirm password <span className="text-rose-500">*</span>
@@ -193,7 +192,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Country */}
             <div>
               <label htmlFor="country" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Country <span className="text-rose-500">*</span>
@@ -221,7 +219,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Currency */}
             <div>
               <label htmlFor="currency" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Currency <span className="text-rose-500">*</span>
@@ -249,7 +246,6 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* Shop Logo (Optional) */}
             <div className="md:col-span-1">
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                 Shop Logo (Optional)
@@ -265,7 +261,6 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* Terms Checkbox */}
           <div className="flex items-start pt-2">
             <div className="flex items-center h-5">
               <input
@@ -291,7 +286,6 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <div>
             <button
               type="submit"

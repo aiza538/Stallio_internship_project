@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "How It Works", to: "/howitworks", icon: ListChecks, isRoute: true },
   { label: "Features", to: "/features", icon: Zap, isRoute: true },
   { label: "Pricing", to: "/pricing", icon: CreditCard, isRoute: true },
-  { label: "Contact", to: "#", icon: Mail, isRoute: false },
+  { label: "Contact", to: "/contact", icon: Mail, isRoute: true },
 ];
 
 export default function Navbar() {
