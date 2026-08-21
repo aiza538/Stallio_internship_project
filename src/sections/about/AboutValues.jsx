@@ -1,3 +1,4 @@
+// src/sections/about/AboutValues.jsx
 import { Shield, Zap, Heart, Users } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
@@ -7,8 +8,8 @@ const VALUES = [
     icon: Shield,
     title: "Trust",
     description: "We believe in transparency and reliability. Every seller deserves a platform they can count on.",
-    bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
-    iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
+    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
+    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
   },
@@ -16,8 +17,8 @@ const VALUES = [
     icon: Zap,
     title: "Simplicity",
     description: "Complexity shouldn't stand in your way. We make selling simple, fast, and intuitive.",
-    bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
-    iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
+    bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
+    iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
@@ -25,8 +26,8 @@ const VALUES = [
     icon: Heart,
     title: "Empathy",
     description: "We understand the challenges sellers face. Everything we build starts with your needs.",
-    bg: "from-rose-50 to-rose-100/50 dark:from-rose-950/30 dark:to-rose-900/20",
-    iconBg: "bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400",
+    bg: "from-rose-200/80 to-rose-100 dark:from-rose-900/60 dark:to-rose-800/60",
+    iconBg: "bg-rose-200 text-rose-700 dark:bg-rose-800/70 dark:text-rose-400",
     borderColor: "border-rose-500/70 dark:border-rose-400/60",
     glowColor: "from-rose-500/40 via-rose-400/20 to-transparent",
   },
@@ -34,8 +35,8 @@ const VALUES = [
     icon: Users,
     title: "Community",
     description: "We're building more than a platform — we're building a community of sellers who grow together.",
-    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
-    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
+    bg: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60",
+    iconBg: "bg-emerald-200 text-emerald-700 dark:bg-emerald-800/70 dark:text-emerald-400",
     borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
     glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
   },

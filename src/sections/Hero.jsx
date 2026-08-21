@@ -1,4 +1,5 @@
 import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function Hero() {
@@ -43,19 +44,20 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#start-free"
+          {/* ✅ Ab Get Started Free Signup page par jayega */}
+          <Link
+            to="/signup"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
           >
             Get Started Free
             <ArrowRight className="h-5 w-5 transition-none" />
-          </a>
-          <a
-            href="#learn-more"
+          </Link>
+          <Link
+            to="/pricing"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400"
           >
             Learn More
-          </a>
+          </Link>
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">

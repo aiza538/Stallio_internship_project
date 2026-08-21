@@ -1,3 +1,4 @@
+// src/sections/about/WhyItLands.jsx
 import { Shield, Zap, TrendingUp, Heart, Users, Clock } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState, useRef } from "react";
@@ -7,8 +8,8 @@ const REASONS = [
     icon: Shield,
     title: "Trusted by Sellers",
     description: "Join thousands of sellers who trust Stallio to power their business.",
-    bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
-    iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
+    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
+    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
   },
@@ -16,8 +17,8 @@ const REASONS = [
     icon: Zap,
     title: "Simple & Fast",
     description: "Get your store live in minutes. No coding, no complexity.",
-    bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
-    iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
+    bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
+    iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
@@ -25,8 +26,8 @@ const REASONS = [
     icon: TrendingUp,
     title: "Grow Your Business",
     description: "Powerful tools to help you scale from startup to success.",
-    bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
-    iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
+    bg: "from-purple-200/80 to-purple-100 dark:from-purple-900/60 dark:to-purple-800/60",
+    iconBg: "bg-purple-200 text-purple-700 dark:bg-purple-800/70 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",
     glowColor: "from-purple-500/40 via-purple-400/20 to-transparent",
   },
@@ -34,8 +35,8 @@ const REASONS = [
     icon: Users,
     title: "Community Driven",
     description: "Join a growing community of sellers who support each other.",
-    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
-    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
+    bg: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60",
+    iconBg: "bg-emerald-200 text-emerald-700 dark:bg-emerald-800/70 dark:text-emerald-400",
     borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
     glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
   },

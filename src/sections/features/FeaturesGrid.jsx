@@ -1,10 +1,11 @@
+// src/sections/features/FeaturesGrid.jsx
 import { 
   Store, Link, Package, LayoutDashboard, Smartphone, 
   Tag, FileText, Truck, Layers, CreditCard, BarChart, 
   MessageCircle, Headphones
 } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 const FEATURES = [
   {
@@ -16,8 +17,8 @@ const FEATURES = [
       "English, Spanish, or Arabic storefront",
       "About, contact, and home page included"
     ],
-    bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
-    iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
+    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
+    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
     isLarge: true 
@@ -26,8 +27,8 @@ const FEATURES = [
     icon: Link,
     title: "Custom Store Link",
     description: "One path for bio, WhatsApp, stories, and QR. Copy and paste; we host the shop.",
-    bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
-    iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
+    bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
+    iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
@@ -35,8 +36,8 @@ const FEATURES = [
     icon: Package,
     title: "Product Catalog",
     description: "Unlimited products and images. Variants, sale prices, stock, and hide/show without deleting.",
-    bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
-    iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
+    bg: "from-purple-200/80 to-purple-100 dark:from-purple-900/60 dark:to-purple-800/60",
+    iconBg: "bg-purple-200 text-purple-700 dark:bg-purple-800/70 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",
     glowColor: "from-purple-500/40 via-purple-400/20 to-transparent",
   },
@@ -44,8 +45,8 @@ const FEATURES = [
     icon: LayoutDashboard,
     title: "Order Dashboard",
     description: "Every order in one inbox. Search, filter, mark paid, set delivery status, add tracking.",
-    bg: "from-rose-50 to-rose-100/50 dark:from-rose-950/30 dark:to-rose-900/20",
-    iconBg: "bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400",
+    bg: "from-rose-200/80 to-rose-100 dark:from-rose-900/60 dark:to-rose-800/60",
+    iconBg: "bg-rose-200 text-rose-700 dark:bg-rose-800/70 dark:text-rose-400",
     borderColor: "border-rose-500/70 dark:border-rose-400/60",
     glowColor: "from-rose-500/40 via-rose-400/20 to-transparent",
   },
@@ -53,8 +54,8 @@ const FEATURES = [
     icon: Smartphone,
     title: "Mobile-First Storefront",
     description: "Grid, product pages, and checkout tuned for thumbs, where your buyers actually are.",
-    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
-    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
+    bg: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60",
+    iconBg: "bg-emerald-200 text-emerald-700 dark:bg-emerald-800/70 dark:text-emerald-400",
     borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
     glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
   },
@@ -62,8 +63,8 @@ const FEATURES = [
     icon: Tag,
     title: "Coupons and Promos",
     description: "Percent or fixed-off codes with optional expiry. Buyers apply them at checkout.",
-    bg: "from-cyan-50 to-cyan-100/50 dark:from-cyan-950/30 dark:to-cyan-900/20",
-    iconBg: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/50 dark:text-cyan-400",
+    bg: "from-cyan-200/80 to-cyan-100 dark:from-cyan-900/60 dark:to-cyan-800/60",
+    iconBg: "bg-cyan-200 text-cyan-700 dark:bg-cyan-800/70 dark:text-cyan-400",
     borderColor: "border-cyan-500/70 dark:border-cyan-400/60",
     glowColor: "from-cyan-500/40 via-cyan-400/20 to-transparent",
   },
@@ -71,8 +72,8 @@ const FEATURES = [
     icon: FileText,
     title: "PDF Invoices",
     description: "Download a professional invoice per order to send on WhatsApp or email.",
-    bg: "from-indigo-50 to-indigo-100/50 dark:from-indigo-950/30 dark:to-indigo-900/20",
-    iconBg: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400",
+    bg: "from-indigo-200/80 to-indigo-100 dark:from-indigo-900/60 dark:to-indigo-800/60",
+    iconBg: "bg-indigo-200 text-indigo-700 dark:bg-indigo-800/70 dark:text-indigo-400",
     borderColor: "border-indigo-500/70 dark:border-indigo-400/60",
     glowColor: "from-indigo-500/40 via-indigo-400/20 to-transparent",
   },
@@ -80,8 +81,8 @@ const FEATURES = [
     icon: Truck,
     title: "Delivery and COD",
     description: "Fixed or free-above-minimum delivery, ETA text, checkout notes, and cash on delivery toggle.",
-    bg: "from-teal-50 to-teal-100/50 dark:from-teal-950/30 dark:to-teal-900/20",
-    iconBg: "bg-teal-100 text-teal-600 dark:bg-teal-900/50 dark:text-teal-400",
+    bg: "from-teal-200/80 to-teal-100 dark:from-teal-900/60 dark:to-teal-800/60",
+    iconBg: "bg-teal-200 text-teal-700 dark:bg-teal-800/70 dark:text-teal-400",
     borderColor: "border-teal-500/70 dark:border-teal-400/60",
     glowColor: "from-teal-500/40 via-teal-400/20 to-transparent",
   },
@@ -89,8 +90,8 @@ const FEATURES = [
     icon: Layers,
     title: "Categories and Pages",
     description: "Group products, run a custom home hero, trust lines, reviews, plus About and Contact.",
-    bg: "from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20",
-    iconBg: "bg-orange-100 text-orange-600 dark:bg-orange-900/50 dark:text-orange-400",
+    bg: "from-orange-200/80 to-orange-100 dark:from-orange-900/60 dark:to-orange-800/60",
+    iconBg: "bg-orange-200 text-orange-700 dark:bg-orange-800/70 dark:text-orange-400",
     borderColor: "border-orange-500/70 dark:border-orange-400/60",
     glowColor: "from-orange-500/40 via-orange-400/20 to-transparent",
   },
@@ -98,8 +99,8 @@ const FEATURES = [
     icon: CreditCard,
     title: "You Control Payment",
     description: "Tell buyers how to pay by bank, link, or COD. Stallio tracks the order; you confirm when money arrives.",
-    bg: "from-violet-50 to-violet-100/50 dark:from-violet-950/30 dark:to-violet-900/20",
-    iconBg: "bg-violet-100 text-violet-600 dark:bg-violet-900/50 dark:text-violet-400",
+    bg: "from-violet-200/80 to-violet-100 dark:from-violet-900/60 dark:to-violet-800/60",
+    iconBg: "bg-violet-200 text-violet-700 dark:bg-violet-800/70 dark:text-violet-400",
     borderColor: "border-violet-500/70 dark:border-violet-400/60",
     glowColor: "from-violet-500/40 via-violet-400/20 to-transparent",
   },
@@ -107,8 +108,8 @@ const FEATURES = [
     icon: BarChart,
     title: "Revenue Overview",
     description: "Charts and totals for paid orders across today, the week, or a custom range.",
-    bg: "from-pink-50 to-pink-100/50 dark:from-pink-950/30 dark:to-pink-900/20",
-    iconBg: "bg-pink-100 text-pink-600 dark:bg-pink-900/50 dark:text-pink-400",
+    bg: "from-pink-200/80 to-pink-100 dark:from-pink-900/60 dark:to-pink-800/60",
+    iconBg: "bg-pink-200 text-pink-700 dark:bg-pink-800/70 dark:text-pink-400",
     borderColor: "border-pink-500/70 dark:border-pink-400/60",
     glowColor: "from-pink-500/40 via-pink-400/20 to-transparent",
   },
@@ -116,8 +117,8 @@ const FEATURES = [
     icon: MessageCircle,
     title: "Buyer Messages",
     description: "Contact form submissions land in your inbox so nothing sits only on Instagram.",
-    bg: "from-sky-50 to-sky-100/50 dark:from-sky-950/30 dark:to-sky-900/20",
-    iconBg: "bg-sky-100 text-sky-600 dark:bg-sky-900/50 dark:text-sky-400",
+    bg: "from-sky-200/80 to-sky-100 dark:from-sky-900/60 dark:to-sky-800/60",
+    iconBg: "bg-sky-200 text-sky-700 dark:bg-sky-800/70 dark:text-sky-400",
     borderColor: "border-sky-500/70 dark:border-sky-400/60",
     glowColor: "from-sky-500/40 via-sky-400/20 to-transparent",
   },
@@ -125,8 +126,8 @@ const FEATURES = [
     icon: Headphones,
     title: "Seller Support",
     description: "Chat with the Stallio team from your dashboard when you need a hand.",
-    bg: "from-lime-50 to-lime-100/50 dark:from-lime-950/30 dark:to-lime-900/20",
-    iconBg: "bg-lime-100 text-lime-600 dark:bg-lime-900/50 dark:text-lime-400",
+    bg: "from-lime-200/80 to-lime-100 dark:from-lime-900/60 dark:to-lime-800/60",
+    iconBg: "bg-lime-200 text-lime-700 dark:bg-lime-800/70 dark:text-lime-400",
     borderColor: "border-lime-500/70 dark:border-lime-400/60",
     glowColor: "from-lime-500/40 via-lime-400/20 to-transparent",
   },
@@ -172,27 +173,13 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function FeaturesGrid() {
   const { ref, isVisible } = useScrollReveal();
-  const [isMobile, setIsMobile] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    // Load animation trigger
-    setHasLoaded(true);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
-      <div className={`relative mx-auto max-w-7xl scroll-reveal ${(isVisible || isMobile || hasLoaded) ? 'visible' : ''}`}>
+      {/* ✅ EXACT SAME Animation Logic as FeaturesHero */}
+      <div className={`relative mx-auto max-w-7xl scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
           <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
             Catalog, checkout, orders, and invoices
@@ -211,11 +198,11 @@ export default function FeaturesGrid() {
               key={index}
               borderColor={feature.borderColor}
               glowColor={feature.glowColor}
-              className={`bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${
-                (isVisible || isMobile || hasLoaded) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-              } ${feature.isLarge ? 'sm:col-span-2 lg:col-span-2 row-span-1 sm:row-span-2' : ''}`} 
+              className={`bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${(
+                isVisible
+              ) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${feature.isLarge ? 'sm:col-span-2 lg:col-span-2 row-span-1 sm:row-span-2' : ''}`} 
               style={{ 
-                transitionDelay: `${index * 0.08}s`,
+                transitionDelay: `${index * 0.15}s`,
                 transitionProperty: 'all',
                 transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
               }}

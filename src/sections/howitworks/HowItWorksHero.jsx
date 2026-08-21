@@ -1,5 +1,6 @@
 // src/sections/howitworks/HowItWorksHero.jsx
 import { ArrowRight, Sparkles, Link, Package, Share2, Clock, Smartphone } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom"; // ✅ Yahan se import
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
 
@@ -9,8 +10,8 @@ const STEPS = [
     number: "01",
     title: "Name + URL",
     description: "stallio.shop/you",
-    bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
-    iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
+    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
+    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
   },
@@ -19,8 +20,8 @@ const STEPS = [
     number: "02",
     title: "Add Products",
     description: "Photos & prices",
-    bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
-    iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
+    bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
+    iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
@@ -29,8 +30,8 @@ const STEPS = [
     number: "03",
     title: "Share Link",
     description: "Bio, Stories, Chat",
-    bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
-    iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
+    bg: "from-purple-200/80 to-purple-100 dark:from-purple-900/60 dark:to-purple-800/60",
+    iconBg: "bg-purple-200 text-purple-700 dark:bg-purple-800/70 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",
     glowColor: "from-purple-500/40 via-purple-400/20 to-transparent",
   },
@@ -80,7 +81,6 @@ export default function HowItWorksHero() {
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
       
-      {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 blur-sm dark:opacity-40"
         style={{
@@ -90,18 +90,14 @@ export default function HowItWorksHero() {
         }}
       />
       
-      {/* Gradient Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/40 via-white/20 to-white/50 dark:from-slate-900/40 dark:via-slate-900/20 dark:to-slate-900/50" />
       <div className="absolute inset-0 z-0 bg-white/0 dark:bg-slate-900/0" />
       
-      {/* Background Glow */}
       <div className="pointer-events-none absolute -top-40 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-indigo-400/15 blur-3xl dark:bg-indigo-400/20" />
       <div className="pointer-events-none absolute -bottom-40 right-0 z-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/12 blur-3xl dark:bg-purple-400/15" />
 
       <div className={`relative z-10 mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
-        {/* Two Column Layout */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Left Column - Content */}
           <div className="flex flex-col justify-center">
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
               <Sparkles className="h-4 w-4" strokeWidth={2} />
@@ -132,13 +128,14 @@ export default function HowItWorksHero() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a
-                href="#start-free"
+              {/* ✅ Start Free → Signup */}
+              <RouterLink
+                to="/signup"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
               >
                 Start Free
                 <ArrowRight className="h-4 w-4 transition-none" />
-              </a>
+              </RouterLink>
               <a
                 href="#demo"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"

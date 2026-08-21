@@ -9,6 +9,7 @@ import {
   Sparkles,
   ArrowRight
 } from "lucide-react";
+import { Link } from "react-router-dom"; // ✅ Yahan se import
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const features = [
@@ -16,10 +17,10 @@ const features = [
     id: 1,
     title: "Catalog, checkout, orders, and invoices in one dashboard loop.",
     icon: LayoutDashboard,
-    boxBg: "bg-[#FFF9E6] dark:bg-[#1a1508]",
-    boxBorder: "border-[#FFE5A3] dark:border-[#5a4a1a]",
-    iconBg: "bg-[#FFF0C8] dark:bg-[#2a1f0d]",
-    iconColor: "text-[#D97706] dark:text-[#fbbf24]",
+    boxBg: "bg-[#FFF3C4] dark:bg-[#2a1f0d]",
+    boxBorder: "border-[#FFD666] dark:border-[#b45309]",
+    iconBg: "bg-[#FFE58F] dark:bg-[#3a2a15]",
+    iconColor: "text-[#B45309] dark:text-[#fbbf24]",
     numberBg: "bg-[#D97706] dark:bg-[#b45309]",
     themeColor: "#D97706",
     darkThemeColor: "#fbbf24"
@@ -28,10 +29,10 @@ const features = [
     id: 2,
     title: "Orders with payment and delivery status",
     icon: ShoppingBag,
-    boxBg: "bg-[#EFF6FF] dark:bg-[#0a1428]",
-    boxBorder: "border-[#93C5FD] dark:border-[#1a3a6a]",
-    iconBg: "bg-[#DBEAFE] dark:bg-[#111d3b]",
-    iconColor: "text-[#2563EB] dark:text-[#60a5fa]",
+    boxBg: "bg-[#DBEAFE] dark:bg-[#111d3b]",
+    boxBorder: "border-[#60A5FA] dark:border-[#1a3a6a]",
+    iconBg: "bg-[#BFDBFE] dark:bg-[#1a2d52]",
+    iconColor: "text-[#1D4ED8] dark:text-[#60a5fa]",
     numberBg: "bg-[#2563EB] dark:bg-[#1d4ed8]",
     themeColor: "#2563EB",
     darkThemeColor: "#60a5fa"
@@ -40,10 +41,10 @@ const features = [
     id: 3,
     title: "Products with variants, sales, and stock",
     icon: Tag,
-    boxBg: "bg-[#F5F3FF] dark:bg-[#120c24]",
-    boxBorder: "border-[#DDD6FE] dark:border-[#3a2c6a]",
-    iconBg: "bg-[#EDE9FE] dark:bg-[#1a1435]",
-    iconColor: "text-[#7C3AED] dark:text-[#a78bfa]",
+    boxBg: "bg-[#EDE9FE] dark:bg-[#1a1435]",
+    boxBorder: "border-[#C4B5FD] dark:border-[#3a2c6a]",
+    iconBg: "bg-[#DDD6FE] dark:bg-[#241a4a]",
+    iconColor: "text-[#6D28D9] dark:text-[#a78bfa]",
     numberBg: "bg-[#7C3AED] dark:bg-[#6d28d9]",
     themeColor: "#7C3AED",
     darkThemeColor: "#a78bfa"
@@ -52,10 +53,10 @@ const features = [
     id: 4,
     title: "PDF invoice ready to send",
     icon: FileText,
-    boxBg: "bg-[#FDF2F8] dark:bg-[#240a14]",
-    boxBorder: "border-[#FBCFE8] dark:border-[#5a1a3a]",
-    iconBg: "bg-[#FCE7F3] dark:bg-[#30101e]",
-    iconColor: "text-[#DB2777] dark:text-[#f472b6]",
+    boxBg: "bg-[#FCE7F3] dark:bg-[#30101e]",
+    boxBorder: "border-[#F9A8D4] dark:border-[#5a1a3a]",
+    iconBg: "bg-[#FBCFE8] dark:bg-[#3a1428]",
+    iconColor: "text-[#BE185D] dark:text-[#f472b6]",
     numberBg: "bg-[#DB2777] dark:bg-[#be185d]",
     themeColor: "#DB2777",
     darkThemeColor: "#f472b6"
@@ -111,7 +112,7 @@ function FeatureCard({ feature }) {
             <feature.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={2} />
           </div>
           <div>
-            <p className="text-[0.8rem] leading-snug sm:text-[0.95rem] text-slate-800 dark:text-white font-medium">
+            <p className="text-[0.8rem] leading-snug sm:text-[0.95rem] text-slate-900 dark:text-white font-medium">
               {feature.title}
             </p>
           </div>
@@ -145,7 +146,6 @@ export default function FeaturesHero() {
       <div className={`relative z-10 mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 lg:px-8">
           
-          {/* Left Column */}
           <div className="flex flex-col justify-center">
             
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
@@ -178,15 +178,15 @@ export default function FeaturesHero() {
               ))}
             </ul>
 
-            {/* Desktop: side by side | Mobile: stack */}
             <div className="mt-6 flex flex-col sm:flex-row items-start gap-4">
-              <a
-                href="#start-free"
+              {/* ✅ Start Free → Signup */}
+              <Link
+                to="/signup"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
               >
                 Start Free
                 <Sparkles className="h-3.5 w-3.5 transition-none" />
-              </a>
+              </Link>
               <a
                 href="#demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
@@ -197,7 +197,6 @@ export default function FeaturesHero() {
             </div>
           </div>
 
-          {/* Right Column - Cards */}
           <div className="flex flex-col justify-center gap-4">
             {features.map((feature, index) => (
               <div

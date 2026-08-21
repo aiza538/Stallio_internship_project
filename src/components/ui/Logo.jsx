@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 export default function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2.5 no-underline">
+      {/* Bag Icon */}
       <img 
         src="/Stallio_Logo.png" 
         alt="Stallio" 
         className="h-11 w-auto" 
       />
-      {/* ✅ mt-1 aur pt-0.5 add kiya taake text bilkul center mein aa jaye */}
+      
+      {/* Text - Center aligned with 3px downward shift for Great Vibes font */}
       <span 
-        className="text-4xl text-slate-800 dark:text-white mt-1"
+        className="text-[2.2rem] text-slate-800 dark:text-white"
         style={{ 
           fontFamily: "'Great Vibes', cursive",
-          lineHeight: 1 
+          lineHeight: 1,
+          transform: "translateY(3px)" // Bag ke center ke bilkul barabar laane ke liye
         }}
       >
         Stallio

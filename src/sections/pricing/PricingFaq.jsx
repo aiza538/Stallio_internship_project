@@ -1,9 +1,33 @@
 // src/sections/pricing/PricingFaq.jsx
 import { useState, useRef } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { Link } from "react-router-dom";
 
-// ✅ UPDATED MouseFollower Component - Borders highlight on hover (Same as PricingCards)
+const FAQS = [
+  { question: "Do I need my own domain?", answer: "No. Your shop lives at stallio.shop/your-username. Share that link everywhere; we host the storefront and dashboard." },
+  { question: "Does Stallio process payments?", answer: "No. You tell buyers how to pay (bank transfer, payment link, cash on delivery, etc.). Stallio handles the order and invoice PDF." },
+  { question: "Are products and orders unlimited?", answer: "Yes. Both monthly and yearly plans include unlimited products, product images, and orders." },
+  { question: "Do I need a card to start?", answer: "No. You can explore Stallio without putting a card on file. When you choose a paid plan, you will add payment details." },
+  { question: "What happens after the free trial?", answer: "We remind you before the trial ends. You can pick monthly or yearly billing, or cancel if it is not a fit." },
+  { question: "Are prices in US dollars?", answer: "Subscriptions are billed in USD. The country picker shows approximate local amounts for planning." },
+  { question: "Can I cancel anytime?", answer: "Yes for monthly plans. Cancel from your account and you will not be billed for future months." },
+  { question: "Do both plans include the same features?", answer: "Yes. Monthly and yearly include the same storefront, dashboard, and tools. Yearly is discounted." },
+];
+
+// ✅ Colors - Light mode strong, Dark mode solid aur bright
+const COLORS = [
+  { border: "border-purple-500/70 dark:border-purple-400/60", glow: "from-purple-500/40 via-purple-400/20 to-transparent", solid: "from-purple-200/80 to-purple-100 dark:from-purple-900/60 dark:to-purple-800/60", icon: "text-purple-700 dark:text-purple-400", text: "text-purple-900 dark:text-white" },
+  { border: "border-blue-500/70 dark:border-blue-400/60", glow: "from-blue-500/40 via-blue-400/20 to-transparent", solid: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60", icon: "text-blue-700 dark:text-blue-400", text: "text-blue-900 dark:text-white" },
+  { border: "border-emerald-500/70 dark:border-emerald-400/60", glow: "from-emerald-500/40 via-emerald-400/20 to-transparent", solid: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60", icon: "text-emerald-700 dark:text-emerald-400", text: "text-emerald-900 dark:text-white" },
+  { border: "border-amber-500/70 dark:border-amber-400/60", glow: "from-amber-500/40 via-amber-400/20 to-transparent", solid: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60", icon: "text-amber-700 dark:text-amber-400", text: "text-amber-900 dark:text-white" },
+  { border: "border-rose-500/70 dark:border-rose-400/60", glow: "from-rose-500/40 via-rose-400/20 to-transparent", solid: "from-rose-200/80 to-rose-100 dark:from-rose-900/60 dark:to-rose-800/60", icon: "text-rose-700 dark:text-rose-400", text: "text-rose-900 dark:text-white" },
+  { border: "border-cyan-500/70 dark:border-cyan-400/60", glow: "from-cyan-500/40 via-cyan-400/20 to-transparent", solid: "from-cyan-200/80 to-cyan-100 dark:from-cyan-900/60 dark:to-cyan-800/60", icon: "text-cyan-700 dark:text-cyan-400", text: "text-cyan-900 dark:text-white" },
+  { border: "border-orange-500/70 dark:border-orange-400/60", glow: "from-orange-500/40 via-orange-400/20 to-transparent", solid: "from-orange-200/80 to-orange-100 dark:from-orange-900/60 dark:to-orange-800/60", icon: "text-orange-700 dark:text-orange-400", text: "text-orange-900 dark:text-white" },
+  { border: "border-indigo-500/70 dark:border-indigo-400/60", glow: "from-indigo-500/40 via-indigo-400/20 to-transparent", solid: "from-indigo-200/80 to-indigo-100 dark:from-indigo-900/60 dark:to-indigo-800/60", icon: "text-indigo-700 dark:text-indigo-400", text: "text-indigo-900 dark:text-white" },
+];
+
+// ✅ MouseFollower
 function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -24,19 +48,14 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      // ✅ Changed: Border transparency logic - hover par full visible, shadow add ki
-      className={`relative overflow-hidden rounded-xl border-2 transition-all duration-500 ${
+      className={`relative overflow-hidden rounded-2xl border-2 transition-all duration-500 ${
         isHovering ? `${borderColor} border-opacity-100 shadow-lg` : 'border-transparent border-opacity-0'
       } ${className}`}
     >
       {isHovering && (
         <div
-          // ✅ Changed: Glow ko aur bright aur bada kar diya
           className={`pointer-events-none absolute h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r ${glowColor} blur-3xl transition-all duration-200`}
-          style={{
-            left: `${position.x}%`,
-            top: `${position.y}%`,
-          }}
+          style={{ left: `${position.x}%`, top: `${position.y}%` }}
         />
       )}
       {children}
@@ -44,132 +63,115 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
   );
 }
 
-// ✅ UPDATED FAQS FROM YOUR 9 SCREENSHOTS
-const FAQS = [
-  {
-    question: "Do I need my own domain or hosting?",
-    answer: "No. Your shop lives at stallio.shop/your-username. Share that link everywhere; we host the storefront and dashboard."
-  },
-  {
-    question: "Does Stallio process payments from my customers?",
-    answer: "No. You tell buyers how to pay (bank transfer, payment link, cash on delivery, etc.). Stallio handles the order, invoice PDF, and paid or awaiting status; you confirm when money arrives."
-  },
-  {
-    question: "Are products and orders unlimited?",
-    answer: "Yes. Both monthly and yearly plans include unlimited products, product images, and orders. Same full feature set on either plan."
-  },
-  {
-    question: "Do I need a card to start?",
-    answer: "No. You can explore Stallio without putting a card on file. When you choose a paid plan, you will add payment details through our secure checkout."
-  },
-  {
-    question: "What happens after the free trial?",
-    answer: "We remind you before the trial ends. You can pick monthly or yearly billing, or cancel if it is not a fit. Until you subscribe, you are not charged subscription fees."
-  },
-  {
-    question: "Are prices in US dollars?",
-    answer: "Subscriptions are billed in USD. The country picker on this page shows approximate local amounts for planning; your bank may apply its own exchange rate or fees."
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes for monthly plans. Cancel from your account and you will not be billed for future months. Yearly plans are prepaid for the term; see Terms for details on refunds if we offer them."
-  },
-  {
-    question: "Do both plans include the same features?",
-    answer: "Yes. Monthly and yearly include the same storefront, dashboard, and tools. Yearly is discounted because you commit for a full year."
-  },
-  {
-    question: "Who do I contact about billing?",
-    answer: "Use the Contact page and choose a billing-related subject. Include your shop email so we can find your account quickly."
-  },
-];
-
-// ✅ UPDATED: Ab hum index pass kar rahe hain aur ek hi active state use kar rahe hain
-function FAQItem({ faq, index, activeIndex, setActiveIndex }) {
-  const isOpen = activeIndex === index;
-
-  const colors = [
-    { border: "border-purple-500/70 dark:border-purple-400/60", glow: "from-purple-500/40 via-purple-400/20 to-transparent", bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/40 dark:to-purple-900/20" },
-    { border: "border-blue-500/70 dark:border-blue-400/60", glow: "from-blue-500/40 via-blue-400/20 to-transparent", bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/40 dark:to-blue-900/20" },
-    { border: "border-amber-500/70 dark:border-amber-400/60", glow: "from-amber-500/40 via-amber-400/20 to-transparent", bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/40 dark:to-amber-900/20" },
-    { border: "border-emerald-500/70 dark:border-emerald-400/60", glow: "from-emerald-500/40 via-emerald-400/20 to-transparent", bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/40 dark:to-emerald-900/20" },
-  ];
-
-  const color = colors[index % colors.length];
-
-  return (
-    <MouseFollower
-      borderColor={color.border}
-      glowColor={color.glow}
-      // ✅ Removed extra border class so only the hover border is visible
-      className={`bg-gradient-to-br ${color.bg} p-6 backdrop-blur-sm shadow-sm`}
-    >
-      <button
-        // ✅ Logic: Agar yeh khula hai toh band karo, warna isko kholo (baaki saare band ho jayenge)
-        onClick={() => setActiveIndex(isOpen ? null : index)}
-        className="flex w-full items-center justify-between text-left focus:outline-none"
-      >
-        <span className="text-base font-medium text-slate-800 dark:text-white">
-          {faq.question}
-        </span>
-        <ChevronDown
-          className={`h-5 w-5 text-purple-500 dark:text-purple-400 transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
-      {isOpen && (
-        <div className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          {faq.answer}
-        </div>
-      )}
-    </MouseFollower>
-  );
-}
-
 export default function PricingFaq() {
   const { ref, isVisible } = useScrollReveal();
   
-  // ✅ Ek hi state variable rakha hai jo index store karega
+  // ✅ Pehla question open nahi hoga
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-white dark:bg-[#0d071a]">
+    <section ref={ref} className={`relative overflow-hidden py-24 scroll-reveal ${isVisible ? 'visible' : ''}`}>
       
-      {/* ✅ Light mode - clean white background */}
-      {/* Dark mode - same gradient as PricingCards */}
+      {/* ========== NEW SHADES (SAME AS VERIFYHERO) ========== */}
+      {/* LIGHT MODE PURPLISH BACKGROUND SHADE */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-100/70 via-white to-white block dark:hidden" />
+      
+      {/* DARK MODE BACKGROUND GLOW */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2d1045] via-[#150b2e] to-[#0d071a] hidden dark:block" />
-      
-      {/* Dark mode glows */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-indigo-400/15 blur-3xl dark:bg-indigo-400/20" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 z-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/12 blur-3xl dark:bg-purple-400/15" />
+      {/* ====================================================== */}
 
-      <div className={`relative z-10 mx-auto max-w-3xl scroll-reveal ${isVisible ? 'visible' : ''}`}>
-        
-        {/* Section Header */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* ================= CREATIVE HEADER ================= */}
         <div className="text-center mb-12">
-          <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-            FAQ
-          </span>
-          <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            Frequently asked <span className="bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-purple-300 dark:via-purple-300 dark:to-violet-300">questions</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-brand-400">
+            <Sparkles className="h-3.5 w-3.5" /> Support
+          </div>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 dark:bg-green-900/40 px-3 py-1 text-xs font-semibold text-green-700 dark:text-green-300">
+              <MessageCircle className="h-3 w-3" /> Live Chat
+            </span>
+          </div>
+          <h2 className="mt-4 font-display text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
+            Need answers?{" "}
+            <span className="bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-purple-300 dark:to-violet-300">
+              We've got you.
+            </span>
           </h2>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Get answers to the most common questions about Stallio pricing.
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
+            Frequently asked questions about pricing, plans, and how Stallio works.
           </p>
         </div>
-        
-        <div className="space-y-4">
-          {FAQS.map((faq, index) => (
-            <FAQItem 
-              key={index} 
-              faq={faq} 
-              index={index} 
-              activeIndex={activeIndex} 
-              setActiveIndex={setActiveIndex} 
-            />
-          ))}
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* ================= LEFT SIDE (STICKY CTA) ================= */}
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-24">
+              <div className="rounded-3xl bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-600 p-8 shadow-2xl shadow-purple-500/20">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md mb-6">
+                  <MessageCircle className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">
+                  Still have questions?
+                </h3>
+                <p className="mt-3 text-sm text-purple-100 leading-relaxed">
+                  Can't find the answer you're looking for? Our friendly support team is here to help you.
+                </p>
+                <div className="mt-6">
+                  <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-purple-600 transition-all duration-300 hover:shadow-xl hover:bg-purple-50">
+                    Contact Support <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= RIGHT SIDE (ACCORDION) ================= */}
+          <div className="lg:col-span-8">
+            <div className="space-y-4">
+              {FAQS.map((faq, index) => {
+                const color = COLORS[index % COLORS.length];
+                const isOpen = activeIndex === index;
+
+                return (
+                  <MouseFollower
+                    key={index}
+                    borderColor={color.border}
+                    glowColor={color.glow}
+                    className="w-full"
+                  >
+                    <div
+                      className={`rounded-2xl border-2 border-transparent bg-gradient-to-br ${color.solid}`}
+                    >
+                      <button
+                        onClick={() => setActiveIndex(isOpen ? null : index)}
+                        className="flex w-full items-center justify-between p-5 text-left"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/50 dark:bg-white/5`}>
+                            <HelpCircle className={`h-5 w-5 ${isOpen ? color.icon : color.text}`} />
+                          </div>
+                          <span className={`text-base font-semibold ${isOpen ? color.text : "text-slate-700 dark:text-slate-300"}`}>
+                            {faq.question}
+                          </span>
+                        </div>
+                        <ChevronDown className={`h-5 w-5 shrink-0 transition-transform duration-500 ${isOpen ? `rotate-180 ${color.icon}` : color.text}`} />
+                      </button>
+
+                      {/* ✅ Sirf Answer Par Animation */}
+                      <div
+                        className={`faq-answer ${isOpen ? "max-h-60 opacity-1 translate-y-0" : "max-h-0 opacity-0 translate-y-4"}`}
+                      >
+                        <p className="px-5 pb-5 pl-19 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </MouseFollower>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,14 +1,16 @@
-import { Sparkles, Link, Package, FileText, CreditCard } from "lucide-react";
+// src/sections/about/AboutHero.jsx
+import { Sparkles, Link as LinkIcon, Package, FileText, CreditCard } from "lucide-react"; // ✅ lucide se LinkIcon import kiya
+import { Link } from "react-router-dom"; // ✅ Yahan se correct import
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
 
 const FEATURES = [
   {
-    icon: Link,
+    icon: LinkIcon, // ✅ LinkIcon use kiya
     title: "stallio.shop link, no domain to buy",
     description: "Get your own hosted link — no domain purchase required.",
-    bg: "from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20",
-    iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/50 dark:text-amber-400",
+    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
+    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
     borderColor: "border-amber-500/70 dark:border-amber-400/60",
     glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
   },
@@ -16,8 +18,8 @@ const FEATURES = [
     icon: Package,
     title: "Unlimited products, photos, and orders",
     description: "Add as many products, photos, and orders as you want — no limits.",
-    bg: "from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20",
-    iconBg: "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
+    bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
+    iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
   },
@@ -25,8 +27,8 @@ const FEATURES = [
     icon: FileText,
     title: "PDF invoices and coupons built in",
     description: "Generate professional PDF invoices and create coupons for customers.",
-    bg: "from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20",
-    iconBg: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400",
+    bg: "from-purple-200/80 to-purple-100 dark:from-purple-900/60 dark:to-purple-800/60",
+    iconBg: "bg-purple-200 text-purple-700 dark:bg-purple-800/70 dark:text-purple-400",
     borderColor: "border-purple-500/70 dark:border-purple-400/60",
     glowColor: "from-purple-500/40 via-purple-400/20 to-transparent",
   },
@@ -34,8 +36,8 @@ const FEATURES = [
     icon: CreditCard,
     title: "You collect payment your way",
     description: "Use your own payment method — we don't lock you in.",
-    bg: "from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20",
-    iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400",
+    bg: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60",
+    iconBg: "bg-emerald-200 text-emerald-700 dark:bg-emerald-800/70 dark:text-emerald-400",
     borderColor: "border-emerald-500/70 dark:border-emerald-400/60",
     glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent",
   },
@@ -120,13 +122,14 @@ export default function AboutHero() {
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a
-                href="#start-free"
+              {/* ✅ Start Free → Signup */}
+              <Link
+                to="/signup"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110"
               >
                 Start Free
                 <Sparkles className="h-4 w-4 transition-none" />
-              </a>
+              </Link>
               <a
                 href="#demo"
                 className="group inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-2.5 text-sm font-semibold text-slate-600 transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"

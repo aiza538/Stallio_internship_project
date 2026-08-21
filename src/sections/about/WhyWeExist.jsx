@@ -114,9 +114,9 @@ export default function WhyWeExist() {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
-          <RedMouseFollower className="bg-gradient-to-br from-red-100/60 to-red-200/30 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-950/50 dark:to-red-900/30 dark:shadow-red-500/10">
+          <RedMouseFollower className="bg-gradient-to-br from-red-100/80 to-red-200/40 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-900/50 dark:to-red-800/40 dark:shadow-red-500/10">
             <div className="mb-4 flex items-center gap-3">
-              <div className="rounded-full bg-red-200/80 p-2.5 shadow-md shadow-red-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-red-900/60">
+              <div className="rounded-full bg-red-200/80 p-2.5 shadow-md shadow-red-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-red-800/60">
                 <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
               </div>
               <h3 className="font-display text-xl font-bold text-red-700 dark:text-red-400">The Friction</h3>
@@ -156,9 +156,9 @@ export default function WhyWeExist() {
             </ul>
           </RedMouseFollower>
 
-          <GreenMouseFollower className="bg-gradient-to-br from-green-100/60 to-green-200/30 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-950/50 dark:to-green-900/30 dark:shadow-green-500/10">
+          <GreenMouseFollower className="bg-gradient-to-br from-green-100/80 to-green-200/40 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-900/50 dark:to-green-800/40 dark:shadow-green-500/10">
             <div className="mb-4 flex items-center gap-3">
-              <div className="rounded-full bg-green-200/80 p-2.5 shadow-md shadow-green-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-green-900/60">
+              <div className="rounded-full bg-green-200/80 p-2.5 shadow-md shadow-green-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-green-800/60">
                 <Check className="h-5 w-5 text-green-600 dark:text-green-400" />
               </div>
               <h3 className="font-display text-xl font-bold text-green-700 dark:text-green-400">What Stallio Does</h3>

@@ -22,9 +22,9 @@
   }
 
   .dark body {
-  background: #050308;   /* sirf solid fallback rakhein */
-  color: #ffffff;
-}
+    background: #050308;   /* sirf solid fallback rakhein */
+    color: #ffffff;
+  }
 
   body, body * {
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
@@ -34,7 +34,6 @@
     font-family: 'Space Grotesk', sans-serif;
   }
 
-  /* CSS GRADIENTS AUR ANIMATIONS BILKUL WAISE HI HAIN */
   body::before {
     content: '';
     position: fixed;
@@ -72,7 +71,6 @@
   }
 }
 
-/* AUR SARI ANIMATIONS WAISE HI HAIN */
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(50px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -98,12 +96,29 @@
   50% { transform: translateY(10px) rotate(90deg); opacity: 1; }
 }
 
+/* ✅ NEW: Dropdown item smooth stagger animation */
+@keyframes dropdown-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-on-load { animation: fadeUp 0.8s ease-out forwards; }
 .animate-float { animation: float 5s ease-in-out infinite; }
 .animate-moving-line { animation: movingLine 2s ease-in-out infinite; }
 .animate-moving-line-vertical { animation: movingLineVertical 2s ease-in-out infinite; }
 .animate-arrow-pulse { animation: arrowPulse 1.8s ease-in-out infinite; }
 @media (max-width: 767px) { .animate-arrow-pulse { animation: arrowPulseVertical 1.8s ease-in-out infinite; } }
+
+/* ✅ NEW: Dropdown item class */
+.animate-dropdown-item {
+  animation: dropdown-item-in 0.4s ease-out forwards;
+}
 
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
@@ -156,4 +171,9 @@
 
 .animate-float-step {
   animation: floatStep 3.5s ease-in-out infinite;
+}
+
+.faq-answer {
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
+  overflow: hidden !important;
 }

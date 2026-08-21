@@ -1,6 +1,6 @@
 // src/components/layout/Navbar.jsx
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom"; // ✅ Step 1: import Link
+import { NavLink, Link } from "react-router-dom";
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
 import Logo from "../ui/Logo";
 import Button from "../ui/Button";
@@ -28,7 +28,8 @@ export default function Navbar() {
   }, []);
 
   const baseLinkClasses =
-    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-xs font-medium transition-all duration-300 ease-snappy";
+    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-all duration-300 ease-snappy";
+  
   const inactiveLinkClasses =
     "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
   const activeLinkClasses =
@@ -76,7 +77,6 @@ export default function Navbar() {
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
           <ThemeToggle />
           
-          {/* ✅ FIX: Button ko Link wrapper mein wrap kar diya */}
           <Link to="/login">
             <Button 
               variant="outline" 
@@ -87,7 +87,8 @@ export default function Navbar() {
             </Button>
           </Link>
 
-          <Link to="/#start-free">
+          {/* ✅ Desktop Start Free ab Signup page par jayega */}
+          <Link to="/signup">
             <Button 
               className="text-xs transition-colors duration-300 hover:brightness-110"
             >
@@ -115,7 +116,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Panel */}
-      <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
+      <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[34rem]" : "max-h-0"}`}>
         <div className="flex flex-col gap-1 px-6 py-4">
           {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
             const mobileBase = "flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-300";
@@ -144,20 +145,21 @@ export default function Navbar() {
             );
           })}
 
-          <div className="mt-3 flex items-center justify-between border-t border-indigo-200/30 pt-4 dark:border-indigo-800/20">
+          <div className="relative z-10 mt-3 border-t border-indigo-200/30 pt-4 dark:border-indigo-800/20">
             <LanguageSwitcher />
           </div>
 
-          <div className="mt-2 flex flex-col gap-2">
-            {/* ✅ Mobile par bhi Link wrap kar diya */}
-            <Link to="/login" className="w-full">
+          <div className="mt-3 flex flex-col gap-2">
+
+            <Link to="/login" onClick={() => setIsOpen(false)} className="w-full">
               <Button variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
                 <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
                 Log In
               </Button>
             </Link>
             
-            <Link to="/#start-free" className="w-full">
+
+            <Link to="/signup" onClick={() => setIsOpen(false)} className="w-full">
               <Button className="w-full text-xs transition-colors duration-300 hover:brightness-110">
                 <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
                 Start Free

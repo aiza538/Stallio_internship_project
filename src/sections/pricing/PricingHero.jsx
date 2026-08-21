@@ -1,6 +1,6 @@
 // src/sections/pricing/PricingHero.jsx
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // ✅ Already imported
 import { Sparkles, Zap, Infinity, ArrowRight, Clock, Smartphone } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState as useStateHook, useRef } from "react";
@@ -63,7 +63,6 @@ export default function PricingHero() {
       <div className={`relative z-10 mx-auto max-w-7xl scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           
-          {/* LEFT COLUMN - Content */}
           <div className="flex flex-col justify-center gap-6">
             
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
@@ -94,6 +93,7 @@ export default function PricingHero() {
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-4">
+              {/* ✅ Start Free → Signup */}
               <Link
                 to="/signup"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
@@ -110,7 +110,6 @@ export default function PricingHero() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Billing Toggle Box */}
           <div className="relative flex items-center justify-center lg:justify-end animate-on-load">
             <div 
               className={`transform transition-all duration-700 ${
@@ -130,12 +129,10 @@ export default function PricingHero() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  
-
                   <MouseFollower
                     borderColor="border-blue-500/70 dark:border-blue-400/60"
                     glowColor="from-blue-500/40 via-blue-400/20 to-transparent"
-                    className={`w-full bg-blue-200/60 dark:bg-blue-950/30 p-4 transition-all duration-300 rounded-xl border-2 ${
+                    className={`w-full bg-blue-200 dark:bg-blue-900/60 p-4 transition-all duration-300 rounded-xl border-2 ${
                       billingCycle === "monthly"
                         ? "border-blue-500/70 dark:border-blue-400/60"
                         : "border-transparent hover:border-blue-400/30 dark:hover:border-blue-500/30"
@@ -146,10 +143,10 @@ export default function PricingHero() {
                       className="relative z-10 flex w-full items-center justify-between"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-blue-600 dark:bg-blue-400/20 dark:text-blue-400">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/30 text-blue-700 dark:bg-blue-400/20 dark:text-blue-400">
                           <Zap className="h-5 w-5" strokeWidth={2} />
                         </div>
-                        <span className="font-medium text-slate-800 dark:text-white">Monthly</span>
+                        <span className="font-medium text-slate-900 dark:text-white">Monthly</span>
                       </div>
                       <div className="text-lg font-bold text-slate-900 dark:text-white">
                         $5/mo
@@ -160,7 +157,7 @@ export default function PricingHero() {
                   <MouseFollower
                     borderColor="border-purple-500/70 dark:border-purple-400/60"
                     glowColor="from-purple-500/40 via-purple-400/20 to-transparent"
-                    className={`w-full bg-purple-200/60 dark:bg-purple-950/30 p-4 transition-all duration-300 rounded-xl border-2 ${
+                    className={`w-full bg-purple-200 dark:bg-purple-900/60 p-4 transition-all duration-300 rounded-xl border-2 ${
                       billingCycle === "yearly"
                         ? "border-purple-500/70 dark:border-purple-400/60"
                         : "border-transparent hover:border-purple-400/30 dark:hover:border-purple-500/30"
@@ -171,17 +168,16 @@ export default function PricingHero() {
                       className="relative z-10 flex w-full items-center justify-between"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/20 text-purple-600 dark:bg-purple-400/20 dark:text-purple-400">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/30 text-purple-700 dark:bg-purple-400/20 dark:text-purple-400">
                           <Infinity className="h-5 w-5" strokeWidth={2} />
                         </div>
-                        <span className="font-medium text-slate-800 dark:text-white">Yearly</span>
+                        <span className="font-medium text-slate-900 dark:text-white">Yearly</span>
                       </div>
                       <div className="text-lg font-bold text-slate-900 dark:text-white">
                         $50/yr
                       </div>
                     </button>
                   </MouseFollower>
-
                 </div>
               </div>
             </div>
