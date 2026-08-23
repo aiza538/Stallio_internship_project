@@ -9,13 +9,14 @@ import {
   Sparkles,
   ArrowRight
 } from "lucide-react";
-import { Link } from "react-router-dom"; // ✅ Yahan se import
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next"; // ✅ Import added
 
 const features = [
   {
     id: 1,
-    title: "Catalog, checkout, orders, and invoices in one dashboard loop.",
+    titleKey: "featuresHero.features.step1.title", // ✅ Key added
     icon: LayoutDashboard,
     boxBg: "bg-[#FFF3C4] dark:bg-[#2a1f0d]",
     boxBorder: "border-[#FFD666] dark:border-[#b45309]",
@@ -27,7 +28,7 @@ const features = [
   },
   {
     id: 2,
-    title: "Orders with payment and delivery status",
+    titleKey: "featuresHero.features.step2.title", // ✅ Key added
     icon: ShoppingBag,
     boxBg: "bg-[#DBEAFE] dark:bg-[#111d3b]",
     boxBorder: "border-[#60A5FA] dark:border-[#1a3a6a]",
@@ -39,7 +40,7 @@ const features = [
   },
   {
     id: 3,
-    title: "Products with variants, sales, and stock",
+    titleKey: "featuresHero.features.step3.title", // ✅ Key added
     icon: Tag,
     boxBg: "bg-[#EDE9FE] dark:bg-[#1a1435]",
     boxBorder: "border-[#C4B5FD] dark:border-[#3a2c6a]",
@@ -51,7 +52,7 @@ const features = [
   },
   {
     id: 4,
-    title: "PDF invoice ready to send",
+    titleKey: "featuresHero.features.step4.title", // ✅ Key added
     icon: FileText,
     boxBg: "bg-[#FCE7F3] dark:bg-[#30101e]",
     boxBorder: "border-[#F9A8D4] dark:border-[#5a1a3a]",
@@ -63,7 +64,7 @@ const features = [
   },
 ];
 
-function FeatureCard({ feature }) {
+function FeatureCard({ feature, t }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const cardRef = useRef(null);
@@ -113,7 +114,7 @@ function FeatureCard({ feature }) {
           </div>
           <div>
             <p className="text-[0.8rem] leading-snug sm:text-[0.95rem] text-slate-900 dark:text-white font-medium">
-              {feature.title}
+              {t(feature.titleKey)} {/* ✅ Translated */}
             </p>
           </div>
         </div>
@@ -124,6 +125,7 @@ function FeatureCard({ feature }) {
 
 export default function FeaturesHero() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation(); // ✅ Hook added
 
   return (
     <section ref={ref} className="relative overflow-hidden px-3 py-10 sm:px-4 sm:py-12 lg:py-20">
@@ -150,18 +152,18 @@ export default function FeaturesHero() {
             
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
               <Sparkles className="h-4 w-4" strokeWidth={2} />
-              Features
+              {t("featuresHero.badge")} {/* ✅ Translated */}
             </div>
 
             <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Everything you need <br />
+              {t("featuresHero.title1")} <br />
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-                to sell from one link.
+                {t("featuresHero.titleHighlight")}
               </span>
             </h1>
 
             <p className="mt-4 max-w-lg text-base leading-relaxed text-slate-800 dark:text-slate-100">
-              Storefront, dashboard, and seller tools in one place: hosted link, unlimited catalog and orders, no buyer payment gateway required.
+              {t("featuresHero.description")} {/* ✅ Translated */}
             </p>
 
             <ul className="mt-4 flex flex-col gap-2">
@@ -173,25 +175,24 @@ export default function FeaturesHero() {
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-2 text-base text-slate-800 dark:text-slate-100">
                   <Check className="h-5 w-5 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" strokeWidth={3} />
-                  <span>{item}</span>
+                  <span>{t(`featuresHero.bullets.${index}`)}</span> {/* ✅ Translated */}
                 </li>
               ))}
             </ul>
 
             <div className="mt-6 flex flex-col sm:flex-row items-start gap-4">
-              {/* ✅ Start Free → Signup */}
               <Link
                 to="/signup"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
               >
-                Start Free
+                {t("featuresHero.ctaPrimary")} {/* ✅ Translated */}
                 <Sparkles className="h-3.5 w-3.5 transition-none" />
               </Link>
               <a
                 href="#demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
               >
-                View Demo Store
+                {t("featuresHero.ctaSecondary")} {/* ✅ Translated */}
                 <ArrowRight className="h-3.5 w-3.5 transition-none" />
               </a>
             </div>
@@ -208,7 +209,7 @@ export default function FeaturesHero() {
                   transitionDelay: `${index * 0.15}s`
                 }}
               >
-                <FeatureCard feature={feature} />
+                <FeatureCard feature={feature} t={t} />
               </div>
             ))}
           </div>

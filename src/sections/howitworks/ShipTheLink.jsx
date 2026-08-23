@@ -1,9 +1,12 @@
 // src/sections/howitworks/ShipTheLink.jsx
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom"; // ✅ Import added
 
 export default function ShipTheLink() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
@@ -29,36 +32,38 @@ export default function ShipTheLink() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
           <Sparkles className="h-4 w-4" strokeWidth={2} />
-          Ready when you are.
+          {t("shipTheLink.badge")}
         </div>
 
         {/* Heading */}
         <h2 className="font-display text-4xl font-bold leading-tight text-slate-800 dark:text-white sm:text-5xl lg:text-6xl">
-          Ship the link{' '}
+          {t("shipTheLink.title1")}{' '}
           <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-            tonight.
+            {t("shipTheLink.titleHighlight")}
           </span>
         </h2>
 
         {/* Subheading */}
         <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-800 dark:text-slate-100">
-          Free to start. No card on file. If it feels right, keep selling from the same URL tomorrow.
+          {t("shipTheLink.description")}
         </p>
 
         {/* CTA Buttons */}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#start-free"
+          {/* ✅ Start Free - Navigates to /signup */}
+          <Link
+            to="/signup"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
           >
-            Start Free
+            {t("shipTheLink.ctaPrimary")}
             <ArrowRight className="h-5 w-5 transition-none" />
-          </a>
+          </Link>
+          
           <a
             href="#features"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/80 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
           >
-            Explore Features
+            {t("shipTheLink.ctaSecondary")}
           </a>
         </div>
       </div>

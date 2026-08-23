@@ -1,8 +1,10 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -28,52 +30,51 @@ export default function Hero() {
       <div className={`relative z-10 mx-auto max-w-content text-center scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    sed by 10,000+ sellers worldwide
+                {t("hero.trustedBy")}
             </div>
 
         <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-          Turn Your Catalog Into A
+          {t("hero.title1")}
           <br />
           <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-            Real Online Storefront
+            {t("hero.title2")}
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-700 dark:text-slate-200 sm:text-xl">
-          One link for your catalog and orders, so customers know where to buy and you stay organized.
+          {t("hero.subtitle")}
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          {/* ✅ Ab Get Started Free Signup page par jayega */}
           <Link
             to="/signup"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
           >
-            Get Started Free
+            {t("hero.getStarted")}
             <ArrowRight className="h-5 w-5 transition-none" />
           </Link>
           <Link
             to="/pricing"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400"
           >
-            Learn More
+            {t("hero.learnMore")}
           </Link>
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-center">
           <div>
             <p className="font-display text-2xl font-bold text-indigo-600 dark:text-indigo-300">10K+</p>
-            <p className="text-sm text-slate-600 dark:text-slate-300">Active Sellers</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">{t("hero.activeSellers")}</p>
           </div>
           <div>
             <p className="font-display text-2xl font-bold text-purple-600 dark:text-purple-300">50K+</p>
-            <p className="text-sm text-slate-600 dark:text-slate-300">Orders Processed</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">{t("hero.ordersProcessed")}</p>
           </div>
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <span key={i} className="text-yellow-400">★</span>
             ))}
-            <span className="ml-2 text-sm text-slate-600 dark:text-slate-300">4.9/5 Rating</span>
+            <span className="ml-2 text-sm text-slate-600 dark:text-slate-300">{t("hero.rating")}</span>
           </div>
         </div>
       </div>

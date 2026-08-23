@@ -5,39 +5,50 @@ import {
 } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const FEATURES = [
   {
     icon: LayoutDashboard,
-    title: "Command center",
-    description: "Orders, products, and requests in one view. Update stock between deliveries without opening ten apps.",
-    subItems: [
-      "Mark paid, ship, and download invoice PDFs",
-      "Coupons, delivery, and stock in one place",
-      "Export orders or add a manual phone order"
+    number: "01",
+    titleKey: "whenYouAreLive.features.step1.title",
+    descriptionKey: "whenYouAreLive.features.step1.description",
+    subItemsKeys: [
+      "whenYouAreLive.features.step1.subItems.0",
+      "whenYouAreLive.features.step1.subItems.1",
+      "whenYouAreLive.features.step1.subItems.2"
     ],
-    bg: "from-amber-200/80 to-amber-100 dark:from-amber-900/60 dark:to-amber-800/60",
-    iconBg: "bg-amber-200 text-amber-700 dark:bg-amber-800/70 dark:text-amber-400",
-    borderColor: "border-amber-500/70 dark:border-amber-400/60",
-    glowColor: "from-amber-500/40 via-amber-400/20 to-transparent",
+    // ✅ Pink Color (Orange ki jagah)
+    bg: "from-pink-200/80 to-pink-100 dark:from-pink-900/60 dark:to-pink-800/60",
+    iconBg: "bg-pink-200 text-pink-700 dark:bg-pink-800/70 dark:text-pink-400",
+    borderColor: "border-pink-500/70 dark:border-pink-400/60",
+    glowColor: "from-pink-500/40 via-pink-400/20 to-transparent",
+    shadow: "shadow-pink-500/20 dark:shadow-pink-900/40",
+    hoverGlow: "hover:shadow-pink-500/40 dark:hover:shadow-pink-800/60",
+    subIconColor: "text-pink-500 dark:text-pink-400",
   },
   {
     icon: Smartphone,
-    title: "Thumb friendly",
-    description: "Categories, cart, coupons, and checkout on the phone. Buyers can switch English, Spanish, or Arabic on your store.",
+    number: "02",
+    titleKey: "whenYouAreLive.features.step2.title",
+    descriptionKey: "whenYouAreLive.features.step2.description",
     badges: [
-      { icon: ShoppingCart, label: "CART" },
-      { icon: Tag, label: "COUPONS" },
-      { icon: FileText, label: "INVOICES" }
+      { icon: ShoppingCart, labelKey: "whenYouAreLive.features.step2.badges.0" },
+      { icon: Tag, labelKey: "whenYouAreLive.features.step2.badges.1" },
+      { icon: FileText, labelKey: "whenYouAreLive.features.step2.badges.2" }
     ],
+    // ✅ Blue Color (Same)
     bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
     iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
     glowColor: "from-blue-500/40 via-blue-400/20 to-transparent",
+    shadow: "shadow-blue-500/20 dark:shadow-blue-900/40",
+    hoverGlow: "hover:shadow-blue-500/40 dark:hover:shadow-blue-800/60",
+    subIconColor: "text-blue-500 dark:text-blue-400",
   },
 ];
 
-function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
+function MouseFollower({ children, className = "", borderColor = "", glowColor = "", shadow, hoverGlow }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef(null);
@@ -57,9 +68,9 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className={`relative overflow-hidden rounded-2xl border-2 transition-all duration-500 ${
+      className={`relative h-full overflow-hidden rounded-2xl border-2 transition-all duration-500 transform hover:-translate-y-1 ${
         isHovering ? borderColor : 'border-transparent'
-      } ${className}`}
+      } ${className} ${isHovering ? shadow : ''} ${hoverGlow}`}
     >
       {isHovering && (
         <div
@@ -77,25 +88,38 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function WhenYouAreLive() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
 
   return (
-    <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
-      <div className="pointer-events-none absolute -bottom-20 left-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/8 blur-3xl dark:bg-purple-400/12" />
+    <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#f4f2ff] dark:bg-[#0f0b1e]">
+      
+      {/* ✅ CENTER PURPLISH-BLUE RADIAL GLOW (Light & Subtle) */}
+      <div 
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(circle at center, rgba(129, 140, 248, 0.12) 0%, rgba(139, 92, 246, 0.08) 25%, rgba(244, 242, 255, 0) 55%)"
+        }}
+      />
+      <div 
+        className="pointer-events-none absolute inset-0 dark:block hidden"
+        style={{
+          background: "radial-gradient(circle at center, rgba(129, 140, 248, 0.3) 0%, rgba(139, 92, 246, 0.2) 30%, rgba(15, 11, 30, 0) 60%)"
+        }}
+      />
 
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         {/* Section Header */}
-        <div className="mb-12 text-center">
-          <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-            When You Are Live
+        <div className="mb-16 text-center">
+          {/* ✅ Purple Gradient Pill (1st image jaisa) */}
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30">
+            <Sparkles className="h-4 w-4" />
+            {t("whenYouAreLive.label")}
           </span>
-          <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            Buyers see polish. <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-                You see control.
-              </span>
+          <h2 className="font-display text-4xl font-bold text-slate-800 dark:text-white sm:text-5xl">
+            {t("whenYouAreLive.title1")} <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">{t("whenYouAreLive.titleHighlight")}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
-            A fast storefront on the outside. A calm dashboard on the inside.
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+            {t("whenYouAreLive.description")}
           </p>
         </div>
 
@@ -111,26 +135,36 @@ export default function WhenYouAreLive() {
               <MouseFollower
                 borderColor={feature.borderColor}
                 glowColor={feature.glowColor}
-                className={`bg-gradient-to-br ${feature.bg} p-8 shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 h-full`}
+                shadow={feature.shadow}
+                hoverGlow={feature.hoverGlow}
+                className={`bg-gradient-to-br ${feature.bg} p-8 shadow-xl shadow-indigo-500/10 backdrop-blur-lg transition-all duration-500 dark:shadow-2xl dark:shadow-black/40 h-full`}
               >
                 <div className="relative flex flex-col items-start">
-                  <div className={`inline-flex rounded-2xl ${feature.iconBg} p-3.5 transition-all duration-300 group-hover:scale-110`}>
-                    <feature.icon className="h-7 w-7" />
+                  {/* Step Number + Icon */}
+                  <div className="flex w-full items-center justify-between">
+                    <span className="font-mono text-sm font-bold tracking-widest text-slate-500 dark:text-slate-300">
+                      STEP {feature.number}
+                    </span>
+                    <div className={`inline-flex rounded-2xl ${feature.iconBg} p-3.5 shadow-lg transition-all duration-300 group-hover:scale-110`}>
+                      <feature.icon className="h-7 w-7" />
+                    </div>
                   </div>
+
+                  {/* Title */}
                   <h3 className="mt-4 font-display text-xl font-semibold text-slate-800 dark:text-white">
-                    {feature.title}
+                    {t(feature.titleKey)}
                   </h3>
                   <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                    {feature.description}
+                    {t(feature.descriptionKey)}
                   </p>
 
                   {/* Sub Items - Command Center */}
-                  {feature.subItems && (
+                  {feature.subItemsKeys && (
                     <ul className="mt-4 space-y-2">
-                      {feature.subItems.map((item, idx) => (
+                      {feature.subItemsKeys.map((itemKey, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-500 dark:text-slate-400">
-                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400" />
-                          {item}
+                          <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${feature.subIconColor}`} />
+                          {t(itemKey)}
                         </li>
                       ))}
                     </ul>
@@ -145,7 +179,7 @@ export default function WhenYouAreLive() {
                           className="inline-flex items-center gap-2 rounded-full border border-indigo-200/30 bg-white/60 px-4 py-1.5 text-sm font-semibold text-indigo-700 backdrop-blur-sm dark:border-indigo-800/20 dark:bg-white/5 dark:text-indigo-300"
                         >
                           <badge.icon className="h-4 w-4" />
-                          {badge.label}
+                          {t(badge.labelKey)}
                         </span>
                       ))}
                     </div>

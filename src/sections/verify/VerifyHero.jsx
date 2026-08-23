@@ -1,9 +1,12 @@
+// src/sections/verify/VerifyHero.jsx
 import { MailCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 export default function VerifyHero() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-white dark:bg-[#0d071a]">
@@ -15,7 +18,6 @@ export default function VerifyHero() {
       {/* DARK MODE BACKGROUND GLOW */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2d1045] via-[#150b2e] to-[#0d071a] hidden dark:block" />
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10" />
-      {/* ================================================== */}
 
       <div className={`relative z-10 mx-auto max-w-2xl text-center scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="flex justify-center mb-6">
@@ -25,19 +27,32 @@ export default function VerifyHero() {
         </div>
 
         <h1 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-          Check your <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-            email
+          {t("verifyHero.title1")} <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+            {t("verifyHero.titleHighlight")}
           </span>
         </h1>
         
         <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
-          We've sent a verification link to <strong className="text-slate-800 dark:text-white">your@email.com</strong>
+          {t("verifyHero.subtitle")} <strong className="text-slate-800 dark:text-white">{t("verifyHero.email")}</strong>
         </p>
         
-        <div className="mt-6 rounded-xl border border-slate-200/50 dark:border-purple-800/30 bg-white/80 dark:bg-white/5 p-4 backdrop-blur-md shadow-sm">
-          <p className="text-sm text-slate-600 dark:text-slate-300">
-            ✉️ Click the link in the email to verify your account and start selling.
-          </p>
+        {/* ✅ Notification Box (Solid Purple in Light, Gradient in Dark) */}
+        <div className="relative mt-6 overflow-hidden rounded-xl p-4 shadow-sm">
+          {/* Light Mode: Solid Flat Purple */}
+          <div className="absolute inset-0 bg-purple-100 dark:hidden" />
+          
+          {/* Dark Mode: Deep Purple Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] via-[#6d28d9] to-[#4f46e5] hidden dark:block" />
+          
+          {/* Border */}
+          <div className="absolute inset-0 rounded-xl border border-purple-200/60 dark:border-purple-400/30" />
+
+          <div className="relative z-10 flex items-center gap-2">
+            <span className="text-lg">✉️</span>
+            <p className="text-sm text-purple-900 dark:text-white">
+              {t("verifyHero.instruction")}
+            </p>
+          </div>
         </div>
 
         <div className="mt-8">
@@ -45,7 +60,7 @@ export default function VerifyHero() {
             to="/login"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:brightness-105"
           >
-            Go to Login <ArrowRight className="h-4 w-4" />
+            {t("verifyHero.goToLogin")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

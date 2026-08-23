@@ -1,21 +1,8 @@
-// src/sections/howitworks/BeforeAfter.jsx
-import { X, Check, ArrowRight, AlertCircle } from "lucide-react";
+// src/sections/features/BeforeAfter.jsx
+import { X, Check, ArrowRight, AlertCircle, Sparkles } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState, useRef } from "react";
-
-const BEFORE_ITEMS = [
-  { icon: AlertCircle, text: "Multiple links shared with customers" },
-  { icon: AlertCircle, text: "Customers get confused where to buy" },
-  { icon: AlertCircle, text: "You stay unorganized" },
-  { icon: AlertCircle, text: "Hard to track orders" },
-];
-
-const AFTER_ITEMS = [
-  { icon: Check, text: "One link for catalog and orders" },
-  { icon: Check, text: "Customers order directly" },
-  { icon: Check, text: "You stay organized" },
-  { icon: Check, text: "Easy order tracking" },
-];
+import { useTranslation } from "react-i18next";
 
 function MouseFollower({ children, className = "", color = "indigo" }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -72,87 +59,123 @@ function MouseFollower({ children, className = "", color = "indigo" }) {
 }
 
 export default function BeforeAfter() {
+  const { t } = useTranslation();
   const { ref, isVisible } = useScrollReveal();
 
+  const beforeItems = t("beforeAfter.beforeItems", { returnObjects: true });
+  const afterItems = t("beforeAfter.afterItems", { returnObjects: true });
+
   return (
-    <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    // ✅ LIGHT MODE: Halka purplish shade | DARK MODE: Same
+    <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#faf7ff] dark:bg-transparent">
+      
+      {/* ✅ LIGHT MODE PURPLE SHADE */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-100/40 via-transparent to-transparent dark:hidden" />
+
       <div className="pointer-events-none absolute -top-20 left-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       <div className="pointer-events-none absolute -bottom-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
 
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        
+        {/* 🔥 Creative Header with Gradient Badge */}
         <div className="mb-12 text-center">
-          <span className="mb-3 inline-block font-mono text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-            Before vs After
-          </span>
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30">
+            <Sparkles className="h-3.5 w-3.5" />
+            {t("beforeAfter.beforeLabel")}
+          </div>
           <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
-            See The <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-            Difference
+            {t("beforeAfter.title")} <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+            {t("beforeAfter.titleHighlight")}
           </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
-            See how Stallio transforms your selling experience.
+            {t("beforeAfter.subtitle")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {/* 🔥 Creative: Timeline Style Layout */}
+        <div className="relative grid grid-cols-1 gap-10 md:grid-cols-2">
+          
+          {/* Desktop Center Gradient Arrow */}
+          <div className="absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 shadow-xl shadow-indigo-500/30">
+              <ArrowRight className="h-6 w-6 text-white" />
+            </div>
+          </div>
+
+          {/* BEFORE BOX */}
           <MouseFollower 
             color="red" 
-            className="bg-gradient-to-br from-red-100/80 to-red-200/40 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-900/50 dark:to-red-800/40 dark:shadow-red-500/10"
+            className="bg-gradient-to-br from-red-100/80 to-red-200/40 p-8 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-900/50 dark:to-red-800/40 dark:shadow-red-500/10"
           >
             <div className="relative">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-full bg-red-200/80 p-2.5 shadow-md shadow-red-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-red-800/60">
-                  <X className="h-5 w-5 text-red-600 dark:text-red-400" />
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-red-600 shadow-lg shadow-red-500/30 transition-all duration-300 group-hover:scale-110">
+                  <X className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-red-700 dark:text-red-400">
-                  Without Stallio
+                  {t("beforeAfter.withoutStallio")}
                 </h3>
               </div>
-              <ul className="space-y-3">
-                {BEFORE_ITEMS.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
-                    <item.icon className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-                    <span className="text-sm">{item.text}</span>
+              
+              {/* 🔥 Timeline with numbered items */}
+              <div className="relative space-y-4 pl-6">
+                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gradient-to-b from-red-500/60 to-red-500/20" />
+                {beforeItems.map((item, index) => (
+                  <li key={index} className="relative flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                    <div className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white shadow-md">
+                      {index + 1}
+                    </div>
+                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
+                    <span className="text-sm">{item}</span>
                   </li>
                 ))}
-              </ul>
+              </div>
             </div>
           </MouseFollower>
 
+          {/* AFTER BOX */}
           <MouseFollower 
             color="green" 
-            className="bg-gradient-to-br from-green-100/80 to-green-200/40 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-900/50 dark:to-green-800/40 dark:shadow-green-500/10"
+            className="bg-gradient-to-br from-green-100/80 to-green-200/40 p-8 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-900/50 dark:to-green-800/40 dark:shadow-green-500/10"
           >
             <div className="relative">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-full bg-green-200/80 p-2.5 shadow-md shadow-green-500/20 transition-all duration-300 group-hover:scale-110 dark:bg-green-800/60">
-                  <Check className="h-5 w-5 text-green-600 dark:text-green-400" />
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg shadow-green-500/30 transition-all duration-300 group-hover:scale-110">
+                  <Check className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-green-700 dark:text-green-400">
-                  With Stallio
+                  {t("beforeAfter.withStallio")}
                 </h3>
               </div>
-              <ul className="space-y-3">
-                {AFTER_ITEMS.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
-                    <item.icon className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-                    <span className="text-sm">{item.text}</span>
+              
+              {/* 🔥 Timeline with numbered items */}
+              <div className="relative space-y-4 pl-6">
+                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gradient-to-b from-green-500/60 to-green-500/20" />
+                {afterItems.map((item, index) => (
+                  <li key={index} className="relative flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                    <div className="absolute -left-6 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-500 text-[8px] font-bold text-white shadow-md">
+                      {index + 1}
+                    </div>
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
+                    <span className="text-sm">{item}</span>
                   </li>
                 ))}
-              </ul>
+              </div>
             </div>
           </MouseFollower>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-4">
+        {/* Bottom Legend */}
+        <div className="mt-10 flex items-center justify-center gap-4">
           <div className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
             <div className="h-3 w-3 rounded-full bg-gradient-to-r from-red-500 to-red-600 shadow-lg shadow-red-500/30" />
-            <span>Confusing</span>
+            <span>{t("beforeAfter.confusing")}</span>
           </div>
           <ArrowRight className="h-5 w-5 text-indigo-400" />
           <div className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
             <div className="h-3 w-3 rounded-full bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/30" />
-            <span>Clear & Simple</span>
+            <span>{t("beforeAfter.clearSimple")}</span>
           </div>
         </div>
       </div>

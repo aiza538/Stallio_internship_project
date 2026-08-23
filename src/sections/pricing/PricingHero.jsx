@@ -1,9 +1,10 @@
 // src/sections/pricing/PricingHero.jsx
 import { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Already imported
+import { Link } from "react-router-dom";
 import { Sparkles, Zap, Infinity, ArrowRight, Clock, Smartphone } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState as useStateHook, useRef } from "react";
+import { useTranslation } from "react-i18next"; // ✅ Import added
 
 function MouseFollower({ children, className = "", borderColor = "", glowColor = "" }) {
   const [position, setPosition] = useStateHook({ x: 0, y: 0 });
@@ -45,6 +46,7 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function PricingHero() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation(); // ✅ Hook added
   const [billingCycle, setBillingCycle] = useState("monthly");
 
   return (
@@ -67,28 +69,28 @@ export default function PricingHero() {
             
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
               <Sparkles className="h-4 w-4" strokeWidth={2} />
-              Simple, transparent pricing
+              {t("pricingHero.badge")} {/* ✅ Translated */}
             </div>
 
             <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white">
-              Simple numbers. <br />
+              {t("pricingHero.title1")} <br />
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-                One full product.
+                {t("pricingHero.titleHighlight")}
               </span>
             </h1>
 
             <p className="max-w-lg text-lg leading-relaxed text-slate-800 dark:text-slate-100">
-              One month on us, then choose monthly or yearly. Same features either way: storefront, dashboard, and tools included.
+              {t("pricingHero.description")} {/* ✅ Translated */}
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
               <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Clock className="h-4 w-4" strokeWidth={2} />
-                From $5/mo after trial
+                {t("pricingHero.badge1")} {/* ✅ Translated */}
               </div>
               <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Smartphone className="h-4 w-4" strokeWidth={2} />
-                No card to start
+                {t("pricingHero.badge2")} {/* ✅ Translated */}
               </div>
             </div>
 
@@ -98,14 +100,14 @@ export default function PricingHero() {
                 to="/signup"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
               >
-                Start Free
+                {t("pricingHero.ctaPrimary")} {/* ✅ Translated */}
                 <ArrowRight className="h-4 w-4 transition-none" />
               </Link>
               <Link
                 to="#features"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-2.5 text-sm font-semibold text-slate-600 transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
               >
-                What You Get
+                {t("pricingHero.ctaSecondary")} {/* ✅ Translated */}
               </Link>
             </div>
           </div>
@@ -121,10 +123,10 @@ export default function PricingHero() {
                 
                 <div className="mb-6">
                   <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">
-                    CHOOSE BILLING
+                    {t("pricingHero.chooseBilling")} {/* ✅ Translated */}
                   </h3>
                   <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                    Preview local amounts by country. Subscriptions are charged in US dollars.
+                    {t("pricingHero.billingNote")} {/* ✅ Translated */}
                   </p>
                 </div>
 
@@ -146,10 +148,12 @@ export default function PricingHero() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/30 text-blue-700 dark:bg-blue-400/20 dark:text-blue-400">
                           <Zap className="h-5 w-5" strokeWidth={2} />
                         </div>
-                        <span className="font-medium text-slate-900 dark:text-white">Monthly</span>
+                        <span className="font-medium text-slate-900 dark:text-white">
+                          {t("pricingHero.monthly")} {/* ✅ Translated */}
+                        </span>
                       </div>
                       <div className="text-lg font-bold text-slate-900 dark:text-white">
-                        $5/mo
+                        {t("pricingHero.monthlyPrice")} {/* ✅ Translated */}
                       </div>
                     </button>
                   </MouseFollower>
@@ -171,10 +175,12 @@ export default function PricingHero() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/30 text-purple-700 dark:bg-purple-400/20 dark:text-purple-400">
                           <Infinity className="h-5 w-5" strokeWidth={2} />
                         </div>
-                        <span className="font-medium text-slate-900 dark:text-white">Yearly</span>
+                        <span className="font-medium text-slate-900 dark:text-white">
+                          {t("pricingHero.yearly")} {/* ✅ Translated */}
+                        </span>
                       </div>
                       <div className="text-lg font-bold text-slate-900 dark:text-white">
-                        $50/yr
+                        {t("pricingHero.yearlyPrice")} {/* ✅ Translated */}
                       </div>
                     </button>
                   </MouseFollower>

@@ -1,7 +1,10 @@
 import { ArrowRight, Sparkles, Rocket } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 export default function FinalCTA() {
+  const { t } = useTranslation();
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -25,50 +28,49 @@ export default function FinalCTA() {
       <div className={`relative z-10 mx-auto max-w-content text-center scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    Start Your Journey Today
+                {t("finalCta.startJourney")}
             </div>
 
         <h2 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl lg:text-5xl">
-          Ready to{' '}
+          {t("finalCta.title1")}{' '}
           <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-            Launch
+            {t("finalCta.titleHighlight")}
           </span>{' '}
-          Your Store?
+          {t("finalCta.title2")}
         </h2>
 
         <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-700 dark:text-slate-200">
-          Join thousands of sellers who started their journey with Stallio. 
-          No credit card required. Get started in minutes.
+          {t("finalCta.subtitle")}
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#start-free"
+          <Link
+            to="/signup"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:from-indigo-500 dark:to-violet-500"
           >
-            Start Free Trial
+            {t("finalCta.startFreeTrial")}
             <ArrowRight className="h-5 w-5 transition-none" />
-          </a>
-          <a
-            href="#learn-more"
+          </Link>
+          <Link
+            to="/pricing"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400"
           >
-            Learn More
-          </a>
+            {t("finalCta.learnMore")}
+          </Link>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600 dark:text-slate-300">
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    No credit card required
+                {t("finalCta.noCard")}
             </div>
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    Free for 30 days
+                {t("finalCta.freeDays")}
             </div>
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
                 <Sparkles className="h-4 w-4" strokeWidth={2} />
-                    Cancel Anytime
+                {t("finalCta.cancelAnytime")}
             </div>
         </div>
       </div>

@@ -1,16 +1,17 @@
 // src/components/ui/LanguageSwitcher.jsx
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
-  { code: "EN", label: "English" },
-  { code: "ES", label: "Español" },
-  { code: "AR", label: "العربية" },
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
 ];
 
 export default function LanguageSwitcher() {
+  const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("EN");
+  const [selectedLang, setSelectedLang] = useState(i18n.language === "es" ? "es" : "en");
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -25,26 +26,30 @@ export default function LanguageSwitcher() {
 
   const handleSelect = (code) => {
     setSelectedLang(code);
+    i18n.changeLanguage(code);
     setIsOpen(false);
   };
 
   const selectedLabel = LANGUAGES.find((lang) => lang.code === selectedLang)?.label;
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    // ✅ FIX: "relative" ki jagah "relative inline-block" — is se wrapper
+    // hamesha button jitni hi width leta hai (chahe parent full-width block
+    // ho, jaisa mobile menu mein), isliye "right-0" dropdown ko hamesha
+    // button ke sahi right-edge se align karega, dur/far away nahi jayega.
+    <div className="relative inline-block" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 rounded-full border border-indigo-200/50 bg-white/50 px-2.5 py-1.5 text-xs font-medium text-slate-600 transition-all duration-300 hover:border-brand-400 hover:bg-indigo-50 hover:text-brand-600 dark:border-indigo-800/30 dark:bg-white/5 dark:text-slate-300 dark:hover:border-brand-500 dark:hover:bg-white/10 dark:hover:text-brand-400"
+        className="flex items-center gap-1.5 rounded-full border border-indigo-200/50 bg-white/50 px-3 py-1.5 text-xs font-semibold text-slate-600 transition-all duration-300 hover:border-brand-400 hover:bg-indigo-50 hover:text-brand-600 dark:border-indigo-800/30 dark:bg-white/5 dark:text-slate-300 dark:hover:border-brand-500 dark:hover:bg-white/10 dark:hover:text-brand-400"
       >
-        <Globe className="h-3.5 w-3.5" strokeWidth={2} />
+        <Globe className="h-3.5 w-3.5" />
         <span>{selectedLabel}</span>
         <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
-      {/* ✅ Desktop par absolute, Mobile par relative (normal flow) */}
       {isOpen && (
-        <div className="mt-2 w-full max-w-[200px] overflow-hidden rounded-xl border border-indigo-200/50 bg-white shadow-lg dark:border-indigo-800/30 dark:bg-slate-900 lg:absolute lg:left-auto lg:right-0 lg:top-full lg:z-50">
+        <div className="absolute left-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-indigo-200/50 bg-white/95 shadow-lg backdrop-blur-md dark:border-indigo-800/30 dark:bg-slate-900/95 sm:left-auto sm:right-0">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
@@ -56,9 +61,9 @@ export default function LanguageSwitcher() {
                   : "text-slate-600 hover:bg-indigo-50/50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400"
               }`}
             >
-              <span className="truncate">{lang.label}</span>
+              <span>{lang.label}</span>
               {selectedLang === lang.code && (
-                <span className="ml-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"></span>
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
               )}
             </button>
           ))}

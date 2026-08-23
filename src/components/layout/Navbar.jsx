@@ -6,17 +6,19 @@ import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const NAV_LINKS = [
-  { label: "Home", to: "/", icon: HomeIcon, isRoute: true },
-  { label: "About", to: "/about", icon: Info, isRoute: true },
-  { label: "How It Works", to: "/howitworks", icon: ListChecks, isRoute: true },
-  { label: "Features", to: "/features", icon: Zap, isRoute: true },
-  { label: "Pricing", to: "/pricing", icon: CreditCard, isRoute: true },
-  { label: "Contact", to: "/contact", icon: Mail, isRoute: true },
+  { labelKey: "navbar.home", to: "/", icon: HomeIcon, isRoute: true },
+  { labelKey: "navbar.about", to: "/about", icon: Info, isRoute: true },
+  { labelKey: "navbar.howItWorks", to: "/howitworks", icon: ListChecks, isRoute: true },
+  { labelKey: "navbar.features", to: "/features", icon: Zap, isRoute: true },
+  { labelKey: "navbar.pricing", to: "/pricing", icon: CreditCard, isRoute: true },
+  { labelKey: "navbar.contact", to: "/contact", icon: Mail, isRoute: true },
 ];
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function Navbar() {
   }, []);
 
   const baseLinkClasses =
-    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-all duration-300 ease-snappy";
+    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-all duration-300 ease-snappy";
   
   const inactiveLinkClasses =
     "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
@@ -40,18 +42,21 @@ export default function Navbar() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/6 to-transparent dark:from-indigo-400/15 dark:via-purple-400/8" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
-      <nav className="relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-3.5 lg:px-6">
+      {/* ✅ Logo ko left move kiya: pl-2 + Right padding barhai: pr-2 */}
+      <nav className="relative mx-auto flex max-w-full items-center justify-between gap-3 px-5 py-3.5 lg:pl-2 lg:pr-4">
         
-        <Logo />
+        <div className="shrink-0">
+          <Logo />
+        </div>
 
         {/* Desktop Links */}
-        <div className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
+        <div className="hidden items-center gap-0.5 lg:flex">
+          {NAV_LINKS.map(({ labelKey, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
               return (
-                <a key={label} href={to} className={`${baseLinkClasses} ${inactiveLinkClasses}`}>
+                <a key={to} href={to} className={`${baseLinkClasses} ${inactiveLinkClasses}`}>
                   <Icon className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-                  {label}
+                  {t(labelKey)}
                 </a>
               );
             }
@@ -65,35 +70,34 @@ export default function Navbar() {
                 }
               >
                 <Icon className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-                {label}
+                {t(labelKey)}
               </NavLink>
             );
           })}
         </div>
 
         {/* Right Controls */}
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden shrink-0 items-center gap-2 lg:flex">
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
           <ThemeToggle />
           
-          <Link to="/login">
+          <Link to="/login" className="shrink-0">
             <Button 
               variant="outline" 
               className="text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400"
             >
               <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-              Log In
+              {t("navbar.login")}
             </Button>
           </Link>
 
-          {/* ✅ Desktop Start Free ab Signup page par jayega */}
-          <Link to="/signup">
+          <Link to="/signup" className="shrink-0">
             <Button 
               className="text-xs transition-colors duration-300 hover:brightness-110"
             >
               <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
-              Start Free
+              {t("navbar.startFree")}
             </Button>
           </Link>
         </div>
@@ -118,16 +122,16 @@ export default function Navbar() {
       {/* Mobile Panel */}
       <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[34rem]" : "max-h-0"}`}>
         <div className="flex flex-col gap-1 px-6 py-4">
-          {NAV_LINKS.map(({ label, to, icon: Icon, isRoute }) => {
+          {NAV_LINKS.map(({ labelKey, to, icon: Icon, isRoute }) => {
             const mobileBase = "flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-300";
             const mobileInactive = "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
             const mobileActive = "bg-indigo-50 text-brand-600 dark:bg-white/10 dark:text-brand-400";
 
             if (!isRoute) {
               return (
-                <a key={label} href={to} onClick={() => setIsOpen(false)} className={`${mobileBase} ${mobileInactive}`}>
+                <a key={to} href={to} onClick={() => setIsOpen(false)} className={`${mobileBase} ${mobileInactive}`}>
                   <Icon className="h-4 w-4 transition-none" strokeWidth={2} />
-                  {label}
+                  {t(labelKey)}
                 </a>
               );
             }
@@ -140,7 +144,7 @@ export default function Navbar() {
                 className={({ isActive }) => `${mobileBase} ${isActive ? mobileActive : mobileInactive}`}
               >
                 <Icon className="h-4 w-4 transition-none" strokeWidth={2} />
-                {label}
+                {t(labelKey)}
               </NavLink>
             );
           })}
@@ -150,19 +154,17 @@ export default function Navbar() {
           </div>
 
           <div className="mt-3 flex flex-col gap-2">
-
             <Link to="/login" onClick={() => setIsOpen(false)} className="w-full">
               <Button variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
                 <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
-                Log In
+                {t("navbar.login")}
               </Button>
             </Link>
             
-
             <Link to="/signup" onClick={() => setIsOpen(false)} className="w-full">
               <Button className="w-full text-xs transition-colors duration-300 hover:brightness-110">
                 <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
-                Start Free
+                {t("navbar.startFree")}
               </Button>
             </Link>
           </div>

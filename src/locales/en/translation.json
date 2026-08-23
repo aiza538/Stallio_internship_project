@@ -1,0 +1,624 @@
+{
+  "navbar": { "home": "Home", "about": "About", "howItWorks": "How It Works", "features": "Features", "pricing": "Pricing", "contact": "Contact", "login": "Log In", "startFree": "Start Free" },
+  "footer": {
+    "tagline": "One link for your catalog and orders, so customers know where to buy and you stay organized.",
+    "getStarted": "Get Started Free",
+    "product": "PRODUCT",
+    "company": "COMPANY",
+    "contact": "CONTACT",
+    "social": "SOCIAL",
+    "home": "Home",
+    "about": "About",
+    "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How It Works",
+    "contactLink": "Contact",
+    "contactEmail": "contact@stallio.shop",
+    "careers": "Careers",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "refund": "Refund Policy",
+    "rights": "All rights reserved."
+  },
+  "hero": { "trustedBy": "Used by 10,000+ sellers worldwide", "title1": "Turn Your Catalog Into A", "title2": "Real Online Storefront", "subtitle": "One link for your catalog and orders, so customers know where to buy and you stay organized.", "getStarted": "Get Started Free", "learnMore": "Learn More", "activeSellers": "Active Sellers", "ordersProcessed": "Orders Processed", "rating": "4.9/5 Rating" },
+  "beforeAfter": { "beforeLabel": "Before vs After", "title": "See The", "titleHighlight": "Difference", "subtitle": "See how Stallio transforms your selling experience.", "withoutStallio": "Without Stallio", "withStallio": "With Stallio", "beforeItems": ["Multiple links shared with customers", "Customers get confused where to buy", "You stay unorganized", "Hard to track orders"], "afterItems": ["One link for catalog and orders", "Customers order directly", "You stay organized", "Easy order tracking"], "confusing": "Confusing", "clearSimple": "Clear & Simple" },
+  "finalCta": { "startJourney": "Start Your Journey Today", "title1": "Ready to", "titleHighlight": "Launch", "title2": "Your Store?", "subtitle": "Join thousands of sellers who started their journey with Stallio. No credit card required. Get started in minutes.", "startFreeTrial": "Start Free Trial", "learnMore": "Learn More", "noCard": "No credit card required", "freeDays": "Free for 30 days", "cancelAnytime": "Cancel Anytime" },
+  "howItWorks": {
+    "label": "How It Works",
+    "stepLabel": "Step {{number}}",
+    "title1": "Three moves.",
+    "titleHighlight": "You're live.",
+    "subtitle": "No staging servers. No theme rabbit holes.",
+    "steps": [
+      { "title": "Open Your Shop", "description": "Name it, add basics, pick your URL path no staging servers, no theme rabbit holes.", "highlight": "UNDER FIVE MINUTES" },
+      { "title": "List Products", "description": "Photos, price, stock, ready to share. No spreadsheet gymnastics needed.", "highlight": "NO SPREADSHEET GYMNASTICS" },
+      { "title": "Drop the Link", "description": "Bio, stories, DMs same link everywhere. Orders land in your dashboard.", "highlight": "ORDERS LAND IN YOUR DASHBOARD" }
+    ],
+    "footerText": "Three moves. You're live. No staging servers. No theme rabbit holes."
+  },
+  "insideTheBox": {
+    "label": "Inside The Box",
+    "title1": "What buyers actually",
+    "titleHighlight": "tap through",
+    "subtitle": "Grid, product detail, cart cues tight enough to feel premium, simple enough to ship today.",
+    "features": [
+      { "title": "Your Storefront", "description": "A beautiful, customizable storefront that showcases your products perfectly." },
+      { "title": "Dedicated Support", "description": "Get help when you need it with our responsive support team." },
+      { "title": "About & Contact Pages", "description": "Add custom About and Contact pages on the same link to build trust with customers." },
+      { "title": "Order Management", "description": "Track all orders in one place. Never miss a sale with real-time notifications." },
+      { "title": "Categories & Variants", "description": "Organize products with categories, manage variants, and set sale prices that buyers understand." },
+      { "title": "Multi-Language Store", "description": "Your store in English, Spanish, or Arabic reach more customers in their language." },
+      { "title": "Analytics Dashboard", "description": "Understand your customers with powerful insights and sales reports." },
+      { "title": "Coupons & Delivery", "description": "Create coupons, set delivery fees at checkout, and offer discounts to your customers." },
+      { "title": "Mark Paid & Ship", "description": "You mark paid and ship; payments stay with you and the buyer. Simple and secure." }
+    ],
+    "browseDemo": "Browse Demo",
+    "footerText": "You mark paid and ship; payments stay with you and the buyer."
+  },
+  "whatsIncluded": {
+    "label": "What's Included",
+    "title1": "One plan.",
+    "titleHighlight": "The full seller toolkit.",
+    "subtitle": "Everything below is part of Stallio, not add-ons. Start free, then pick monthly or yearly when you are ready.",
+    "features": [
+      { "title": "Hosted stallio.shop link", "description": "Get your own stallio.shop link no domain needed." },
+      { "title": "Unlimited products, photos & orders", "description": "Add as many products, photos, and orders as you want no limits." },
+      { "title": "Mobile storefront, cart & checkout", "description": "Your store looks beautiful on every device phone, tablet, or desktop." },
+      { "title": "Variants, sale prices & stock", "description": "Manage product variants, set sale prices, and track stock levels." },
+      { "title": "About & Contact pages", "description": "Add custom About and Contact pages to build trust with your customers." },
+      { "title": "Coupons & delivery fees", "description": "Create coupons, set delivery fees, and offer discounts to customers." },
+      { "title": "PDF invoice per order", "description": "Generate professional PDF invoices for every order automatically." },
+      { "title": "Mark paid, ship & export CSV", "description": "Mark orders as paid, manage shipping, and export data to CSV." },
+      { "title": "Shop & dashboard in EN, ES & AR", "description": "Your store and dashboard are available in English, Spanish, and Arabic." },
+      { "title": "Revenue & order charts", "description": "Track your business growth with powerful revenue and order analytics." },
+      { "title": "Buyer messages & support chat", "description": "Connect with customers through built-in messaging and support chat." },
+      { "title": "First month free, no card required", "description": "Start your free trial today. No credit card needed to get started." }
+    ]
+  },
+  "whoItFits": {
+    "label": "WHO IT FITS",
+    "title1": "Your audience already follows you.",
+    "titleHighlight": "Give them a shelf.",
+    "subtitle": "For people who sell from kitchens, studios, and counters not for teams who live inside enterprise dashboards.",
+    "audience": [
+      { "title": "Home Bakers", "description": "Sell your baked goods from your home kitchen with a professional storefront." },
+      { "title": "Social Sellers", "description": "Turn your social media followers into customers with one simple link." },
+      { "title": "Clothing Labels", "description": "Showcase your fashion brand with a beautiful online catalog." },
+      { "title": "Handmade & Craft", "description": "Share your handmade creations with customers who appreciate quality." },
+      { "title": "Local Shops", "description": "Bring your local store online and reach more customers in your area." }
+    ]
+  },
+    "whyItLands": {
+    "label": "Why It Lands",
+    "title1": "Built for",
+    "titleHighlight": "Real Sellers",
+    "subtitle": "Everything you need to start, grow, and scale your business all in one place.",
+    "reasons": [
+      { "title": "Trusted by Sellers", "description": "Join thousands of sellers who trust Stallio to power their business." },
+      { "title": "Simple & Fast", "description": "Get your store live in minutes. No coding, no complexity." },
+      { "title": "Grow Your Business", "description": "Powerful tools to help you scale from startup to success." },
+      { "title": "Community Driven", "description": "Join a growing community of sellers who support each other." }
+    ]
+  },
+    "auth": {
+    "login": {
+      "welcomeBack": "Welcome",
+      "title1": "Your store,",
+      "titleHighlight": "one link away.",
+      "subtitle": "Manage your catalog, orders, and customers from a single beautiful dashboard.",
+      "sellerLogin": "Seller Login",
+      "signIn": "Sign in to your Stallio dashboard",
+      "email": "Email address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signInButton": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUpFree": "Sign up free",
+      "secureReliable": "Secure & Reliable",
+      "dataProtected": "Your business data is protected.",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "fillAllFields": "Please fill in all required fields."
+    },
+    "signup": {
+      "sellerSignup": "Seller Signup",
+      "createYourShop": "Create your",
+      "title1": "Start selling",
+      "titleHighlight": "in minutes.",
+      "subtitle": "Create your store, add products, and share your link with the world.",
+      "freeTrial": "Free Trial",
+      "noCardRequired": "No credit card required.",
+      "secureReliable": "Secure & Reliable",
+      "dataProtected": "Your business data is protected.",
+      "oneLink": "One link, endless possibilities",
+      "readyToShare": "Your storefront is ready to share.",
+      "email": "Email",
+      "shopName": "Shop Name",
+      "username": "Username (Store URL)",
+      "usernameHint": "Letters, numbers, underscores and hyphens only",
+      "password": "Password (Min 8 characters)",
+      "confirmPassword": "Confirm password",
+      "country": "Country",
+      "currency": "Currency",
+      "shopLogo": "Shop Logo (Optional)",
+      "chooseLogo": "Choose Logo",
+      "searchCountry": "Search country...",
+      "searchCurrency": "Search currency...",
+      "agree": "I agree to the",
+      "terms": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Policy",
+      "createMyShop": "Create My Shop",
+      "alreadyHaveShop": "Already have a shop?",
+      "logIn": "Log In →",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "confirmPasswordRequired": "Confirm password is required",
+      "shopNameRequired": "Shop name is required",
+      "usernameRequired": "Username is required",
+      "passwordMismatch": "Passwords do not match",
+      "fillAllFields": "Please fill in all required fields."
+    },
+     "forgotPassword": {
+      "resetPassword": "Reset",
+      "title1": "Don't worry,",
+      "titleHighlight": "we've got you.",
+      "enterEmail": "Enter your email and we'll help you get back into your account securely.",
+      "email": "Email address",
+      "secureEasy": "Secure & Easy",
+      "protected": "Your account is protected.",
+      "sendResetLink": "Send reset link",
+      "linkSent": "Link Sent!",
+      "backToLogin": "Back to login",
+      "error": "Please enter a valid email address."
+    }
+  },
+  "aboutHero": {
+    "badge": "About Stallio",
+    "title1": "A calm storefront for",
+    "titleHighlight": "people who already have buyers.",
+    "description": "We built Stallio for sellers who already have buyers: one hosted link, a real storefront, and a dashboard. No domain bill, site builder maze, or payment gateway to wire up first.",
+    "startFree": "Start Free",
+    "viewDemo": "View Demo Store",
+    "features": [
+      { "title": "stallio.shop link, no domain to buy", "description": "Get your own hosted link no domain purchase required." },
+      { "title": "Unlimited products, photos, and orders", "description": "Add as many products, photos, and orders as you want no limits." },
+      { "title": "PDF invoices and coupons built in", "description": "Generate professional PDF invoices and create coupons for customers." },
+      { "title": "You collect payment your way", "description": "Use your own payment method we don't lock you in." }
+    ]
+  },
+  "aboutCta": {
+    "title1": "Ready to look as",
+    "titleHighlight": "serious",
+    "title2": "as you are?",
+    "description": "Create a free store, add a few products, and drop your link where people already find you.",
+    "startFree": "Start Free",
+    "contactUs": "Contact Us"
+  },
+    "aboutValues": {
+    "label": "Our Values",
+    "title1": "What Drives",
+    "titleHighlight": "Us",
+    "subtitle": "These are the principles that guide everything we do at Stallio.",
+    "values": [
+      { "title": "Trust", "description": "We believe in transparency and reliability. Every seller deserves a platform they can count on." },
+      { "title": "Simplicity", "description": "Complexity shouldn't stand in your way. We make selling simple, fast, and intuitive." },
+      { "title": "Empathy", "description": "We understand the challenges sellers face. Everything we build starts with your needs." },
+      { "title": "Community", "description": "We're building more than a platform we're building a community of sellers who grow together." }
+    ]
+  },
+  "howWeThink": {
+    "label": "How We Think",
+    "title1": "Principles behind",
+    "titleHighlight": "the product",
+    "subtitle": "These are the values that guide every decision we make at Stallio.",
+    "principles": [
+      { "title": "Built for real sellers", "description": "Home kitchens, studios, and side hustles. Not enterprise procurement." },
+      { "title": "Straightforward by design", "description": "Fewer knobs and plugins. A clear path from catalog to order." },
+      { "title": "Room to grow", "description": "Start small, add products and polish as your audience grows with you." }
+    ],
+    "fullItems": [
+      { "title": "Built for momentum", "description": "Whether you are testing a new line or shipping every week, Stallio is meant to stay out of the way: update products, tweak copy, and keep selling without rebuilding a whole site." },
+      { "title": "Our vision", "description": "We want independent sellers to have tools that feel premium and honest: clear pricing, clear fulfillment, and a storefront that respects the buyer's time as much as yours." }
+    ]
+  },
+    "simpleFastCredible": {
+    "label": "Simple. Fast. Credible.",
+    "title1": "Built for",
+    "titleHighlight": "Momentum",
+    "features": [
+      { "title": "Simple", "description": "No code, no theme maze" },
+      { "title": "Fast", "description": "Draft a store in minutes" },
+      { "title": "Credible", "description": "A link buyers recognize" }
+    ]
+  },
+    "whyWeExist": {
+    "label": "Why We Exist",
+    "title1": "Selling on social should",
+    "titleHighlight": "not feel improvised.",
+    "subtitle": "Most small sellers juggle screenshots, voice notes, and scattered chats. Stallio gives you a single shelf: catalog, checkout cues, and orders in one dashboard.",
+    "vs": "VS",
+    "frictionTitle": "The Friction",
+    "frictionDesc": "Relying only on messages and posts often means:",
+    "frictionItems": [
+      { "title": "Products are hard to showcase properly", "desc": "Screenshots and voice notes don't do justice to your products." },
+      { "title": "Orders get lost in messages", "desc": "Tracking orders across DMs and chats is chaotic and unreliable." },
+      { "title": "Customers feel confused", "desc": "Without a clear storefront, customers don't know how to order." },
+      { "title": "The business does not look professional", "desc": "A scattered presence undermines trust and credibility." }
+    ],
+    "solutionTitle": "What Stallio Does",
+    "solutionDesc": "You get:",
+    "solutionItems": [
+      { "title": "A hosted mini store at stallio.shop/yourname", "desc": "Get your own professional storefront link instantly." },
+      { "title": "Unlimited catalog, checkout, and order inbox", "desc": "Everything you need to manage your business in one place." },
+      { "title": "PDF invoices, coupons, and delivery rules included", "desc": "Professional tools built in no extra setup required." },
+      { "title": "Sign up, add products, share one link tonight", "desc": "Get started in minutes no technical skills needed." }
+    ]
+  },
+  "whatYouGet": {
+    "label": "What You Get",
+    "title1": "Everything in one loop:",
+    "titleHighlight": "show, sell, ship.",
+    "subtitle": "Everything you need to start selling — from catalog to delivery.",
+    "features": [
+      { "title": "Live in minutes", "description": "Sign up, name your store, pick your URL path. No technical setup." },
+      { "title": "Products with photos and prices", "description": "Upload images, set prices and descriptions. Keep everything in one place." },
+      { "title": "One link everywhere", "description": "Bio, stories, chats: the same link works on any platform your buyers use." },
+      { "title": "Orders in one dashboard", "description": "See requests, update stock, and stay on top of fulfillment without digging through DMs." },
+      { "title": "Storefront buyers trust", "description": "Fast, mobile-first layout so your catalog feels intentional, not improvised." },
+      { "title": "Seller tools included", "description": "Mark orders paid, track delivery, export CSV, and download invoice PDFs without extra apps." }
+    ]
+  },
+  "howItWorksHero": {
+    "badge": "How It Works",
+    "title1": "Three moves.",
+    "titleHighlight": "One sharp link.",
+    "description": "Open your store, load your catalog, then paste the same URL everywhere buyers already find you. Built for thumbs, not for IT tickets.",
+    "badge1": "5 min first draft",
+    "badge2": "Mobile First",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo Store",
+    "steps": {
+      "step1": {
+        "title": "Name + URL",
+        "description": "stallio.shop/you"
+      },
+      "step2": {
+        "title": "Add Products",
+        "description": "Photos & prices"
+      },
+      "step3": {
+        "title": "Share Link",
+        "description": "Bio, Stories, Chat"
+      }
+    }
+  },
+  "howItWorksSteps": {
+    "label": "The Process",
+    "title1": "Open. List.",
+    "titleHighlight": "Share",
+    "description": "Three deliberate beats so you ship a storefront that feels intentional, not improvised.",
+    "steps": {
+      "step1": {
+        "title": "Create your shop",
+        "description": "Sign up, name your store, pick your URL. You get a live link you can paste anywhere. No DNS, no deploy, no drama.",
+        "subItems": [
+          "Create your account",
+          "Add store name and details",
+          "Get your link (stallio.shop/you)"
+        ]
+      },
+      "step2": {
+        "title": "Add your products",
+        "description": "Photos, prices, short descriptions. One catalog you can refine anytime. Buyers see clarity, not chaos.",
+        "subItems": [
+          "Add product photos",
+          "Set prices and descriptions",
+          "Keep one organized catalog"
+        ]
+      },
+      "step3": {
+        "title": "Share and take orders",
+        "description": "Same link in bio, stories, and chats. They browse on the phone. You track everything in your dashboard.",
+        "subItems": [
+          "Put the link in your profile or bio",
+          "Share in chat or social posts",
+          "Track orders in one place"
+        ]
+      }
+    }
+  },
+  "whenYouAreLive": {
+    "label": "When You Are Live",
+    "title1": "Buyers see polish.",
+    "titleHighlight": "You see control.",
+    "description": "A fast storefront on the outside. A calm dashboard on the inside.",
+    "features": {
+      "step1": {
+        "title": "Command center",
+        "description": "Orders, products, and requests in one view. Update stock between deliveries without opening ten apps.",
+        "subItems": [
+          "Mark paid, ship, and download invoice PDFs",
+          "Coupons, delivery, and stock in one place",
+          "Export orders or add a manual phone order"
+        ]
+      },
+      "step2": {
+        "title": "Thumb friendly",
+        "description": "Categories, cart, coupons, and checkout on the phone. Buyers can switch English, Spanish, or Arabic on your store.",
+        "badges": [
+          "CART",
+          "COUPONS",
+          "INVOICES"
+        ]
+      }
+    }
+  },
+  "shipTheLink": {
+    "badge": "Ready when you are.",
+    "title1": "Ship the link",
+    "titleHighlight": "tonight.",
+    "description": "Free to start. No card on file. If it feels right, keep selling from the same URL tomorrow.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "Explore Features"
+  },
+  "featuresHero": {
+    "badge": "Features",
+    "title1": "Everything you need",
+    "titleHighlight": "to sell from one link.",
+    "description": "Storefront, dashboard, and seller tools in one place: hosted link, unlimited catalog and orders, no buyer payment gateway required.",
+    "bullets": [
+      "stallio.shop link, no domain purchase",
+      "Unlimited products, photos, and orders",
+      "PDF invoices and order export",
+      "Coupons, delivery fees, and COD at checkout"
+    ],
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo Store",
+    "features": {
+      "step1": {
+        "title": "Catalog, checkout, orders, and invoices in one dashboard loop."
+      },
+      "step2": {
+        "title": "Orders with payment and delivery status"
+      },
+      "step3": {
+        "title": "Products with variants, sales, and stock"
+      },
+      "step4": {
+        "title": "PDF invoice ready to send"
+      }
+    }
+  },
+  "featuresGrid": {
+    "label": "Catalog, checkout, orders, and invoices",
+    "title1": "Everything in",
+    "titleHighlight": "one dashboard loop.",
+    "features": {
+      "step1": {
+        "title": "A storefront, not a science project",
+        "description": "Buyers browse categories, pick variants, apply coupons, and place orders on their phone. Share one link tonight with no hosting bill, custom domain, or deploy keys.",
+        "subItems": [
+          "Hosted on stallio.shop/yourname",
+          "English, Spanish, or Arabic storefront",
+          "About, contact, and home page included"
+        ]
+      },
+      "step2": {
+        "title": "Custom Store Link",
+        "description": "One path for bio, WhatsApp, stories, and QR. Copy and paste; we host the shop."
+      },
+      "step3": {
+        "title": "Product Catalog",
+        "description": "Unlimited products and images. Variants, sale prices, stock, and hide/show without deleting."
+      },
+      "step4": {
+        "title": "Order Dashboard",
+        "description": "Every order in one inbox. Search, filter, mark paid, set delivery status, add tracking."
+      },
+      "step5": {
+        "title": "Mobile-First Storefront",
+        "description": "Grid, product pages, and checkout tuned for thumbs, where your buyers actually are."
+      },
+      "step6": {
+        "title": "Coupons and Promos",
+        "description": "Percent or fixed-off codes with optional expiry. Buyers apply them at checkout."
+      },
+      "step7": {
+        "title": "PDF Invoices",
+        "description": "Download a professional invoice per order to send on WhatsApp or email."
+      },
+      "step8": {
+        "title": "Delivery and COD",
+        "description": "Fixed or free-above-minimum delivery, ETA text, checkout notes, and cash on delivery toggle."
+      },
+      "step9": {
+        "title": "Categories and Pages",
+        "description": "Group products, run a custom home hero, trust lines, reviews, plus About and Contact."
+      },
+      "step10": {
+        "title": "You Control Payment",
+        "description": "Tell buyers how to pay by bank, link, or COD. Stallio tracks the order; you confirm when money arrives."
+      },
+      "step11": {
+        "title": "Revenue Overview",
+        "description": "Charts and totals for paid orders across today, the week, or a custom range."
+      },
+      "step12": {
+        "title": "Buyer Messages",
+        "description": "Contact form submissions land in your inbox so nothing sits only on Instagram."
+      },
+      "step13": {
+        "title": "Seller Support",
+        "description": "Chat with the Stallio team from your dashboard when you need a hand."
+      }
+    }
+  },
+  "featuresCapabilities": {
+    "label": "What You Get",
+    "title1": "Capabilities that",
+    "titleHighlight": "stay out of your way",
+    "description": "Built for sellers who already have buyers, not for teams managing DNS, plugins, and payment gateways.",
+    "startFree": "Start Free",
+    "viewDemo": "View Demo Store"
+  },
+  "pricingHero": {
+    "badge": "Simple, transparent pricing",
+    "title1": "Simple numbers.",
+    "titleHighlight": "One full product.",
+    "description": "One month on us, then choose monthly or yearly. Same features either way: storefront, dashboard, and tools included.",
+    "badge1": "From $5/mo after trial",
+    "badge2": "No card to start",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "What You Get",
+    "chooseBilling": "CHOOSE BILLING",
+    "billingNote": "Preview local amounts by country. Subscriptions are charged in US dollars.",
+    "monthly": "Monthly",
+    "monthlyPrice": "$5/mo",
+    "yearly": "Yearly",
+    "yearlyPrice": "$50/yr"
+  },
+  "pricingCTA": {
+    "title1": "Still",
+    "titleHighlight": "deciding?",
+    "description": "Ask us anything on the contact page, or start a trial and see the product for yourself.",
+    "ctaPrimary": "Contact Us",
+    "ctaSecondary": "Start Free"
+  },
+  "pricingCards": {
+    "badge": "Flexible Plans",
+    "title1": "Start for free,",
+    "titleHighlight": "scale when ready",
+    "description": "Select your country to see estimated local pricing. You only pay when you decide to upgrade.",
+    "step1Title": "Choose Country",
+    "step1Desc": "See local currency",
+    "estimateNote": "Estimates are for planning only.",
+    "monthly": "Monthly",
+    "perMonth": "/mo",
+    "monthlyDesc": "No commitment. Cancel anytime.",
+    "startMonthly": "Start Monthly",
+    "yearly": "Yearly",
+    "perYear": "/yr",
+    "yearlyDesc": "Best value for serious sellers.",
+    "startYearly": "Start Yearly",
+    "includedTitle": "Everything Included",
+    "includedDesc": "No hidden fees. Both plans have the exact same features.",
+    "trialTitle": "Try it free, no card required",
+    "trialDesc": "Your first month is completely free. We'll remind you before the trial ends so you can choose your plan.",
+    "features": [
+      "Hosted stallio.shop link (no domain)",
+      "Unlimited products, photos, and orders",
+      "Mobile storefront, cart, and checkout",
+      "Variants, sale prices, and stock",
+      "About and Contact pages",
+      "Coupons and delivery fees",
+      "PDF invoice per order",
+      "Mark paid, ship, and export CSV",
+      "Shop and dashboard in EN, ES, and AR",
+      "Revenue and order charts",
+      "Buyer messages and support chat",
+      "First month free, no card required"
+    ]
+  },
+  "pricingFaq": {
+    "label": "Support",
+    "liveChat": "Live Chat",
+    "title1": "Need answers?",
+    "titleHighlight": "We've got you.",
+    "description": "Frequently asked questions about pricing, plans, and how Stallio works.",
+    "stillQuestions": "Still have questions?",
+    "supportDesc": "Can't find the answer you're looking for? Our friendly support team is here to help you.",
+    "contactSupport": "Contact Support",
+    "faqs": [
+      {
+        "question": "Do I need my own domain?",
+        "answer": "No. Your shop lives at stallio.shop/your-username. Share that link everywhere; we host the storefront and dashboard."
+      },
+      {
+        "question": "Does Stallio process payments?",
+        "answer": "No. You tell buyers how to pay (bank transfer, payment link, cash on delivery, etc.). Stallio handles the order and invoice PDF."
+      },
+      {
+        "question": "Are products and orders unlimited?",
+        "answer": "Yes. Both monthly and yearly plans include unlimited products, product images, and orders."
+      },
+      {
+        "question": "Do I need a card to start?",
+        "answer": "No. You can explore Stallio without putting a card on file. When you choose a paid plan, you will add payment details."
+      },
+      {
+        "question": "What happens after the free trial?",
+        "answer": "We remind you before the trial ends. You can pick monthly or yearly billing, or cancel if it is not a fit."
+      },
+      {
+        "question": "Are prices in US dollars?",
+        "answer": "Subscriptions are billed in USD. The country picker shows approximate local amounts for planning."
+      },
+      {
+        "question": "Can I cancel anytime?",
+        "answer": "Yes for monthly plans. Cancel from your account and you will not be billed for future months."
+      },
+      {
+        "question": "Do both plans include the same features?",
+        "answer": "Yes. Monthly and yearly include the same storefront, dashboard, and tools. Yearly is discounted."
+      }
+    ]
+  },
+  "contactHero": {
+    "label": "CONTACT",
+    "title1": "We read every",
+    "titleHighlight": "message",
+    "description": "Product questions, partnership ideas, or something broken: send a note and we will point you in the right direction."
+  },
+  "contactCTA": {
+    "label": "SELF-SERVE",
+    "title1": "Trying Stallio",
+    "titleHighlight": "first?",
+    "description": "Most answers live in How it works and Features. Start Free anytime.",
+    "howItWorks": "How It Works",
+    "features": "Features"
+  },
+  "contactForm": {
+    "replyTime": "Typical reply: 2-3 business days",
+    "contactInfoTitle": "Contact info",
+    "contactInfoDesc": "Prefer email or phone? Use either below.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "locationValue": "Remote-first, worldwide",
+    "socialLabel": "SOCIAL",
+    "formTitle": "Send a message",
+    "formDesc": "All fields required. We respond with context.",
+    "successTitle": "Message sent!",
+    "successDesc": "We'll get back to you within a few business days.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "you@example.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your message...",
+    "sending": "Sending...",
+    "sendButton": "Send Message"
+  },
+  "verifyHero": {
+    "title1": "Check your",
+    "titleHighlight": "email",
+    "subtitle": "We've sent a verification link to",
+    "email": "your@email.com",
+    "instruction": "Click the link in the email to verify your account and start selling.",
+    "goToLogin": "Go to Login"
+  },
+  "verifyActions": {
+    "title": "Didn't receive the email?",
+    "subtitle": "Check your spam folder or click below to resend the verification link.",
+    "success": "Verification email resent successfully!",
+    "error": "Something went wrong. Please try again.",
+    "sending": "Sending...",
+    "resend": "Resend verification email",
+    "contactSupport": "Contact support",
+    "expiry": "The verification link expires in 24 hours. If you're still having trouble,",
+    "contactSupportLink": "contact support"
+  }
+}

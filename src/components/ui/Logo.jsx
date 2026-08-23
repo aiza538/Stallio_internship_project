@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 
 export default function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-2.5 no-underline">
+    <Link to="/" className="flex items-center justify-center gap-1.5 no-underline">
       {/* Bag Icon */}
       <img 
         src="/Stallio_Logo.png" 
         alt="Stallio" 
-        className="h-11 w-auto" 
+        className="h-14 w-auto object-contain" 
       />
       
-      {/* Text - Center aligned with 3px downward shift for Great Vibes font */}
+      {/* Text - Bilkul center, line-height fix */}
       <span 
-        className="text-[2.2rem] text-slate-800 dark:text-white"
+        className="text-[2.3rem] text-slate-800 dark:text-white"
         style={{ 
           fontFamily: "'Great Vibes', cursive",
-          lineHeight: 1,
-          transform: "translateY(3px)" // Bag ke center ke bilkul barabar laane ke liye
+          lineHeight: "0.8",
+          transform: "translateY(6px)" 
         }}
       >
         Stallio

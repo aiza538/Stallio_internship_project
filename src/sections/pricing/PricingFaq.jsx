@@ -3,16 +3,17 @@ import { useState, useRef } from "react";
 import { ChevronDown, HelpCircle, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const FAQS = [
-  { question: "Do I need my own domain?", answer: "No. Your shop lives at stallio.shop/your-username. Share that link everywhere; we host the storefront and dashboard." },
-  { question: "Does Stallio process payments?", answer: "No. You tell buyers how to pay (bank transfer, payment link, cash on delivery, etc.). Stallio handles the order and invoice PDF." },
-  { question: "Are products and orders unlimited?", answer: "Yes. Both monthly and yearly plans include unlimited products, product images, and orders." },
-  { question: "Do I need a card to start?", answer: "No. You can explore Stallio without putting a card on file. When you choose a paid plan, you will add payment details." },
-  { question: "What happens after the free trial?", answer: "We remind you before the trial ends. You can pick monthly or yearly billing, or cancel if it is not a fit." },
-  { question: "Are prices in US dollars?", answer: "Subscriptions are billed in USD. The country picker shows approximate local amounts for planning." },
-  { question: "Can I cancel anytime?", answer: "Yes for monthly plans. Cancel from your account and you will not be billed for future months." },
-  { question: "Do both plans include the same features?", answer: "Yes. Monthly and yearly include the same storefront, dashboard, and tools. Yearly is discounted." },
+  { questionKey: "pricingFaq.faqs.0.question", answerKey: "pricingFaq.faqs.0.answer" },
+  { questionKey: "pricingFaq.faqs.1.question", answerKey: "pricingFaq.faqs.1.answer" },
+  { questionKey: "pricingFaq.faqs.2.question", answerKey: "pricingFaq.faqs.2.answer" },
+  { questionKey: "pricingFaq.faqs.3.question", answerKey: "pricingFaq.faqs.3.answer" },
+  { questionKey: "pricingFaq.faqs.4.question", answerKey: "pricingFaq.faqs.4.answer" },
+  { questionKey: "pricingFaq.faqs.5.question", answerKey: "pricingFaq.faqs.5.answer" },
+  { questionKey: "pricingFaq.faqs.6.question", answerKey: "pricingFaq.faqs.6.answer" },
+  { questionKey: "pricingFaq.faqs.7.question", answerKey: "pricingFaq.faqs.7.answer" },
 ];
 
 // ✅ Colors - Light mode strong, Dark mode solid aur bright
@@ -65,69 +66,90 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function PricingFaq() {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
   
-  // ✅ Pehla question open nahi hoga
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
     <section ref={ref} className={`relative overflow-hidden py-24 scroll-reveal ${isVisible ? 'visible' : ''}`}>
       
-      {/* ========== NEW SHADES (SAME AS VERIFYHERO) ========== */}
-      {/* LIGHT MODE PURPLISH BACKGROUND SHADE */}
+      {/* ========== LIGHT MODE PURPLE SHADE ========== */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-100/70 via-white to-white block dark:hidden" />
       
-      {/* DARK MODE BACKGROUND GLOW */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2d1045] via-[#150b2e] to-[#0d071a] hidden dark:block" />
-      <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10" />
-      {/* ====================================================== */}
+      {/* ========== DARK MODE RADIAL GLOW ========== */}
+      <div className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
+        style={{
+          background: "radial-gradient(circle at center, rgba(129, 140, 248, 0.3) 0%, rgba(139, 92, 246, 0.15) 45%, rgba(15, 11, 30, 0) 75%)"
+        }}
+      />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[45rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/15 blur-3xl dark:bg-purple-500/20" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* ================= CREATIVE HEADER ================= */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-brand-400">
-            <Sparkles className="h-3.5 w-3.5" /> Support
-          </div>
+          {/* ✅ PURPLE GRADIENT PILL */}
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30">
+            <Sparkles className="h-4 w-4" /> {t("pricingFaq.label")}
+          </span>
           <div className="mt-4 flex items-center justify-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 dark:bg-green-900/40 px-3 py-1 text-xs font-semibold text-green-700 dark:text-green-300">
-              <MessageCircle className="h-3 w-3" /> Live Chat
+              <MessageCircle className="h-3 w-3" /> {t("pricingFaq.liveChat")}
             </span>
           </div>
           <h2 className="mt-4 font-display text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl">
-            Need answers?{" "}
+            {t("pricingFaq.title1")}{" "}
             <span className="bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-purple-300 dark:to-violet-300">
-              We've got you.
+              {t("pricingFaq.titleHighlight")}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
-            Frequently asked questions about pricing, plans, and how Stallio works.
+            {t("pricingFaq.description")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* ================= LEFT SIDE (STICKY CTA) ================= */}
-          <div className="lg:col-span-4">
+          {/* ================= LEFT SIDE (STICKY CTA) - SAME AS CAPABILITIES ================= */}
+          {/* ✅ FIX: "order-2 lg:order-none" — mobile (grid-cols-1) par ye card
+              accordion ke NEECHE aayega kyunke order-2 usse baad rakhta hai;
+              lg breakpoint par order-none se dono apni original DOM position
+              (left column) mein wapas aa jate hain. */}
+          <div className="order-2 lg:order-none lg:col-span-4">
             <div className="lg:sticky lg:top-24">
-              <div className="rounded-3xl bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-600 p-8 shadow-2xl shadow-purple-500/20">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md mb-6">
-                  <MessageCircle className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white">
-                  Still have questions?
-                </h3>
-                <p className="mt-3 text-sm text-purple-100 leading-relaxed">
-                  Can't find the answer you're looking for? Our friendly support team is here to help you.
-                </p>
-                <div className="mt-6">
-                  <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-purple-600 transition-all duration-300 hover:shadow-xl hover:bg-purple-50">
-                    Contact Support <ArrowRight className="h-4 w-4" />
-                  </Link>
+              <div className="relative rounded-3xl overflow-hidden p-8 shadow-2xl shadow-purple-500/20">
+                
+                {/* Light Mode: Solid Flat Purple */}
+                <div className="absolute inset-0 bg-purple-100 dark:hidden" />
+                
+                {/* Dark Mode: Deep Purple Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] via-[#6d28d9] to-[#4f46e5] hidden dark:block" />
+                
+                {/* Border */}
+                <div className="absolute inset-0 rounded-3xl border border-purple-200/60 dark:border-purple-400/30" />
+
+                <div className="relative z-10">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-200/50 dark:bg-white/10 backdrop-blur-md mb-6">
+                    <MessageCircle className="h-7 w-7 text-purple-700 dark:text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-purple-900 dark:text-white">
+                    {t("pricingFaq.stillQuestions")}
+                  </h3>
+                  <p className="mt-3 text-sm text-indigo-700 dark:text-indigo-100 leading-relaxed">
+                    {t("pricingFaq.supportDesc")}
+                  </p>
+                  <div className="mt-6">
+                    <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-purple-600 transition-all duration-300 hover:shadow-xl hover:bg-purple-50">
+                      {t("pricingFaq.contactSupport")} <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* ================= RIGHT SIDE (ACCORDION) ================= */}
-          <div className="lg:col-span-8">
+          {/* ✅ FIX: "order-1 lg:order-none" — mobile par accordion CTA card
+              se PEHLE aayega. */}
+          <div className="order-1 lg:order-none lg:col-span-8">
             <div className="space-y-4">
               {FAQS.map((faq, index) => {
                 const color = COLORS[index % COLORS.length];
@@ -152,18 +174,17 @@ export default function PricingFaq() {
                             <HelpCircle className={`h-5 w-5 ${isOpen ? color.icon : color.text}`} />
                           </div>
                           <span className={`text-base font-semibold ${isOpen ? color.text : "text-slate-700 dark:text-slate-300"}`}>
-                            {faq.question}
+                            {t(faq.questionKey)}
                           </span>
                         </div>
                         <ChevronDown className={`h-5 w-5 shrink-0 transition-transform duration-500 ${isOpen ? `rotate-180 ${color.icon}` : color.text}`} />
                       </button>
 
-                      {/* ✅ Sirf Answer Par Animation */}
                       <div
                         className={`faq-answer ${isOpen ? "max-h-60 opacity-1 translate-y-0" : "max-h-0 opacity-0 translate-y-4"}`}
                       >
                         <p className="px-5 pb-5 pl-19 text-base leading-relaxed text-slate-600 dark:text-slate-300">
-                          {faq.answer}
+                          {t(faq.answerKey)}
                         </p>
                       </div>
                     </div>
