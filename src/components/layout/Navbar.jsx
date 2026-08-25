@@ -18,8 +18,14 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const isRTL = i18n.language === 'ar';
+
+  // ✅ FIX: Language switch hone par mobile panel band kar dena
+  useEffect(() => {
+    setIsOpen(false);
+  }, [i18n.language]);
 
   useEffect(() => {
     const onResize = () => {
@@ -29,8 +35,11 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // ✅ RTL (Arabic) mein zyada padding + Double Bold (Extrabold)
   const baseLinkClasses =
-    "group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-all duration-300 ease-snappy";
+    `group/link relative flex items-center gap-1.5 whitespace-nowrap rounded-full transition-all duration-300 ease-snappy ${
+      isRTL ? 'px-3.5 py-3 text-[16px] font-extrabold' : 'px-2 py-2 text-sm font-medium'
+    }`;
   
   const inactiveLinkClasses =
     "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
@@ -42,15 +51,15 @@ export default function Navbar() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/6 to-transparent dark:from-indigo-400/15 dark:via-purple-400/8" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-400/15" />
 
-      {/* ✅ Logo ko left move kiya: pl-2 + Right padding barhai: pr-2 */}
-      <nav className="relative mx-auto flex max-w-full items-center justify-between gap-3 px-5 py-3.5 lg:pl-2 lg:pr-4">
+      <nav className={`relative mx-auto flex max-w-full items-center justify-between gap-3 px-5 py-3.5 ${isRTL ? 'lg:pl-2 lg:pr-4' : 'lg:pl-2 lg:pr-4'}`}>
         
-        <div className="shrink-0">
+        {/* Logo - in RTL it will be on right side */}
+        <div className={`shrink-0 ${isRTL ? 'order-3' : 'order-1'}`}>
           <Logo />
         </div>
 
-        {/* Desktop Links */}
-        <div className="hidden items-center gap-0.5 lg:flex">
+        {/* Desktop Links - in RTL they will be in reverse order */}
+        <div className={`hidden items-center gap-0.5 lg:flex ${isRTL ? 'order-2 flex-row-reverse' : 'order-2'}`}>
           {NAV_LINKS.map(({ labelKey, to, icon: Icon, isRoute }) => {
             if (!isRoute) {
               return (
@@ -76,8 +85,8 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right Controls */}
-        <div className="hidden shrink-0 items-center gap-2 lg:flex">
+        {/* Right Controls - in RTL they will be on left side */}
+        <div className={`hidden shrink-0 items-center gap-2 lg:flex ${isRTL ? 'order-1 flex-row-reverse' : 'order-3'}`}>
           <LanguageSwitcher />
           <div className="h-5 w-px bg-indigo-200/30 dark:bg-white/10" />
           <ThemeToggle />
@@ -85,7 +94,7 @@ export default function Navbar() {
           <Link to="/login" className="shrink-0">
             <Button 
               variant="outline" 
-              className="text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400"
+              className={`transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400 ${isRTL ? 'px-4 py-3 text-[16px] font-extrabold' : 'text-xs font-medium'}`}
             >
               <LogIn className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
               {t("navbar.login")}
@@ -94,7 +103,7 @@ export default function Navbar() {
 
           <Link to="/signup" className="shrink-0">
             <Button 
-              className="text-xs transition-colors duration-300 hover:brightness-110"
+              className={`transition-colors duration-300 hover:brightness-110 ${isRTL ? 'px-4 py-3 text-[16px] font-extrabold' : 'text-xs font-medium'}`}
             >
               <UserPlus className="h-3.5 w-3.5 transition-none" strokeWidth={2} />
               {t("navbar.startFree")}
@@ -103,7 +112,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Controls */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className={`flex items-center gap-2 lg:hidden ${isRTL ? 'order-1' : 'order-3'}`}>
           <ThemeToggle />
           <button
             type="button"
@@ -121,9 +130,9 @@ export default function Navbar() {
 
       {/* Mobile Panel */}
       <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[34rem]" : "max-h-0"}`}>
-        <div className="flex flex-col gap-1 px-6 py-4">
+        <div className={`flex flex-col gap-1 px-6 py-4 ${isRTL ? 'items-end' : 'items-start'}`}>
           {NAV_LINKS.map(({ labelKey, to, icon: Icon, isRoute }) => {
-            const mobileBase = "flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-300";
+            const mobileBase = `flex items-center gap-2.5 rounded-lg transition-colors duration-300 ${isRTL ? 'flex-row-reverse px-3.5 py-3 text-[16px] font-extrabold' : 'px-3 py-2.5 text-sm font-medium'}`;
             const mobileInactive = "text-slate-600 hover:bg-indigo-50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400";
             const mobileActive = "bg-indigo-50 text-brand-600 dark:bg-white/10 dark:text-brand-400";
 
@@ -149,20 +158,20 @@ export default function Navbar() {
             );
           })}
 
-          <div className="relative z-10 mt-3 border-t border-indigo-200/30 pt-4 dark:border-indigo-800/20">
+          <div className={`relative z-10 mt-3 border-t border-indigo-200/30 pt-4 dark:border-indigo-800/20 ${isRTL ? 'w-full flex justify-end' : ''}`}>
             <LanguageSwitcher />
           </div>
 
-          <div className="mt-3 flex flex-col gap-2">
+          <div className={`mt-3 flex flex-col gap-2 ${isRTL ? 'items-end' : 'items-start'} w-full`}>
             <Link to="/login" onClick={() => setIsOpen(false)} className="w-full">
-              <Button variant="outline" className="w-full text-xs transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400">
+              <Button variant="outline" className={`w-full transition-colors duration-300 hover:bg-indigo-50 hover:text-brand-600 hover:border-brand-400 dark:hover:bg-white/10 dark:hover:text-brand-400 ${isRTL ? 'py-3 text-[16px] font-extrabold' : 'text-xs font-medium'}`}>
                 <LogIn className="h-4 w-4 transition-none" strokeWidth={2} />
                 {t("navbar.login")}
               </Button>
             </Link>
             
             <Link to="/signup" onClick={() => setIsOpen(false)} className="w-full">
-              <Button className="w-full text-xs transition-colors duration-300 hover:brightness-110">
+              <Button className={`w-full transition-colors duration-300 hover:brightness-110 ${isRTL ? 'py-3 text-[16px] font-extrabold' : 'text-xs font-medium'}`}>
                 <UserPlus className="h-4 w-4 transition-none" strokeWidth={2} />
                 {t("navbar.startFree")}
               </Button>

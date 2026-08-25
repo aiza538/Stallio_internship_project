@@ -157,6 +157,7 @@ const FEATURES = [
     glowColor: "from-lime-500/40 via-lime-400/20 to-transparent",
     themeColor: "#84CC16",
     darkThemeColor: "#a3e635",
+    isLast: true // ✅ Flag add kiya
   },
 ];
 
@@ -206,21 +207,15 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function FeaturesGrid() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
-  // ✅ FIX: useScrollReveal ka ref poore (tall) section pe lagane ki bajaye
-  // ek chhoti "sentinel" div pe lagaya hai. Hook ka visibility ratio
-  // (visibleHeight / rect.height) hai — agar ref itne bade grid pe hota
-  // (13 cards, 2000px+ tall), to uska 15% viewport mein aana bahut mushkil
-  // hota aur isVisible kabhi true hi nahi hota (cards hamesha opacity:0
-  // pe atke reh jaate — bilkul wahi bug jo screenshots mein dikh raha tha).
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <section 
       className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#faf7ff] dark:bg-transparent"
     >
-      {/* Sentinel: sirf trigger point, layout pe koi asar nahi */}
       <div ref={ref} className="absolute top-0 left-0 h-1 w-full" aria-hidden="true" />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-100/40 via-transparent to-transparent dark:hidden" />
@@ -229,7 +224,7 @@ export default function FeaturesGrid() {
       <div className="relative mx-auto max-w-7xl">
         <div className={`mb-12 text-center scroll-reveal ${isVisible ? 'visible' : ''}`}>
           
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30">
+          <span className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-4 w-4" />
             {t("featuresGrid.label")}
           </span>
@@ -242,44 +237,44 @@ export default function FeaturesGrid() {
           </h2>
         </div>
 
+        {/* ✅ FIX: Grid ko RTL mein bhi same rakhein, sirf last box ka column control karein */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature, index) => (
             <div
               key={index}
               className={`group scroll-reveal ${isVisible ? 'visible' : ''} bg-gradient-to-br ${feature.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-700 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 rounded-2xl border-2 border-transparent hover:-translate-y-2 hover:rotate-1 ${
                 feature.isLarge ? 'lg:col-span-2 lg:row-span-2' : ''
+              } ${
+                // ✅ Sirf last box ko Arabic mein Right column par bhejein
+                isRTL && feature.isLast ? 'lg:col-start-3' : ''
               }`}
               style={{ 
                 transitionDelay: `${index * 0.1}s`
               }}
             >
-              <div className="relative flex h-full flex-col items-start gap-4">
+              <div className={`relative flex h-full flex-col ${isRTL ? 'items-end' : 'items-start'} gap-4`}>
                 
-                <div className="absolute -bottom-4 -right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                  <feature.icon className="h-32 w-32" strokeWidth={1} />
-                </div>
-
-                <div className="relative">
+                <div className={`relative ${isRTL ? 'self-end' : 'self-start'}`}>
                   <div className={`absolute inset-0 rounded-full ${feature.iconBg} opacity-0 group-hover:opacity-50 animate-pulse`} />
                   <div className={`relative inline-flex rounded-2xl ${feature.iconBg} p-3 transition-all duration-500 group-hover:scale-110`}>
                     <feature.icon className="h-6 w-6" />
                   </div>
                 </div>
 
-                <div className={`${feature.isLarge ? 'space-y-3 sm:space-y-4' : 'space-y-2'}`}>
+                <div className={`${feature.isLarge ? 'space-y-3 sm:space-y-4' : 'space-y-2'} ${isRTL ? 'text-right' : 'text-left'}`}>
                   <h3 className={`font-display font-semibold text-slate-800 dark:text-white ${feature.isLarge ? 'text-2xl sm:text-4xl lg:text-5xl' : 'text-lg'}`}>
                     {t(feature.titleKey)}
                   </h3>
                   
-                  <div className={`h-px w-12 bg-gradient-to-r ${feature.borderColor} opacity-50`} />
+                  <div className={`h-px w-12 bg-gradient-to-r ${feature.borderColor} opacity-50 ${isRTL ? 'mr-auto ml-0' : ''}`} />
                   
                   <p className={`leading-relaxed text-slate-600 dark:text-slate-300 ${feature.isLarge ? 'text-base sm:text-lg' : 'text-sm'}`}>
                     {t(feature.descriptionKey)}
                   </p>
                   {feature.subItemsKeys && (
-                    <ul className={`mt-3 space-y-1.5 text-slate-500 dark:text-slate-400 ${feature.isLarge ? 'text-sm sm:text-base' : 'text-xs'}`}>
+                    <ul className={`mt-3 space-y-1.5 text-slate-500 dark:text-slate-400 ${feature.isLarge ? 'text-sm sm:text-base' : 'text-xs'} ${isRTL ? 'flex flex-col items-end' : ''}`}>
                       {feature.subItemsKeys.map((subKey, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
+                        <li key={idx} className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <span className="h-1 w-1 rounded-full bg-indigo-400 shrink-0" />
                           {t(subKey)}
                         </li>

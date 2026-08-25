@@ -102,7 +102,8 @@
   },
     "auth": {
     "login": {
-      "welcomeBack": "Bienvenido de",
+      "welcomeBack": "Bienvenido",
+      "back": "de nuevo",
       "title1": "Tu tienda,",
       "titleHighlight": "a un enlace de distancia.",
       "subtitle": "Gestiona tu catálogo, pedidos y clientes desde un solo panel hermoso.",
@@ -124,6 +125,7 @@
     "signup": {
       "sellerSignup": "Registro de vendedor",
       "createYourShop": "Crea tu",
+      "shopWord": "tienda",
       "title1": "Empieza a vender",
       "titleHighlight": "en minutos.",
       "subtitle": "Crea tu tienda, añade productos y comparte tu enlace con el mundo.",
@@ -165,6 +167,7 @@
       "resetPassword": "Restablecer",
       "title1": "No te preocupes,",
       "titleHighlight": "te tenemos cubierto.",
+      "passwordWord": "contraseña",
       "enterEmail": "Introduce tu correo electrónico y te ayudaremos a recuperar tu cuenta de forma segura.",
       "email": "Correo electrónico",
       "secureEasy": "Seguro y fácil",
@@ -332,39 +335,31 @@
     }
   },
   "whenYouAreLive": {
-    "label": "Cuando estás en vivo",
-    "title1": "Los compradores ven pulido.",
-    "titleHighlight": "Tú ves control.",
-    "description": "Una tienda rápida por fuera. Un panel tranquilo por dentro.",
-    "features": {
-      "step1": {
-        "title": "Centro de mando",
-        "description": "Pedidos, productos y solicitudes en una sola vista. Actualiza el stock entre entregas sin abrir diez aplicaciones.",
-        "subItems": [
-          "Marca pagado, envía y descarga facturas en PDF",
-          "Cupones, entregas y stock en un solo lugar",
-          "Exporta pedidos o agrega un pedido manual por teléfono"
-        ]
-      },
-      "step2": {
-        "title": "Amigable con el pulgar",
-        "description": "Categorías, carrito, cupones y pago desde el teléfono. Los compradores pueden cambiar entre inglés, español o árabe en tu tienda.",
-        "badges": [
-          "CARRITO",
-          "CUPONES",
-          "FACTURAS"
-        ]
-      }
+  "label": "Cuando estás en vivo",
+  "title1": "Listo para",
+  "titleHighlight": "gestionar todo",
+  "description": "Una vez que tu tienda esté en vivo, puedes gestionar todas tus operaciones de manera eficiente.",
+  "features": {
+    "step1": {
+      "title": "Centro de mando",
+      "description": "Gestiona todas las operaciones de tu tienda desde un solo panel.",
+      "subItems": ["Seguimiento de pedidos en tiempo real", "Gestión de inventario", "Información de clientes"]
+    },
+    "step2": {
+      "title": "Amigable para móviles",
+      "description": "Tu tienda está completamente optimizada para dispositivos móviles.",
+      "badges": ["Pago rápido", "Etiquetas de productos", "Facturas PDF"]
     }
+  }
   },
-  "shipTheLink": {
-    "badge": "Listo cuando quieras.",
-    "title1": "Comparte el enlace",
-    "titleHighlight": "esta noche.",
-    "description": "Gratis para empezar. Sin tarjeta registrada. Si se siente bien, sigue vendiendo desde la misma URL mañana.",
-    "ctaPrimary": "Empieza Gratis",
-    "ctaSecondary": "Explorar Funciones"
-  },
+ "shipTheLink": {
+  "badge": "Comparte tu enlace",
+  "title1": "Envía tu",
+  "titleHighlight": "enlace ahora",
+  "description": "Una vez que tu tienda esté lista, comparte tu enlace y comienza a recibir pedidos al instante.",
+  "ctaPrimary": "Empieza gratis",
+  "ctaSecondary": "Saber más"
+},
   "featuresHero": {
     "badge": "Características",
     "title1": "Todo lo que necesitas",
@@ -499,6 +494,12 @@
     "monthly": "Mensual",
     "perMonth": "/mes",
     "monthlyDesc": "Sin compromiso. Cancela cuando quieras.",
+    "countries": {
+    "US": "Estados Unidos",
+    "PK": "Pakistán",
+    "UK": "Reino Unido",
+    "AE": "Emiratos Árabes Unidos"
+  },
     "startMonthly": "Empezar Mensual",
     "yearly": "Anual",
     "perYear": "/año",

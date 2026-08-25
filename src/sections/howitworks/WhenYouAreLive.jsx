@@ -18,7 +18,7 @@ const FEATURES = [
       "whenYouAreLive.features.step1.subItems.1",
       "whenYouAreLive.features.step1.subItems.2"
     ],
-    // ✅ Pink Color (Orange ki jagah)
+    // ✅ Pink Color (Red)
     bg: "from-pink-200/80 to-pink-100 dark:from-pink-900/60 dark:to-pink-800/60",
     iconBg: "bg-pink-200 text-pink-700 dark:bg-pink-800/70 dark:text-pink-400",
     borderColor: "border-pink-500/70 dark:border-pink-400/60",
@@ -37,7 +37,7 @@ const FEATURES = [
       { icon: Tag, labelKey: "whenYouAreLive.features.step2.badges.1" },
       { icon: FileText, labelKey: "whenYouAreLive.features.step2.badges.2" }
     ],
-    // ✅ Blue Color (Same)
+    // ✅ Blue Color
     bg: "from-blue-200/80 to-blue-100 dark:from-blue-900/60 dark:to-blue-800/60",
     iconBg: "bg-blue-200 text-blue-700 dark:bg-blue-800/70 dark:text-blue-400",
     borderColor: "border-blue-500/70 dark:border-blue-400/60",
@@ -88,7 +88,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function WhenYouAreLive() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#f4f2ff] dark:bg-[#0f0b1e]">
@@ -110,8 +111,8 @@ export default function WhenYouAreLive() {
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         {/* Section Header */}
         <div className="mb-16 text-center">
-          {/* ✅ Purple Gradient Pill (1st image jaisa) */}
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30">
+          {/* ✅ Purple Gradient Pill */}
+          <span className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-4 w-4" />
             {t("whenYouAreLive.label")}
           </span>
@@ -129,6 +130,10 @@ export default function WhenYouAreLive() {
               key={index}
               className={`transform transition-all duration-700 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              } ${
+                // ✅ FIX: AR mein Red box Right, Blue box Left
+                isRTL && index === 0 ? 'md:order-2' : 
+                isRTL && index === 1 ? 'md:order-1' : ''
               }`}
               style={{ transitionDelay: `${index * 0.15}s` }}
             >
@@ -139,11 +144,11 @@ export default function WhenYouAreLive() {
                 hoverGlow={feature.hoverGlow}
                 className={`bg-gradient-to-br ${feature.bg} p-8 shadow-xl shadow-indigo-500/10 backdrop-blur-lg transition-all duration-500 dark:shadow-2xl dark:shadow-black/40 h-full`}
               >
-                <div className="relative flex flex-col items-start">
-                  {/* Step Number + Icon */}
-                  <div className="flex w-full items-center justify-between">
+                <div className={`relative flex flex-col ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
+                  {/* Step Number + Icon - STEP label removed */}
+                  <div className={`flex w-full items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <span className="font-mono text-sm font-bold tracking-widest text-slate-500 dark:text-slate-300">
-                      STEP {feature.number}
+                      {feature.number}
                     </span>
                     <div className={`inline-flex rounded-2xl ${feature.iconBg} p-3.5 shadow-lg transition-all duration-300 group-hover:scale-110`}>
                       <feature.icon className="h-7 w-7" />
@@ -160,9 +165,9 @@ export default function WhenYouAreLive() {
 
                   {/* Sub Items - Command Center */}
                   {feature.subItemsKeys && (
-                    <ul className="mt-4 space-y-2">
+                    <ul className={`mt-4 space-y-2 ${isRTL ? 'flex flex-col items-end' : ''}`}>
                       {feature.subItemsKeys.map((itemKey, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-500 dark:text-slate-400">
+                        <li key={idx} className={`flex items-start gap-2.5 text-sm text-slate-500 dark:text-slate-400 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${feature.subIconColor}`} />
                           {t(itemKey)}
                         </li>
@@ -172,11 +177,11 @@ export default function WhenYouAreLive() {
 
                   {/* Badges - Thumb Friendly */}
                   {feature.badges && (
-                    <div className="mt-5 flex flex-wrap items-center gap-2.5">
+                    <div className={`mt-5 flex flex-wrap items-center gap-2.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                       {feature.badges.map((badge, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center gap-2 rounded-full border border-indigo-200/30 bg-white/60 px-4 py-1.5 text-sm font-semibold text-indigo-700 backdrop-blur-sm dark:border-indigo-800/20 dark:bg-white/5 dark:text-indigo-300"
+                          className={`inline-flex items-center gap-2 rounded-full border border-indigo-200/30 bg-white/60 px-4 py-1.5 text-sm font-semibold text-indigo-700 backdrop-blur-sm dark:border-indigo-800/20 dark:bg-white/5 dark:text-indigo-300 ${isRTL ? 'flex-row-reverse' : ''}`}
                         >
                           <badge.icon className="h-4 w-4" />
                           {t(badge.labelKey)}

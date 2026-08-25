@@ -6,13 +6,17 @@ import { useTranslation } from "react-i18next";
 const LANGUAGES = [
   { code: "en", label: "English" },
   { code: "es", label: "Español" },
+  { code: "ar", label: "العربية" },
 ];
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(i18n.language === "es" ? "es" : "en");
+  const [selectedLang, setSelectedLang] = useState(
+    ["en", "es", "ar"].includes(i18n.language) ? i18n.language : "en"
+  );
   const dropdownRef = useRef(null);
+  const isRTL = i18n.language === 'ar';
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -33,10 +37,6 @@ export default function LanguageSwitcher() {
   const selectedLabel = LANGUAGES.find((lang) => lang.code === selectedLang)?.label;
 
   return (
-    // ✅ FIX: "relative" ki jagah "relative inline-block" — is se wrapper
-    // hamesha button jitni hi width leta hai (chahe parent full-width block
-    // ho, jaisa mobile menu mein), isliye "right-0" dropdown ko hamesha
-    // button ke sahi right-edge se align karega, dur/far away nahi jayega.
     <div className="relative inline-block" ref={dropdownRef}>
       <button
         type="button"
@@ -49,17 +49,19 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-indigo-200/50 bg-white/95 shadow-lg backdrop-blur-md dark:border-indigo-800/30 dark:bg-slate-900/95 sm:left-auto sm:right-0">
+        <div className={`absolute top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-indigo-200/50 bg-white/95 shadow-lg backdrop-blur-md dark:border-indigo-800/30 dark:bg-slate-900/95 ${
+          isRTL ? 'right-0' : 'left-0 sm:left-auto sm:right-0'
+        }`}>
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
               type="button"
               onClick={() => handleSelect(lang.code)}
-              className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-xs font-medium transition-colors duration-200 ${
+              className={`flex w-full items-center justify-between px-4 py-2.5 text-xs font-medium transition-colors duration-200 ${
                 selectedLang === lang.code
                   ? "bg-indigo-50 text-brand-600 dark:bg-white/10 dark:text-brand-400"
                   : "text-slate-600 hover:bg-indigo-50/50 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-brand-400"
-              }`}
+              } ${isRTL ? 'text-right' : 'text-left'}`}
             >
               <span>{lang.label}</span>
               {selectedLang === lang.code && (

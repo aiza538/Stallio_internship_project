@@ -5,6 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import enTranslation from "./locales/en/translation.json";
 import esTranslation from "./locales/es/translation.json";
+import arTranslation from "./locales/ar/translation.json"; // Add Arabic translations
 
 i18n
   .use(LanguageDetector)
@@ -13,6 +14,7 @@ i18n
     resources: {
       en: { translation: enTranslation },
       es: { translation: esTranslation },
+      ar: { translation: arTranslation }, // Add Arabic resource
     },
     fallbackLng: "en",
     interpolation: {

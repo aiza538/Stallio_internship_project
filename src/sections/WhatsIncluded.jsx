@@ -52,7 +52,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function WhatsIncluded() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const features = t("whatsIncluded.features", { returnObjects: true });
 
@@ -70,7 +71,7 @@ export default function WhatsIncluded() {
         
         {/* ✅ Creative Header with Badge */}
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("whatsIncluded.label")}
           </div>
@@ -88,8 +89,8 @@ export default function WhatsIncluded() {
             return (
               <div key={index} className="relative h-full">
                 
-                {/* ✅ Creative: Checkmark Badge */}
-                <div className={`absolute -top-2 -left-2 z-10 flex h-6 w-6 items-center justify-center rounded-full ${color.badge} shadow-md`}>
+                {/* ✅ Creative: Checkmark Badge - RTL flip */}
+                <div className={`absolute -top-2 z-10 flex h-6 w-6 items-center justify-center rounded-full ${color.badge} shadow-md ${isRTL ? '-right-2' : '-left-2'}`}>
                   <CheckCircle2 className="h-4 w-4 text-white" />
                 </div>
 
@@ -98,7 +99,7 @@ export default function WhatsIncluded() {
                   glowColor={color.glowColor}
                   className={`h-full bg-gradient-to-br ${color.bg} p-5 shadow-lg shadow-indigo-500/5 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/15 dark:shadow-indigo-500/5`}
                 >
-                  <div className="relative flex items-start gap-4">
+                  <div className={`relative flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${color.iconBg} transition-all duration-300 group-hover:scale-110`}>
                       {index === 0 && <Link className="h-6 w-6" />}
                       {index === 1 && <Infinity className="h-6 w-6" />}
@@ -115,8 +116,8 @@ export default function WhatsIncluded() {
                     </div>
                     
                     <div className="flex-1">
-                      <h4 className="font-display text-base font-semibold text-slate-800 dark:text-white">{feature.title}</h4>
-                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{feature.description}</p>
+                      <h4 className={`font-display text-base font-semibold text-slate-800 dark:text-white ${isRTL ? 'text-right' : 'text-left'}`}>{feature.title}</h4>
+                      <p className={`mt-1 text-sm text-slate-600 dark:text-slate-300 ${isRTL ? 'text-right' : 'text-left'}`}>{feature.description}</p>
                     </div>
                   </div>
                 </MouseFollower>

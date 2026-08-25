@@ -1,5 +1,5 @@
 // src/sections/about/WhyWeExist.jsx
-import { AlertCircle, Check, Zap, ShoppingBag, MessageSquare, FileText, Package, Link as LinkIcon, Sparkles, ArrowRight } from "lucide-react";
+import { AlertCircle, Check, Zap, ShoppingBag, MessageSquare, FileText, Package, Link as LinkIcon, Sparkles, ArrowRight, ArrowLeft } from "lucide-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -75,10 +75,14 @@ function GreenMouseFollower({ children, className = "" }) {
 }
 
 export default function WhyWeExist() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const frictionItems = t("whyWeExist.frictionItems", { returnObjects: true });
   const solutionItems = t("whyWeExist.solutionItems", { returnObjects: true });
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     // ✅ LIGHT MODE: Halka purplish shade | DARK MODE: Same
@@ -92,7 +96,7 @@ export default function WhyWeExist() {
 
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-8 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("whyWeExist.label")}
           </div>
@@ -103,19 +107,19 @@ export default function WhyWeExist() {
         </div>
 
         {/* Transformation Flow */}
-        <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className={`relative grid grid-cols-1 gap-8 lg:grid-cols-2 ${isRTL ? 'lg:grid-flow-dense' : ''}`}>
           
-          {/* Creative Center Arrow */}
+          {/* Creative Center Arrow - RTL mein flip */}
           <div className="absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-red-500 via-orange-500 to-green-500 shadow-xl shadow-indigo-500/20">
-              <ArrowRight className="h-6 w-6 text-white" />
+              <ArrowIcon className="h-6 w-6 text-white" />
             </div>
           </div>
 
-          {/* Red / Friction - Creative Numbered Cards */}
-          <RedMouseFollower className="bg-gradient-to-br from-red-100/80 to-red-200/40 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-900/50 dark:to-red-800/40 dark:shadow-red-500/10">
-            <div className="relative">
-              <div className="mb-4 flex items-center gap-3">
+          {/* Red / Friction - Creative Numbered Cards - RTL: Right side */}
+          <RedMouseFollower className={`bg-gradient-to-br from-red-100/80 to-red-200/40 p-6 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/20 dark:from-red-900/50 dark:to-red-800/40 dark:shadow-red-500/10 ${isRTL ? 'lg:order-2' : ''}`}>
+            <div className={`relative ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className={`mb-4 flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-red-600 shadow-lg shadow-red-500/30 transition-all duration-300 group-hover:scale-110 dark:from-red-600 dark:to-red-700">
                   <AlertCircle className="h-6 w-6 text-white" />
                 </div>
@@ -124,11 +128,11 @@ export default function WhyWeExist() {
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{t("whyWeExist.frictionDesc")}</p>
               
               {/* Creative Timeline */}
-              <div className="relative space-y-4 pl-6">
-                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gradient-to-b from-red-500/60 to-red-500/20" />
+              <div className={`relative space-y-4 ${isRTL ? 'pr-6 pl-0' : 'pl-6'}`}>
+                <div className={`absolute top-2 bottom-2 w-0.5 bg-gradient-to-b from-red-500/60 to-red-500/20 ${isRTL ? 'right-0' : 'left-0'}`} />
                 {frictionItems.map((item, index) => (
-                  <li key={index} className="relative flex items-start gap-3 text-slate-700 dark:text-slate-300">
-                    <div className="absolute -left-6 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-md">
+                  <li key={index} className={`relative flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className={`absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-6' : '-left-6'}`}>
                       {index + 1}
                     </div>
                     <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
@@ -142,10 +146,10 @@ export default function WhyWeExist() {
             </div>
           </RedMouseFollower>
 
-          {/* Green / Solution - Creative Numbered Cards */}
-          <GreenMouseFollower className="bg-gradient-to-br from-green-100/80 to-green-200/40 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-900/50 dark:to-green-800/40 dark:shadow-green-500/10">
-            <div className="relative">
-              <div className="mb-4 flex items-center gap-3">
+          {/* Green / Solution - Creative Numbered Cards - RTL: Left side */}
+          <GreenMouseFollower className={`bg-gradient-to-br from-green-100/80 to-green-200/40 p-6 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/20 dark:from-green-900/50 dark:to-green-800/40 dark:shadow-green-500/10 ${isRTL ? 'lg:order-1' : ''}`}>
+            <div className={`relative ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className={`mb-4 flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg shadow-green-500/30 transition-all duration-300 group-hover:scale-110 dark:from-green-600 dark:to-emerald-700">
                   <Check className="h-6 w-6 text-white" />
                 </div>
@@ -154,11 +158,11 @@ export default function WhyWeExist() {
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{t("whyWeExist.solutionDesc")}</p>
               
               {/* Creative Timeline */}
-              <div className="relative space-y-4 pl-6">
-                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gradient-to-b from-green-500/60 to-green-500/20" />
+              <div className={`relative space-y-4 ${isRTL ? 'pr-6 pl-0' : 'pl-6'}`}>
+                <div className={`absolute top-2 bottom-2 w-0.5 bg-gradient-to-b from-green-500/60 to-green-500/20 ${isRTL ? 'right-0' : 'left-0'}`} />
                 {solutionItems.map((item, index) => (
-                  <li key={index} className="relative flex items-start gap-3 text-slate-700 dark:text-slate-300">
-                    <div className="absolute -left-6 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-[10px] font-bold text-white shadow-md">
+                  <li key={index} className={`relative flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className={`absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-6' : '-left-6'}`}>
                       {index + 1}
                     </div>
                     <LinkIcon className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />

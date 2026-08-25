@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 
 export default function ContactHero() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0d071a] h-screen max-h-[800px] flex items-center justify-center">

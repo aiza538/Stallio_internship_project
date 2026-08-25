@@ -101,7 +101,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 
 export default function HowItWorksSteps() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#f4f2ff] dark:bg-[#0f0b1e]">
@@ -123,8 +124,7 @@ export default function HowItWorksSteps() {
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         {/* Section Header */}
         <div className="mb-16 text-center">
-          {/* ✅ Purple Gradient Pill (1st image jaisa) */}
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30">
+          <span className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-4 w-4" />
             {t("howItWorksSteps.label")}
           </span>
@@ -138,10 +138,10 @@ export default function HowItWorksSteps() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => (
-            <div key={index} className="relative">
+            <div key={index} className={`relative ${isRTL ? (index === 0 ? 'md:order-3' : index === 1 ? 'md:order-2' : 'md:order-1') : ''}`}>
               
               {/* Number Glow Background (Subtle) */}
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 font-display text-[8rem] font-black leading-none text-slate-400/20 opacity-60 select-none dark:text-white/5">
+              <div className={`absolute -top-12 font-display text-[8rem] font-black leading-none text-slate-400/20 opacity-60 select-none dark:text-white/5 ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'}`}>
                 {step.number}
               </div>
 
@@ -152,9 +152,9 @@ export default function HowItWorksSteps() {
                 hoverGlow={step.hoverGlow}
                 className={`bg-gradient-to-br ${step.bg} p-8 shadow-xl shadow-indigo-500/10 backdrop-blur-lg dark:shadow-2xl dark:shadow-black/40`}
               >
-                <div className="relative flex h-full flex-col">
+                <div className={`relative flex h-full flex-col ${isRTL ? 'text-right' : 'text-left'}`}>
                   {/* Step Number + Icon Row */}
-                  <div className="flex items-center justify-between">
+                  <div className={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <span className="font-mono text-sm font-bold tracking-widest text-slate-500 dark:text-slate-300">
                       STEP {step.number}
                     </span>
@@ -175,9 +175,9 @@ export default function HowItWorksSteps() {
 
                   {/* Sub Items */}
                   {step.subItemsKeys && (
-                    <ul className="mt-6 space-y-3 border-t border-slate-300/40 pt-5 dark:border-white/10">
+                    <ul className={`mt-6 space-y-3 border-t border-slate-300/40 pt-5 dark:border-white/10 ${isRTL ? 'flex flex-col items-end' : ''}`}>
                       {step.subItemsKeys.map((itemKey, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-200">
+                        <li key={idx} className={`flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-200 ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm dark:bg-slate-800/80 ${step.subIconColor}`}>
                             <Check className="h-3 w-3" strokeWidth={3} />
                           </span>

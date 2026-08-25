@@ -1,12 +1,16 @@
 // src/sections/features/FeaturesCapabilities.jsx
-import { Sparkles, ArrowRight, Store } from "lucide-react";
+import { Sparkles, ArrowRight, ArrowLeft, Store } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
 
 export default function FeaturesCapabilities() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#faf7ff] dark:bg-transparent">
@@ -31,10 +35,11 @@ export default function FeaturesCapabilities() {
           {/* Border */}
           <div className="absolute inset-0 rounded-[2rem] border border-purple-200/60 dark:border-purple-400/30" />
 
-          <div className="relative z-10 flex flex-col items-start">
+          {/* ✅ FIX: AR mein sab Right align, EN/ES mein Left */}
+          <div className={`relative z-10 flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
             
             {/* ✅ Left Aligned Typography */}
-            <div>
+            <div className={isRTL ? 'text-right' : 'text-left'}>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-900 dark:text-white leading-tight">
                 {t("featuresCapabilities.title1")} 
                 <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-700 dark:text-indigo-200">
@@ -49,16 +54,16 @@ export default function FeaturesCapabilities() {
             </div>
 
             {/* ✅ Buttons */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-4">
+            <div className={`mt-6 flex flex-col sm:flex-row gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               
               {/* Start Free - Light: Solid Purple, Dark: White */}
               <Link
                 to="/signup"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:brightness-110 dark:bg-none dark:bg-white dark:text-purple-700 dark:shadow-white/10 dark:hover:bg-purple-50 dark:hover:text-purple-800"
+                className={`inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:brightness-110 dark:bg-none dark:bg-white dark:text-purple-700 dark:shadow-white/10 dark:hover:bg-purple-50 dark:hover:text-purple-800 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                 <Store className="h-4 w-4" />
                 {t("featuresCapabilities.startFree")}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowIcon className="h-4 w-4" />
               </Link>
 
               {/* View Demo Store */}

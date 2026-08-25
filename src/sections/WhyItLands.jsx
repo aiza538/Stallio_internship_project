@@ -46,7 +46,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function WhyItLands() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const reasons = t("whyItLands.reasons", { returnObjects: true });
 
@@ -63,7 +64,7 @@ export default function WhyItLands() {
         
         {/* 🔥 Creative Header */}
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("whyItLands.label")}
           </div>
@@ -73,8 +74,14 @@ export default function WhyItLands() {
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{t("whyItLands.subtitle")}</p>
         </div>
 
-        {/* 🔥 Creative: Cards with Circular Icons + Gradient Borders */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* 🔥 Creative: Cards with Circular Icons + Gradient Borders
+            dir="rtl" makes the browser auto-place cards in natural right-to-left
+            reading order (1 top-right, 2, 3, 4 towards the left) without any manual
+            order math — same fix as InsideTheBox.jsx */}
+        <div
+          dir={isRTL ? 'rtl' : 'ltr'}
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {reasons.map((reason, index) => {
             const color = REASON_COLORS[index % REASON_COLORS.length];
             const Icon = REASON_ICONS[index % REASON_ICONS.length];
@@ -82,8 +89,8 @@ export default function WhyItLands() {
             return (
               <div key={index} className="relative h-full">
                 
-                {/* Badge */}
-                <div className={`absolute -top-2 -left-2 z-10 flex h-7 w-7 items-center justify-center rounded-full ${color.badge} text-[10px] font-bold text-white shadow-md`}>
+                {/* Badge - RTL flip */}
+                <div className={`absolute -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full ${color.badge} text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-2' : '-left-2'}`}>
                   {index + 1}
                 </div>
 

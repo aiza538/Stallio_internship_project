@@ -11,7 +11,8 @@ const FEATURE_COLORS = [
 ];
 
 export default function SimpleFastCredible() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const features = t("simpleFastCredible.features", { returnObjects: true });
 
@@ -42,7 +43,7 @@ export default function SimpleFastCredible() {
         <div className="mb-12 text-center">
           
           {/* Pill Shape Heading */}
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4c1d95] to-[#7c3aed] px-5 py-2 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-900/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4c1d95] to-[#7c3aed] px-5 py-2 font-mono text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-purple-900/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-4 w-4" />
             SIMPLE. FAST. CREDIBLE.
           </div>
@@ -53,7 +54,7 @@ export default function SimpleFastCredible() {
         </div>
         {/* 🟢 HEADING SECTION END 🟢 */}
 
-        <div className="relative flex flex-col items-center justify-center gap-8 md:flex-row">
+        <div className={`relative flex flex-col items-center justify-center gap-8 md:flex-row ${isRTL ? 'md:flex-row-reverse' : ''}`}>
           {features.map((feature, index) => {
             const color = FEATURE_COLORS[index % FEATURE_COLORS.length];
             const Icon = color.icon;

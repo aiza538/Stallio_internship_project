@@ -103,6 +103,7 @@
     "auth": {
     "login": {
       "welcomeBack": "Welcome",
+      "back": "back",
       "title1": "Your store,",
       "titleHighlight": "one link away.",
       "subtitle": "Manage your catalog, orders, and customers from a single beautiful dashboard.",
@@ -124,6 +125,7 @@
     "signup": {
       "sellerSignup": "Seller Signup",
       "createYourShop": "Create your",
+      "shopWord": "shop",
       "title1": "Start selling",
       "titleHighlight": "in minutes.",
       "subtitle": "Create your store, add products, and share your link with the world.",
@@ -164,6 +166,7 @@
       "resetPassword": "Reset",
       "title1": "Don't worry,",
       "titleHighlight": "we've got you.",
+      "passwordWord": "password",
       "enterEmail": "Enter your email and we'll help you get back into your account securely.",
       "email": "Email address",
       "secureEasy": "Secure & Easy",
@@ -330,39 +333,31 @@
     }
   },
   "whenYouAreLive": {
-    "label": "When You Are Live",
-    "title1": "Buyers see polish.",
-    "titleHighlight": "You see control.",
-    "description": "A fast storefront on the outside. A calm dashboard on the inside.",
-    "features": {
-      "step1": {
-        "title": "Command center",
-        "description": "Orders, products, and requests in one view. Update stock between deliveries without opening ten apps.",
-        "subItems": [
-          "Mark paid, ship, and download invoice PDFs",
-          "Coupons, delivery, and stock in one place",
-          "Export orders or add a manual phone order"
-        ]
-      },
-      "step2": {
-        "title": "Thumb friendly",
-        "description": "Categories, cart, coupons, and checkout on the phone. Buyers can switch English, Spanish, or Arabic on your store.",
-        "badges": [
-          "CART",
-          "COUPONS",
-          "INVOICES"
-        ]
-      }
+  "label": "When You're Live",
+  "title1": "Ready to",
+  "titleHighlight": "manage everything",
+  "description": "Once your store is live, you can manage all your operations efficiently.",
+  "features": {
+    "step1": {
+      "title": "Command Center",
+      "description": "Manage all your store operations from one dashboard.",
+      "subItems": ["Real-time order tracking", "Inventory management", "Customer insights"]
+    },
+    "step2": {
+      "title": "Thumb Friendly",
+      "description": "Your store is fully optimized for mobile devices.",
+      "badges": ["Fast Checkout", "Product Tags", "Invoice PDFs"]
     }
+  }
   },
   "shipTheLink": {
-    "badge": "Ready when you are.",
-    "title1": "Ship the link",
-    "titleHighlight": "tonight.",
-    "description": "Free to start. No card on file. If it feels right, keep selling from the same URL tomorrow.",
-    "ctaPrimary": "Start Free",
-    "ctaSecondary": "Explore Features"
-  },
+  "badge": "Share Your Link",
+  "title1": "Ship your",
+  "titleHighlight": "link now",
+  "description": "Once your store is ready, share your link and start collecting orders instantly.",
+  "ctaPrimary": "Start Free",
+  "ctaSecondary": "Learn More"
+},
   "featuresHero": {
     "badge": "Features",
     "title1": "Everything you need",
@@ -494,6 +489,12 @@
     "step1Title": "Choose Country",
     "step1Desc": "See local currency",
     "estimateNote": "Estimates are for planning only.",
+    "countries": {
+    "US": "United States",
+    "PK": "Pakistan",
+    "UK": "United Kingdom",
+    "AE": "UAE"
+  },
     "monthly": "Monthly",
     "perMonth": "/mo",
     "monthlyDesc": "No commitment. Cancel anytime.",

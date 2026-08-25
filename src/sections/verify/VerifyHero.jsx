@@ -1,12 +1,16 @@
 // src/sections/verify/VerifyHero.jsx
-import { MailCheck, ArrowRight } from "lucide-react";
+import { MailCheck, ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
 
 export default function VerifyHero() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-white dark:bg-[#0d071a]">
@@ -26,13 +30,13 @@ export default function VerifyHero() {
           </div>
         </div>
 
-        <h1 className="font-display text-3xl font-bold text-slate-800 dark:text-white sm:text-4xl">
+        <h1 className={`font-display font-bold text-slate-800 dark:text-white ${isRTL ? 'text-4xl sm:text-5xl' : 'text-3xl sm:text-4xl'}`}>
           {t("verifyHero.title1")} <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
             {t("verifyHero.titleHighlight")}
           </span>
         </h1>
         
-        <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
+        <p className={`mt-4 text-slate-600 dark:text-slate-300 ${isRTL ? 'text-xl font-bold' : 'text-base'}`}>
           {t("verifyHero.subtitle")} <strong className="text-slate-800 dark:text-white">{t("verifyHero.email")}</strong>
         </p>
         
@@ -47,9 +51,9 @@ export default function VerifyHero() {
           {/* Border */}
           <div className="absolute inset-0 rounded-xl border border-purple-200/60 dark:border-purple-400/30" />
 
-          <div className="relative z-10 flex items-center gap-2">
+          <div className={`relative z-10 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <span className="text-lg">✉️</span>
-            <p className="text-sm text-purple-900 dark:text-white">
+            <p className={`text-purple-900 dark:text-white ${isRTL ? 'text-base font-bold' : 'text-sm'}`}>
               {t("verifyHero.instruction")}
             </p>
           </div>
@@ -58,9 +62,9 @@ export default function VerifyHero() {
         <div className="mt-8">
           <Link
             to="/login"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:brightness-105"
+            className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:brightness-105 ${isRTL ? 'px-8 py-4 text-base font-extrabold flex-row-reverse' : 'px-6 py-3 text-sm font-semibold'}`}
           >
-            {t("verifyHero.goToLogin")} <ArrowRight className="h-4 w-4" />
+            {t("verifyHero.goToLogin")} <ArrowIcon className="h-4 w-4" />
           </Link>
         </div>
       </div>

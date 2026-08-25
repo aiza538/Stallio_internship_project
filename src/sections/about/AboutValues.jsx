@@ -47,22 +47,21 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function AboutValues() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const values = t("aboutValues.values", { returnObjects: true });
 
   return (
-    // ✅ LIGHT MODE: Halka purplish shade | DARK MODE: Same
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#faf7ff] dark:bg-transparent">
       
-      {/* ✅ LIGHT MODE PURPLE SHADE */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-100/40 via-transparent to-transparent dark:hidden" />
 
       <div className="pointer-events-none absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full bg-indigo-400/8 blur-3xl dark:bg-indigo-400/12" />
       
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-indigo-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("aboutValues.label")}
           </div>
@@ -78,9 +77,9 @@ export default function AboutValues() {
             const Icon = VALUE_ICONS[index % VALUE_ICONS.length];
 
             return (
-              <div key={index} className="relative h-full">
-                {/* Creative Number Badge */}
-                <div className={`absolute -top-3 -left-3 z-10 flex h-8 w-8 items-center justify-center rounded-full ${color.numBg} text-sm font-bold text-white shadow-md`}>
+              <div key={index} className={`relative h-full ${isRTL ? (index === 0 ? 'lg:order-4' : index === 1 ? 'lg:order-3' : index === 2 ? 'lg:order-2' : 'lg:order-1') : ''}`}>
+                {/* RTL: Number Badge ko Right side shift karna */}
+                <div className={`absolute -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full ${color.numBg} text-sm font-bold text-white shadow-md ${isRTL ? '-right-3' : '-left-3'}`}>
                   {index + 1}
                 </div>
 

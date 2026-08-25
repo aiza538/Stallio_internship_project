@@ -46,7 +46,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function HowWeThink() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const principles = t("howWeThink.principles", { returnObjects: true });
   const fullItems = t("howWeThink.fullItems", { returnObjects: true });
@@ -63,7 +64,7 @@ export default function HowWeThink() {
       
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("howWeThink.label")}
           </div>
@@ -87,7 +88,7 @@ export default function HowWeThink() {
                 className={`bg-gradient-to-br ${color.bg} p-6 text-center shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10`}
                 style={{ transitionDelay: `${index * 0.05}s` }}
               >
-                <div className="relative flex flex-col items-center justify-center">
+                <div className={`relative flex flex-col items-center justify-center ${isRTL ? 'text-right' : 'text-left'}`}>
                   {/* Bigger Circular Icon */}
                   <div className={`flex h-16 w-16 items-center justify-center rounded-full ${color.iconBg} transition-all duration-300 group-hover:scale-110 shadow-lg`}>
                     <Icon className="h-8 w-8" />
@@ -101,7 +102,7 @@ export default function HowWeThink() {
         </div>
 
         {/* Full Width Items - Glass Cards */}
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className={`mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 ${isRTL ? 'lg:grid-flow-dense' : ''}`}>
           {fullItems.map((item, index) => {
             const color = index === 0 
               ? { bg: "from-emerald-200/80 to-emerald-100 dark:from-emerald-900/60 dark:to-emerald-800/60", iconBg: "bg-emerald-200 text-emerald-700 dark:bg-emerald-800/70 dark:text-emerald-400", borderColor: "border-emerald-500/70 dark:border-emerald-400/60", glowColor: "from-emerald-500/40 via-emerald-400/20 to-transparent", icon: Rocket }
@@ -115,7 +116,7 @@ export default function HowWeThink() {
                 className={`bg-gradient-to-br ${color.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10`}
                 style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
               >
-                <div className="relative">
+                <div className={`relative ${isRTL ? 'text-right' : 'text-left'}`}>
                   <div className={`flex h-12 w-12 items-center justify-center rounded-full ${color.iconBg} transition-all duration-300 group-hover:scale-110 shadow-lg`}>
                     <color.icon className="h-6 w-6" />
                   </div>

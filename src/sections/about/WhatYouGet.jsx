@@ -44,7 +44,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function WhatYouGet() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const features = t("whatYouGet.features", { returnObjects: true });
 
@@ -60,7 +61,7 @@ export default function WhatYouGet() {
       
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("whatYouGet.label")}
           </div>
@@ -75,9 +76,13 @@ export default function WhatYouGet() {
             const color = FEATURE_COLORS[index % FEATURE_COLORS.length];
             const Icon = color.icon;
 
+            // ✅ PERFECT RTL ORDER: Line 1 (1,2,3), Line 2 (4,5,6)
+            const rtlOrder = isRTL ? (index === 0 ? 'lg:order-3' : index === 1 ? 'lg:order-2' : index === 2 ? 'lg:order-1' : index === 3 ? 'lg:order-6' : index === 4 ? 'lg:order-5' : 'lg:order-4') : '';
+
             return (
-              <div key={index} className="relative h-full">
-                <div className={`absolute -top-2 -left-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-[10px] font-bold text-white shadow-md`}>
+              <div key={index} className={`relative h-full ${rtlOrder}`}>
+                {/* RTL: Number Badge ko Right side shift karna */}
+                <div className={`absolute -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-2' : '-left-2'}`}>
                   {index + 1}
                 </div>
                 <MouseFollower
@@ -86,7 +91,7 @@ export default function WhatYouGet() {
                   className={`h-full bg-gradient-to-br ${color.bg} p-6 shadow-xl shadow-indigo-500/5 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 dark:shadow-indigo-500/10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${index * 0.05}s` }}
                 >
-                  <div className="relative">
+                  <div className={`relative ${isRTL ? 'text-right' : 'text-left'}`}>
                     <div className={`inline-flex rounded-2xl ${color.iconBg} p-3 transition-all duration-300 group-hover:scale-110`}>
                       <Icon className="h-6 w-6" />
                     </div>

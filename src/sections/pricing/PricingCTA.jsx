@@ -1,12 +1,16 @@
 // src/sections/pricing/PricingCTA.jsx
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
 
 export default function PricingCTA() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 text-center bg-white dark:bg-[#0d071a]">
@@ -37,7 +41,7 @@ export default function PricingCTA() {
         <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
           {t("pricingCTA.description")}
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className={`mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-3 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-all duration-300 hover:border-purple-400 hover:text-purple-600 dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-purple-400 dark:hover:bg-white/20"
@@ -46,9 +50,9 @@ export default function PricingCTA() {
           </Link>
           <Link
             to="/signup"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:brightness-105"
+            className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:brightness-105 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
-            {t("pricingCTA.ctaSecondary")} <ArrowRight className="h-4 w-4" />
+            {t("pricingCTA.ctaSecondary")} <ArrowIcon className="h-4 w-4" />
           </Link>
         </div>
       </div>

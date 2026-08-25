@@ -1,5 +1,5 @@
 // src/sections/pricing/InsideTheBox.jsx
-import { Store, Package, BarChart, Headphones, Tag, ShoppingCart, FileText, Globe, Truck, ArrowRight, Sparkles } from "lucide-react";
+import { Store, Package, BarChart, Headphones, Tag, ShoppingCart, FileText, Globe, Truck, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -49,15 +49,17 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function InsideTheBox() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const features = t("insideTheBox.features", { returnObjects: true });
 
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+
   return (
-    // ✅ LIGHT MODE: Halka purplish shade | DARK MODE: Same
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24 bg-[#faf7ff] dark:bg-transparent">
       
-      {/* ✅ LIGHT MODE PURPLE SHADE */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-100/40 via-transparent to-transparent dark:hidden" />
 
       <div className="pointer-events-none absolute -bottom-20 right-0 h-[30rem] w-[30rem] rounded-full bg-violet-400/8 blur-3xl dark:bg-violet-400/12" />
@@ -65,9 +67,8 @@ export default function InsideTheBox() {
       
       <div className={`relative mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
         
-        {/* ✅ Styling same as How It Works (Gradient Badge) */}
         <div className="mb-10 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-violet-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("insideTheBox.label")}
           </div>
@@ -77,16 +78,21 @@ export default function InsideTheBox() {
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{t("insideTheBox.subtitle")}</p>
         </div>
 
-        {/* ✅ Equal Height Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* ✅ Equal Height Grid — dir="rtl" lets the browser auto-place items in natural
+            right-to-left reading order (1 top-right, 2 next to its left, 3 further left,
+            then row 2 starts with 4 top-right again) without any manual order math. */}
+        <div
+          dir={isRTL ? 'rtl' : 'ltr'}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {features.map((feature, index) => {
             const color = FEATURE_COLORS[index % FEATURE_COLORS.length];
             
             return (
               <div key={index} className="relative h-full">
                 
-                {/* Badge */}
-                <div className={`absolute -top-2 -left-2 z-10 flex h-7 w-7 items-center justify-center rounded-full ${color.badge} text-[10px] font-bold text-white shadow-md`}>
+                {/* Badge - RTL mein left se right flip */}
+                <div className={`absolute -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full ${color.badge} text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-2' : '-left-2'}`}>
                   {index + 1}
                 </div>
 
@@ -95,7 +101,7 @@ export default function InsideTheBox() {
                   glowColor={color.glowColor}
                   className={`h-full bg-gradient-to-br ${color.bg} p-5 shadow-lg shadow-indigo-500/5 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/15 dark:shadow-indigo-500/5`}
                 >
-                  <div className="relative flex items-center gap-3">
+                  <div className={`relative flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${color.iconBg} transition-all duration-300 group-hover:scale-110`}>
                       {index === 0 && <Store className="h-6 w-6" />}
                       {index === 1 && <Headphones className="h-6 w-6" />}
@@ -108,8 +114,8 @@ export default function InsideTheBox() {
                       {index === 8 && <Truck className="h-6 w-6" />}
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-display text-base font-semibold text-slate-800 dark:text-white">{feature.title}</h3>
-                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{feature.description}</p>
+                      <h3 className={`font-display text-base font-semibold text-slate-800 dark:text-white ${isRTL ? 'text-right' : 'text-left'}`}>{feature.title}</h3>
+                      <p className={`mt-1 text-sm text-slate-600 dark:text-slate-300 ${isRTL ? 'text-right' : 'text-left'}`}>{feature.description}</p>
                     </div>
                   </div>
                 </MouseFollower>
@@ -118,13 +124,13 @@ export default function InsideTheBox() {
           })}
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-3">
+        <div className={`mt-10 flex flex-col items-center justify-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <a
             href="#demo"
-            className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-violet-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-violet-500/35 hover:brightness-110"
+            className={`inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-violet-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-violet-500/35 hover:brightness-110 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             {t("insideTheBox.browseDemo")}
-            <ArrowRight className="h-4 w-4 transition-none" />
+            <ArrowIcon className="h-4 w-4 transition-none" />
           </a>
           <p className="text-sm text-slate-500 dark:text-slate-400">{t("insideTheBox.footerText")}</p>
         </div>

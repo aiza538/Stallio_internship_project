@@ -1,12 +1,16 @@
 // src/sections/about/AboutCTA.jsx
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom"; // ✅ Missing import added here!
+import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
 
 export default function AboutCTA() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section ref={ref} className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
@@ -39,20 +43,23 @@ export default function AboutCTA() {
           {t("aboutCta.description")}
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
+        {/* ✅ FIX: RTL mein buttons ka order flip + Contact Us ko /contact par le jaana */}
+        <div className={`mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
           <Link 
             to="/signup"
-            className="group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-10 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/25 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/40 hover:brightness-110 dark:shadow-indigo-500/20"
+            className={`group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-10 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/25 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/40 hover:brightness-110 dark:shadow-indigo-500/20 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             {t("aboutCta.startFree")}
-            <ArrowRight className="h-5 w-5" />
+            <ArrowIcon className="h-5 w-5" />
           </Link>
-          <a 
-            href="#contact" 
-            className="group inline-flex items-center gap-2.5 rounded-2xl border-2 border-slate-200/60 bg-white/60 px-10 py-4 text-base font-semibold text-slate-700 backdrop-blur-sm transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50/80 hover:text-indigo-600 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
+          
+          {/* ✅ FIX: `#contact` ki jagah `/contact` (navigate karta hai) */}
+          <Link 
+            to="/contact"
+            className={`group inline-flex items-center gap-2.5 rounded-2xl border-2 border-slate-200/60 bg-white/60 px-10 py-4 text-base font-semibold text-slate-700 backdrop-blur-sm transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50/80 hover:text-indigo-600 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             {t("aboutCta.contactUs")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

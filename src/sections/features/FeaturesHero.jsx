@@ -7,16 +7,17 @@ import {
   FileText, 
   Check,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
-import { useTranslation } from "react-i18next"; // ✅ Import added
+import { useTranslation } from "react-i18next";
 
 const features = [
   {
     id: 1,
-    titleKey: "featuresHero.features.step1.title", // ✅ Key added
+    titleKey: "featuresHero.features.step1.title",
     icon: LayoutDashboard,
     boxBg: "bg-[#FFF3C4] dark:bg-[#2a1f0d]",
     boxBorder: "border-[#FFD666] dark:border-[#b45309]",
@@ -28,7 +29,7 @@ const features = [
   },
   {
     id: 2,
-    titleKey: "featuresHero.features.step2.title", // ✅ Key added
+    titleKey: "featuresHero.features.step2.title",
     icon: ShoppingBag,
     boxBg: "bg-[#DBEAFE] dark:bg-[#111d3b]",
     boxBorder: "border-[#60A5FA] dark:border-[#1a3a6a]",
@@ -40,7 +41,7 @@ const features = [
   },
   {
     id: 3,
-    titleKey: "featuresHero.features.step3.title", // ✅ Key added
+    titleKey: "featuresHero.features.step3.title",
     icon: Tag,
     boxBg: "bg-[#EDE9FE] dark:bg-[#1a1435]",
     boxBorder: "border-[#C4B5FD] dark:border-[#3a2c6a]",
@@ -52,7 +53,7 @@ const features = [
   },
   {
     id: 4,
-    titleKey: "featuresHero.features.step4.title", // ✅ Key added
+    titleKey: "featuresHero.features.step4.title",
     icon: FileText,
     boxBg: "bg-[#FCE7F3] dark:bg-[#30101e]",
     boxBorder: "border-[#F9A8D4] dark:border-[#5a1a3a]",
@@ -64,7 +65,7 @@ const features = [
   },
 ];
 
-function FeatureCard({ feature, t }) {
+function FeatureCard({ feature, t, isRTL }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const cardRef = useRef(null);
@@ -79,7 +80,7 @@ function FeatureCard({ feature, t }) {
 
   return (
     <div 
-      className="relative flex items-center gap-2 sm:gap-4 group"
+      className={`relative flex items-center gap-2 sm:gap-4 group ${isRTL ? 'flex-row-reverse' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -108,13 +109,13 @@ function FeatureCard({ feature, t }) {
           />
         )}
 
-        <div className="relative z-10 flex items-center gap-2 sm:gap-3">
+        <div className={`relative z-10 flex items-center gap-2 sm:gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={`${feature.iconBg} ${feature.iconColor} flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg transition-colors duration-300`}>
             <feature.icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={2} />
           </div>
-          <div>
+          <div className={isRTL ? 'text-right' : 'text-left'}>
             <p className="text-[0.8rem] leading-snug sm:text-[0.95rem] text-slate-900 dark:text-white font-medium">
-              {t(feature.titleKey)} {/* ✅ Translated */}
+              {t(feature.titleKey)}
             </p>
           </div>
         </div>
@@ -125,7 +126,11 @@ function FeatureCard({ feature, t }) {
 
 export default function FeaturesHero() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation(); // ✅ Hook added
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section ref={ref} className="relative overflow-hidden px-3 py-10 sm:px-4 sm:py-12 lg:py-20">
@@ -146,59 +151,63 @@ export default function FeaturesHero() {
       <div className="pointer-events-none absolute -bottom-40 right-0 z-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/12 blur-3xl dark:bg-purple-400/15" />
 
       <div className={`relative z-10 mx-auto max-w-content scroll-reveal ${isVisible ? 'visible' : ''}`}>
+        
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 lg:px-8">
           
-          <div className="flex flex-col justify-center">
+          {/* LEFT SIDE: Text (AR mein Right) */}
+          <div className={`flex flex-col justify-center ${isRTL ? 'lg:order-2' : ''}`}>
             
-            <div className="inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300">
+            <div className={`inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300 ${isRTL ? 'lg:self-end self-end flex-row-reverse text-right' : ''}`}>
               <Sparkles className="h-4 w-4" strokeWidth={2} />
-              {t("featuresHero.badge")} {/* ✅ Translated */}
+              {t("featuresHero.badge")}
             </div>
 
-            <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className={`font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl ${isRTL ? 'text-right' : 'text-left'}`}>
               {t("featuresHero.title1")} <br />
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
                 {t("featuresHero.titleHighlight")}
               </span>
             </h1>
 
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-slate-800 dark:text-slate-100">
-              {t("featuresHero.description")} {/* ✅ Translated */}
+            <p className={`mt-4 max-w-lg text-base leading-relaxed text-slate-800 dark:text-slate-100 ${isRTL ? 'text-right self-end' : 'text-left'}`}>
+              {t("featuresHero.description")}
             </p>
 
-            <ul className="mt-4 flex flex-col gap-2">
+            <ul className={`mt-4 flex flex-col gap-2 ${isRTL ? 'items-end' : ''}`}>
               {[
                 "stallio.shop link, no domain purchase",
                 "Unlimited products, photos, and orders",
                 "PDF invoices and order export",
                 "Coupons, delivery fees, and COD at checkout"
               ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2 text-base text-slate-800 dark:text-slate-100">
-                  <Check className="h-5 w-5 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" strokeWidth={3} />
-                  <span>{t(`featuresHero.bullets.${index}`)}</span> {/* ✅ Translated */}
+                <li key={index} className={`flex items-start gap-2 text-base text-slate-800 dark:text-slate-100 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Check className={`h-5 w-5 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5 ${isRTL ? 'ml-0' : ''}`} strokeWidth={3} />
+                  <span>{t(`featuresHero.bullets.${index}`)}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-6 flex flex-col sm:flex-row items-start gap-4">
+            {/* ✅ FIX: Mobile aur Desktop dono par Right align */}
+            <div className={`mt-6 flex flex-row items-center gap-4 ${isRTL ? 'items-end justify-end' : ''}`}>
               <Link
                 to="/signup"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20"
+                className={`inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors duration-300 hover:shadow-xl hover:shadow-indigo-500/35 hover:brightness-110 dark:shadow-indigo-500/20 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
-                {t("featuresHero.ctaPrimary")} {/* ✅ Translated */}
+                {t("featuresHero.ctaPrimary")}
                 <Sparkles className="h-3.5 w-3.5 transition-none" />
               </Link>
               <a
                 href="#demo"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400"
+                className={`inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
-                {t("featuresHero.ctaSecondary")} {/* ✅ Translated */}
-                <ArrowRight className="h-3.5 w-3.5 transition-none" />
+                {t("featuresHero.ctaSecondary")}
+                <ArrowIcon className="h-3.5 w-3.5 transition-none" />
               </a>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center gap-4">
+          {/* RIGHT SIDE: Boxes (AR mein Left) */}
+          <div className={`flex flex-col justify-center gap-4 ${isRTL ? 'lg:order-1' : ''}`}>
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -209,7 +218,7 @@ export default function FeaturesHero() {
                   transitionDelay: `${index * 0.15}s`
                 }}
               >
-                <FeatureCard feature={feature} t={t} />
+                <FeatureCard feature={feature} t={t} isRTL={isRTL} />
               </div>
             ))}
           </div>

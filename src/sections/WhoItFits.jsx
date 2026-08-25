@@ -47,7 +47,8 @@ function MouseFollower({ children, className = "", borderColor = "", glowColor =
 }
 
 export default function WhoItFits() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { ref, isVisible } = useScrollReveal();
   const audience = t("whoItFits.audience", { returnObjects: true });
 
@@ -64,7 +65,7 @@ export default function WhoItFits() {
         
         {/* 🔥 Creative Header */}
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-purple-500/30">
+          <div className={`mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-purple-500/30 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Sparkles className="h-3.5 w-3.5" />
             {t("whoItFits.label")}
           </div>
@@ -85,8 +86,8 @@ export default function WhoItFits() {
             return (
               <div key={index} className="relative h-full">
                 
-                {/* Creative: Top Color Dot */}
-                <div className={`absolute -top-2 left-1/2 z-10 flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full ${color.dotColor} shadow-md`} />
+                {/* Creative: Top Color Dot - RTL mein flip */}
+                <div className={`absolute -top-2 z-10 flex h-5 w-5 items-center justify-center rounded-full ${color.dotColor} shadow-md ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'}`} />
 
                 {/* Equal Height MouseFollower */}
                 <MouseFollower

@@ -1,12 +1,16 @@
 // src/sections/contact/ContactCTA.jsx
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
 
 export default function ContactCTA() {
   const { ref, isVisible } = useScrollReveal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  // RTL mein Arrow flip
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section 
@@ -39,11 +43,12 @@ export default function ContactCTA() {
           {/* Border */}
           <div className="absolute inset-0 rounded-[2rem] border border-purple-200/60 dark:border-purple-400/30" />
 
+          {/* ✅ FIX: AR mein order palat jayega, EN/ES mein same rahega */}
           <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
             
-            {/* LEFT SIDE: Text Content */}
-            <div className="text-left max-w-lg">
-              <div className="inline-flex items-center gap-2 mb-3">
+            {/* LEFT SIDE: Text Content - AR mein Right */}
+            <div className={`${isRTL ? 'lg:order-2 text-right' : 'text-left'} max-w-lg`}>
+              <div className={`inline-flex items-center gap-2 mb-3 ${isRTL ? 'lg:self-end self-start flex-row-reverse' : ''}`}>
                 <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-200" />
                 <p className="text-sm font-semibold tracking-wide text-purple-600 dark:text-purple-200 uppercase">
                   {t("contactCTA.label")}
@@ -59,8 +64,8 @@ export default function ContactCTA() {
               </p>
             </div>
 
-            {/* RIGHT SIDE: Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+            {/* RIGHT SIDE: Buttons - AR mein Left */}
+            <div className={`flex flex-col sm:flex-row items-center gap-4 ${isRTL ? 'lg:order-1 sm:flex-row-reverse' : ''}`}>
               
               {/* Button 1: How It Works */}
               <Link
@@ -73,9 +78,9 @@ export default function ContactCTA() {
               {/* Button 2: Features */}
               <Link
                 to="/features"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:brightness-110 dark:bg-none dark:bg-white dark:text-purple-700 dark:shadow-white/10 dark:hover:bg-purple-50 dark:hover:text-purple-800"
+                className={`inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:brightness-110 dark:bg-none dark:bg-white dark:text-purple-700 dark:shadow-white/10 dark:hover:bg-purple-50 dark:hover:text-purple-800 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
-                {t("contactCTA.features")} <ArrowRight className="h-4 w-4" />
+                {t("contactCTA.features")} <ArrowIcon className="h-4 w-4" />
               </Link>
 
             </div>
