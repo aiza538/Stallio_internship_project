@@ -20,9 +20,20 @@
     "refund": "Política de Reembolso",
     "rights": "Todos los derechos reservados."
   },
-  "hero": { "trustedBy": "Usado por más de 10,000 vendedores en todo el mundo", "title1": "Convierte tu catálogo en una", "title2": "Tienda online real", "subtitle": "Un enlace para tu catálogo y pedidos, para que los clientes sepan dónde comprar y tú te mantengas organizado.", "getStarted": "Empieza gratis", "learnMore": "Aprende más", "activeSellers": "Vendedores activos", "ordersProcessed": "Pedidos procesados", "rating": "Calificación 4.9/5" },
+  "hero": { "trustedBy": "Usado por más de 10,000 vendedores en todo el mundo", "title1": "Convierte tu catálogo en una", "title2": "Tienda online real", "subtitle": "Un enlace para tu catálogo y pedidos, para que los clientes sepan dónde comprar y tú te mantengas organizado.", "getStarted": "Empieza gratis", "viewDemo": "Ver tienda de demostración", "activeSellers": "Vendedores activos", "ordersProcessed": "Pedidos procesados", "rating": "Calificación 4.9/5" },
   "beforeAfter": { "beforeLabel": "Antes vs Después", "title": "Mira la", "titleHighlight": "Diferencia", "subtitle": "Mira cómo Stallio transforma tu experiencia de venta.", "withoutStallio": "Sin Stallio", "withStallio": "Con Stallio", "beforeItems": ["Múltiples enlaces compartidos con clientes", "Los clientes se confunden dónde comprar", "Te mantienes desorganizado", "Difícil rastrear pedidos"], "afterItems": ["Un enlace para catálogo y pedidos", "Los clientes ordenan directamente", "Te mantienes organizado", "Fácil rastreo de pedidos"], "confusing": "Confuso", "clearSimple": "Claro y simple" },
-  "finalCta": { "startJourney": "Comienza tu viaje hoy", "title1": "¿Listo para", "titleHighlight": "Lanzar", "title2": "tu tienda?", "subtitle": "Únete a miles de vendedores que comenzaron su viaje con Stallio. No se requiere tarjeta de crédito. Empieza en minutos.", "startFreeTrial": "Empieza prueba gratis", "learnMore": "Aprende más", "noCard": "No se requiere tarjeta de crédito", "freeDays": "Gratis por 30 días", "cancelAnytime": "Cancela en cualquier momento" },
+  "finalCta": {
+    "startJourney": "Comienza tu viaje",
+    "title1": "¿Listo para",
+    "titleHighlight": "Lanzar",
+    "title2": "tu tienda?",
+    "subtitle": "Únete a miles de vendedores que comenzaron su viaje con Stallio. No se requiere tarjeta de crédito. Comienza en minutos.",
+    "startFreeTrial": "Prueba gratuita",
+    "login": "Iniciar sesión",
+    "noCard": "Sin tarjeta de crédito",
+    "freeDays": "Gratis por 30 días",
+    "cancelAnytime": "Cancela cuando quieras"
+  },
   "howItWorks": {
     "label": "Cómo funciona",
     "stepLabel": "Paso {{number}}",
@@ -362,29 +373,29 @@
 },
   "featuresHero": {
     "badge": "Características",
-    "title1": "Todo lo que necesitas",
-    "titleHighlight": "para vender desde un enlace.",
-    "description": "Tienda, panel y herramientas de vendedor en un solo lugar: enlace alojado, catálogo y pedidos ilimitados, sin necesidad de pasarela de pago para el comprador.",
+    "title1": "Todo lo que necesitas para",
+    "titleHighlight": "Vender mejor",
+    "description": "Stallio te ofrece un enlace de tienda alojada, un panel y todas las herramientas que necesitas para gestionar productos, pedidos, cupones, envíos y facturas.",
+    "ctaPrimary": "Empieza gratis",
+    "ctaSecondary": "Cómo funciona",
     "bullets": [
-      "Enlace stallio.shop, sin comprar dominio",
+      "Enlace stallio.shop, sin necesidad de comprar dominio",
       "Productos, fotos y pedidos ilimitados",
-      "Facturas en PDF y exportación de pedidos",
-      "Cupones, gastos de envío y pago contra entrega"
+      "Facturas PDF y exportación de pedidos",
+      "Cupones, gastos de envío y pago contra reembolso"
     ],
-    "ctaPrimary": "Empieza Gratis",
-    "ctaSecondary": "Ver Tienda Demo",
     "features": {
       "step1": {
-        "title": "Catálogo, pago, pedidos y facturas en un solo panel."
+        "title": "Panel con gestión de pedidos y productos"
       },
       "step2": {
-        "title": "Pedidos con estado de pago y entrega"
+        "title": "Productos y categorías"
       },
       "step3": {
-        "title": "Productos con variantes, ofertas y stock"
+        "title": "Cupones y configuraciones de envío"
       },
       "step4": {
-        "title": "Factura en PDF lista para enviar"
+        "title": "Facturas PDF y páginas de la tienda"
       }
     }
   },
@@ -623,5 +634,113 @@
     "contactSupport": "Contactar soporte",
     "expiry": "El enlace de verificación expira en 24 horas. Si sigues teniendo problemas,",
     "contactSupportLink": "contacta con soporte"
+  },
+  "privacy": {
+    "backToHome": "Volver al Inicio",
+    "titlePart1": "Política de",
+    "titlePart2": " Privacidad",
+    "section1": {
+      "title": "Quiénes somos",
+      "content": "Stallio ofrece a los vendedores un enlace de tienda alojada y un panel para gestionar productos y pedidos. Stallio es responsable de los datos de la cuenta y la plataforma que se describen a continuación."
+    },
+    "section2": {
+      "title": "Qué recopilamos",
+      "accountDetails": "Detalles de la cuenta:",
+      "accountDetailsDesc": "correo electrónico, contraseña (almacenada de forma segura), nombre de la tienda, nombre de usuario, país, moneda, logotipo y configuración del panel.",
+      "shopContent": "Contenido de la tienda:",
+      "shopContentDesc": "productos, imágenes, categorías, cupones, configuraciones de envío y páginas que publicas (Inicio, Acerca de, Contacto y similares).",
+      "orders": "Pedidos en tu tienda:",
+      "ordersDesc": "nombre del cliente, teléfono, dirección, correo electrónico opcional, artículos del carrito y totales de pedidos. Tú eliges cómo pagan los clientes. Stallio no procesa los pagos de los clientes para tu tienda.",
+      "messages": "Mensajes:",
+      "messagesDesc": "envíos de formularios de contacto y chat de soporte entre tú y Stallio.",
+      "technical": "Datos técnicos:",
+      "technicalDesc": "sesión de inicio de sesión, tema o preferencia de idioma en tu navegador, y registros de seguridad estándar de nuestros proveedores de alojamiento y correo electrónico."
+    },
+    "section3": {
+      "title": "Cómo usamos tus datos",
+      "content": "Usamos esta información para ejecutar la plataforma, iniciar sesión, alojar tu tienda, enviar pedidos a tu panel, enviar correos electrónicos de servicio (restablecimiento de contraseña, bienvenida, alertas de pedidos, recordatorios de suscripción), prevenir abusos y responder a solicitudes de soporte.",
+      "note": "No vendemos tu información personal."
+    },
+    "section4": {
+      "title": "Compartir y almacenamiento",
+      "content": "Usamos proveedores de confianza para alojamiento, almacenamiento de imágenes y correo electrónico. Solo pueden procesar datos para ejecutar el servicio para nosotros.",
+      "providers": "Podemos compartir información si la ley lo exige o para proteger a los usuarios y la plataforma.",
+      "legal": "Los datos pueden almacenarse o procesarse en países donde operan nuestros proveedores.",
+      "storage": "Los datos están encriptados y almacenados de forma segura."
+    },
+    "section5": {
+      "title": "Cuánto tiempo conservamos los datos",
+      "content": "Conservamos tu información mientras tu cuenta esté activa y por un tiempo razonable después para copias de seguridad, seguridad y necesidades legales.",
+      "deleteNote": "Puedes eliminar tu cuenta de vendedor desde la configuración del panel. Esto elimina tu cuenta y los datos de la tienda de nuestros sistemas, excepto cuando debemos mantener algunos registros por ley."
+    },
+    "section6": {
+      "title": "Tus derechos y actualizaciones",
+      "content": "Dependiendo de tu ubicación, puedes pedirnos que accedamos, corrijamos, exportemos o eliminemos los datos personales que tenemos sobre ti. Usa la página de Contacto para hacer una solicitud.",
+      "updateNote": "Podemos actualizar esta política publicando una nueva versión en esta página."
+    }
+  },
+  "terms": {
+    "backToHome": "Volver al Inicio",
+    "titlePart1": "Términos de",
+    "titlePart2": " Servicio",
+    "lastUpdated": "Última actualización",
+    "date": "1 de junio de 2026",
+    "section1": {
+      "title": "Qué proporciona Stallio",
+      "content": "Stallio te ofrece una tienda alojada en stallio.shop/tu-nombre-de-usuario y un panel para gestionar productos, pedidos, cupones, configuraciones de envío y páginas de la tienda. Stallio no procesa ni liquida pagos entre tú y tus clientes. Tú indicas a los clientes cómo pagar y marcas los pedidos como pagados en tu panel. Podemos agregar, cambiar o eliminar funciones con un aviso razonable cuando sea posible."
+    },
+    "section2": {
+      "title": "Tu cuenta",
+      "content": "Debes proporcionar datos de registro precisos y mantener tu inicio de sesión seguro. Eres responsable de la actividad en tu cuenta. Podemos suspender tu tienda o panel por falta de pago, abuso o riesgo para otros usuarios, como se describe en la página de Precios o en los mensajes que te enviemos."
+    },
+    "section3": {
+      "title": "Uso aceptable",
+      "content": "No uses Stallio para productos o servicios ilegales, fraude, acoso, malware o contenido que no tengas derechos para usar. Podemos eliminar contenido o cerrar cuentas que infrinjan estas reglas."
+    },
+    "section4": {
+      "title": "Tu contenido",
+      "content": "Eres el propietario del contenido que subes. Le das a Stallio permiso para alojarlo y mostrarlo solo para ejecutar el servicio de tu tienda. Eres responsable del contenido de tu tienda y de manejar los datos de los clientes de manera legal.",
+      "note": "Eres totalmente responsable de todo el contenido que publiques en tu tienda."
+    },
+    "section5": {
+      "title": "Suscripciones y tarifas",
+      "content": "Puedes comenzar sin una tarjeta de pago. Los planes y precios pagos se muestran en la página de Precios. Los pagos de suscripción se cobran como se describe en Precios o por nuestro equipo y se registran en tu cuenta. Pueden aplicarse impuestos. Cancelar un plan mensual detiene los cargos futuros como se explica en Precios o en los mensajes de tu cuenta."
+    },
+    "section6": {
+      "title": "Responsabilidad y general",
+      "content": "El servicio se proporciona tal cual y según disponibilidad, en la medida permitida por la ley. Cuando la ley lo permite, la responsabilidad de Stallio por reclamos sobre el servicio se limita a las tarifas que nos pagaste en los doce meses anteriores al reclamo, o cincuenta dólares estadounidenses si no pagaste tarifas.",
+      "note": "Podemos actualizar estos términos publicando una nueva versión en esta página. Preguntas: usa la página de Contacto."
+    }
+  },
+  "refund": {
+    "backToHome": "Volver al Inicio",
+    "titlePart1": "Política de",
+    "titlePart2": " Reembolso",
+    "section1": {
+      "title": "Qué cubre esta política",
+      "content": "Esta política se aplica únicamente a las tarifas de suscripción que pagas a Stallio por los planes de vendedor en stallio.shop.",
+      "note": "No cubre los pedidos realizados en tu tienda. Tú manejas los reembolsos de los pedidos de tu propia tienda con tus clientes."
+    },
+    "section2": {
+      "title": "Plan gratuito",
+      "content": "Puedes crear una cuenta de vendedor y usar funciones gratuitas sin una tarjeta de pago. Sin tarifa de suscripción, no aplica reembolso."
+    },
+    "section3": {
+      "title": "Planes mensuales",
+      "content": "Cuando cancelas un plan mensual de pago, la facturación futura se detiene. Mantienes el acceso hasta el final del período que ya pagaste, como se muestra en la página de Precios o en los mensajes de tu cuenta. Generalmente no reembolsamos los días no utilizados en un mes que ya pagaste, a menos que la ley lo requiera o confirmemos un error de facturación por nuestra parte."
+    },
+    "section4": {
+      "title": "Planes anuales",
+      "content": "Los planes anuales se pagan por adelantado por el período completo que se muestra en la página de Precios. Si cancelas antes de tiempo, no reembolsamos automáticamente los meses restantes a menos que lo confirmemos por escrito o tu ley local lo requiera."
+    },
+    "section5": {
+      "title": "Errores de facturación",
+      "content": "Si te cobramos dos veces por el mismo período, cobramos la cantidad incorrecta o seguimos facturando después de una cancelación confirmada, contáctanos dentro de los 30 días posteriores al cargo. Después de verificar el problema, corregiremos el cargo o enviaremos un reembolso al mismo método de pago cuando sea posible."
+    },
+    "section6": {
+      "title": "Cómo solicitar un reembolso",
+      "content": "Usa la página de Contacto en este sitio web. Incluye tu correo electrónico de cuenta, nombre de usuario de la tienda, fecha del cargo y una breve descripción del problema. Es posible que solicitemos más detalles para verificar la solicitud.",
+      "note": "Los reembolsos aprobados generalmente se procesan dentro de 5 a 10 días hábiles, dependiendo de tu proveedor de pago. Podemos actualizar esta política publicando una nueva versión en esta página."
+    }
   }
 }

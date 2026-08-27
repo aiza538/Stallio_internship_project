@@ -63,12 +63,13 @@ export default function ShipTheLink() {
             <ArrowIcon className="h-5 w-5 transition-none" />
           </Link>
           
-          <a
-            href="#features"
+          {/* ✅ Explore Features - Navigates to /features */}
+          <Link
+            to="/features"
             className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/80 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             {t("shipTheLink.ctaSecondary")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

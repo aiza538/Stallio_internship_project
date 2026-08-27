@@ -128,21 +128,17 @@ export default function WhyWeExist() {
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{t("whyWeExist.frictionDesc")}</p>
               
               {/* Creative Timeline */}
-              <div className={`relative space-y-4 ${isRTL ? 'pr-6 pl-0' : 'pl-6'}`}>
-                <div className={`absolute top-2 bottom-2 w-0.5 bg-gradient-to-b from-red-500/60 to-red-500/20 ${isRTL ? 'right-0' : 'left-0'}`} />
-                {frictionItems.map((item, index) => (
-                  <li key={index} className={`relative flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className={`absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-6' : '-left-6'}`}>
-                      {index + 1}
-                    </div>
-                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-                    <div>
-                      <span className="font-semibold text-slate-800 dark:text-white">{item.title}</span>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </div>
+              <div className="relative space-y-4">
+              {frictionItems.map((item, index) => (
+                <li key={index} className={`flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
+                <div>
+                  <span className="font-semibold text-slate-800 dark:text-white">{item.title}</span>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </div>
             </div>
           </RedMouseFollower>
 
@@ -158,20 +154,16 @@ export default function WhyWeExist() {
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{t("whyWeExist.solutionDesc")}</p>
               
               {/* Creative Timeline */}
-              <div className={`relative space-y-4 ${isRTL ? 'pr-6 pl-0' : 'pl-6'}`}>
-                <div className={`absolute top-2 bottom-2 w-0.5 bg-gradient-to-b from-green-500/60 to-green-500/20 ${isRTL ? 'right-0' : 'left-0'}`} />
+              <div className="relative space-y-4">
                 {solutionItems.map((item, index) => (
-                  <li key={index} className={`relative flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className={`absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-[10px] font-bold text-white shadow-md ${isRTL ? '-right-6' : '-left-6'}`}>
-                      {index + 1}
-                    </div>
-                    <LinkIcon className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-                    <div>
-                      <span className="font-semibold text-slate-800 dark:text-white">{item.title}</span>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
-                    </div>
-                  </li>
-                ))}
+                <li key={index} className={`flex items-start gap-3 text-slate-700 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <LinkIcon className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
+                <div>
+                  <span className="font-semibold text-slate-800 dark:text-white">{item.title}</span>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
+                </div>
+                </li>
+  )             )}
               </div>
             </div>
           </GreenMouseFollower>

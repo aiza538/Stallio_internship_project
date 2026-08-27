@@ -43,7 +43,7 @@ export default function AboutCTA() {
           {t("aboutCta.description")}
         </p>
 
-        {/* ✅ FIX: RTL mein buttons ka order flip + Contact Us ko /contact par le jaana */}
+        {/* ✅ FIX: Buttons - Start Free + Contact Us */}
         <div className={`mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
           <Link 
             to="/signup"
@@ -53,7 +53,7 @@ export default function AboutCTA() {
             <ArrowIcon className="h-5 w-5" />
           </Link>
           
-          {/* ✅ FIX: `#contact` ki jagah `/contact` (navigate karta hai) */}
+          {/* ✅ Contact Us Button - /contact par navigate karega */}
           <Link 
             to="/contact"
             className={`group inline-flex items-center gap-2.5 rounded-2xl border-2 border-slate-200/60 bg-white/60 px-10 py-4 text-base font-semibold text-slate-700 backdrop-blur-sm transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50/80 hover:text-indigo-600 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}

@@ -1,3 +1,4 @@
+// src/sections/home/Hero.jsx
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
@@ -32,10 +33,13 @@ export default function Hero() {
       <div className="pointer-events-none absolute -bottom-40 right-0 z-0 h-[30rem] w-[30rem] rounded-full bg-purple-400/12 blur-3xl dark:bg-purple-400/15" />
       
       <div className={`relative z-10 mx-auto max-w-content text-center scroll-reveal ${isVisible ? 'visible' : ''}`}>
-        <div className={`inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Sparkles className="h-4 w-4" strokeWidth={2} />
-                {t("hero.trustedBy")}
-            </div>
+        {/* Sparkle Badge */}
+        <div className="flex justify-center">
+          <div className={`inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/30 bg-white/70 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <Sparkles className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
+            <span className="whitespace-nowrap">{t("hero.trustedBy")}</span>
+          </div>
+        </div>
 
         <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
           {t("hero.title1")}
@@ -57,11 +61,12 @@ export default function Hero() {
             {t("hero.getStarted")}
             <ArrowIcon className="h-5 w-5 transition-none" />
           </Link>
+          {/* ✅ View Demo Store - Learn More replaced */}
           <Link
-            to="/pricing"
+            to="/about"
             className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
-            {t("hero.learnMore")}
+            {t("hero.viewDemo")}
           </Link>
         </div>
 

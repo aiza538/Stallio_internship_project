@@ -119,7 +119,9 @@ export default function PricingCards() {
         >
 
           {/* Step 1: Country Selection */}
-          <div className="relative h-full">
+          {/* <div className="relative h-full"> */}
+          {/* Step 1: Country Selection */}
+          <div className={`relative h-full ${dropdownOpen ? 'z-40' : ''}`}>
             <div className="absolute -top-6 left-1/2 z-30 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-violet-500 text-lg font-bold text-white shadow-lg shadow-purple-500/30">
               1
             </div>

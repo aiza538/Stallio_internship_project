@@ -68,7 +68,7 @@ export default function FeaturesCapabilities() {
 
               {/* View Demo Store */}
               <Link
-                to="/howitworks"
+                to="#"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300/70 dark:border-white/20 bg-white/70 dark:bg-slate-800/80 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-white backdrop-blur-sm transition-all duration-300 hover:border-purple-400 dark:hover:border-purple-300/60 hover:bg-purple-50 dark:hover:bg-slate-700/80 hover:text-purple-600 dark:hover:text-white"
               >
                 {t("featuresCapabilities.viewDemo")}

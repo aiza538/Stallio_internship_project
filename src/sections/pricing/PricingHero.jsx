@@ -100,7 +100,7 @@ export default function PricingHero() {
               </div>
             </div>
 
-            {/* ✅ FIX: Mobile aur Desktop dono par Buttons Right align */}
+            {/* ✅ FIX: Buttons - Start Free + What You Get (Features) */}
             <div className={`mt-4 flex flex-wrap items-center gap-4 ${isRTL ? 'justify-end' : ''}`}>
               <Link
                 to="/signup"
@@ -109,8 +109,10 @@ export default function PricingHero() {
                 {t("pricingHero.ctaPrimary")}
                 <ArrowIcon className="h-4 w-4 transition-none" />
               </Link>
+              
+              {/* ✅ What You Get - Navigates to /features */}
               <Link
-                to="#features"
+                to="/features"
                 className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-6 py-2.5 text-sm font-semibold text-slate-600 transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                 {t("pricingHero.ctaSecondary")}
@@ -126,7 +128,6 @@ export default function PricingHero() {
               }`}
               style={{ animation: isVisible ? 'floatStep 3.5s ease-in-out infinite' : 'none' }}
             >
-              {/* ✅ FIX: AR mein width badhao */}
               <div className={`bg-white/80 dark:bg-indigo-950/40 backdrop-blur-lg border border-indigo-200/50 dark:border-white/10 p-6 rounded-3xl shadow-xl shadow-indigo-500/5 dark:shadow-2xl shadow-black/30 ${isRTL ? 'w-[26rem]' : 'w-full max-w-md'}`}>
                 
                 <div className={`mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>

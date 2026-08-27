@@ -154,7 +154,6 @@ export default function FeaturesHero() {
         
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 lg:px-8">
           
-          {/* LEFT SIDE: Text (AR mein Right) */}
           <div className={`flex flex-col justify-center ${isRTL ? 'lg:order-2' : ''}`}>
             
             <div className={`inline-flex items-center gap-2 self-start rounded-full border border-indigo-200/30 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-600 backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-800/80 dark:text-slate-300 ${isRTL ? 'lg:self-end self-end flex-row-reverse text-right' : ''}`}>
@@ -163,10 +162,10 @@ export default function FeaturesHero() {
             </div>
 
             <h1 className={`font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl ${isRTL ? 'text-right' : 'text-left'}`}>
-              {t("featuresHero.title1")} <br />
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
-                {t("featuresHero.titleHighlight")}
-              </span>
+               {t("featuresHero.title1")}{" "}
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
+                    {t("featuresHero.titleHighlight")}
+                </span>
             </h1>
 
             <p className={`mt-4 max-w-lg text-base leading-relaxed text-slate-800 dark:text-slate-100 ${isRTL ? 'text-right self-end' : 'text-left'}`}>
@@ -187,7 +186,7 @@ export default function FeaturesHero() {
               ))}
             </ul>
 
-            {/* ✅ FIX: Mobile aur Desktop dono par Right align */}
+            {/* ✅ FIX: Buttons - Start Free + How It Works */}
             <div className={`mt-6 flex flex-row items-center gap-4 ${isRTL ? 'items-end justify-end' : ''}`}>
               <Link
                 to="/signup"
@@ -196,13 +195,15 @@ export default function FeaturesHero() {
                 {t("featuresHero.ctaPrimary")}
                 <Sparkles className="h-3.5 w-3.5 transition-none" />
               </Link>
-              <a
-                href="#demo"
+              
+              {/* ✅ How It Works - Navigates to /howitworks */}
+              <Link
+                to="/howitworks"
                 className={`inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/20 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                 {t("featuresHero.ctaSecondary")}
                 <ArrowIcon className="h-3.5 w-3.5 transition-none" />
-              </a>
+              </Link>
             </div>
           </div>
 

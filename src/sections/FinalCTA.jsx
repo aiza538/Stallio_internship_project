@@ -1,5 +1,5 @@
 // src/sections/FinalCTA.jsx
-import { ArrowRight, ArrowLeft, Sparkles, Rocket } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
@@ -56,11 +56,13 @@ export default function FinalCTA() {
             {t("finalCta.startFreeTrial")}
             <ArrowIcon className="h-5 w-5 transition-none" />
           </Link>
+          
+          {/* ✅ Login Button - Width wise increase (min-w-[140px]) */}
           <Link
-            to="/pricing"
-            className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
+            to="/login"
+            className={`inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/60 bg-white/60 min-w-[140px] px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
-            {t("finalCta.learnMore")}
+            {t("finalCta.login")}
           </Link>
         </div>
 

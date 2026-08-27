@@ -20,9 +20,20 @@
     "refund": "Refund Policy",
     "rights": "All rights reserved."
   },
-  "hero": { "trustedBy": "Used by 10,000+ sellers worldwide", "title1": "Turn Your Catalog Into A", "title2": "Real Online Storefront", "subtitle": "One link for your catalog and orders, so customers know where to buy and you stay organized.", "getStarted": "Get Started Free", "learnMore": "Learn More", "activeSellers": "Active Sellers", "ordersProcessed": "Orders Processed", "rating": "4.9/5 Rating" },
+  "hero": { "trustedBy": "Used by 10,000+ sellers worldwide", "title1": "Turn Your Catalog Into A", "title2": "Real Online Storefront", "subtitle": "One link for your catalog and orders, so customers know where to buy and you stay organized.", "getStarted": "Get Started Free",  "viewDemo": "View Demo Store", "activeSellers": "Active Sellers", "ordersProcessed": "Orders Processed", "rating": "4.9/5 Rating" },
   "beforeAfter": { "beforeLabel": "Before vs After", "title": "See The", "titleHighlight": "Difference", "subtitle": "See how Stallio transforms your selling experience.", "withoutStallio": "Without Stallio", "withStallio": "With Stallio", "beforeItems": ["Multiple links shared with customers", "Customers get confused where to buy", "You stay unorganized", "Hard to track orders"], "afterItems": ["One link for catalog and orders", "Customers order directly", "You stay organized", "Easy order tracking"], "confusing": "Confusing", "clearSimple": "Clear & Simple" },
-  "finalCta": { "startJourney": "Start Your Journey Today", "title1": "Ready to", "titleHighlight": "Launch", "title2": "Your Store?", "subtitle": "Join thousands of sellers who started their journey with Stallio. No credit card required. Get started in minutes.", "startFreeTrial": "Start Free Trial", "learnMore": "Learn More", "noCard": "No credit card required", "freeDays": "Free for 30 days", "cancelAnytime": "Cancel Anytime" },
+  "finalCta": {
+    "startJourney": "Start Your Journey",
+    "title1": "Ready to",
+    "titleHighlight": "Launch",
+    "title2": "Your Store?",
+    "subtitle": "Join thousands of sellers who started their journey with Stallio. No credit card required. Get started in minutes.",
+    "startFreeTrial": "Start Free Trial",
+    "login": "Login",
+    "noCard": "No credit card required",
+    "freeDays": "Free for 30 days",
+    "cancelAnytime": "Cancel anytime"
+  },
   "howItWorks": {
     "label": "How It Works",
     "stepLabel": "Step {{number}}",
@@ -356,33 +367,33 @@
   "titleHighlight": "link now",
   "description": "Once your store is ready, share your link and start collecting orders instantly.",
   "ctaPrimary": "Start Free",
-  "ctaSecondary": "Learn More"
+  "ctaSecondary": "Explore Features"
 },
   "featuresHero": {
     "badge": "Features",
-    "title1": "Everything you need",
-    "titleHighlight": "to sell from one link.",
-    "description": "Storefront, dashboard, and seller tools in one place: hosted link, unlimited catalog and orders, no buyer payment gateway required.",
+    "title1": "Everything You Need To",
+    "titleHighlight": "Sell Better",
+    "description": "Stallio gives you a hosted shop link, dashboard, and all the tools you need to manage products, orders, coupons, delivery, and invoices.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "How It Works",
     "bullets": [
       "stallio.shop link, no domain purchase",
       "Unlimited products, photos, and orders",
       "PDF invoices and order export",
       "Coupons, delivery fees, and COD at checkout"
     ],
-    "ctaPrimary": "Start Free",
-    "ctaSecondary": "View Demo Store",
     "features": {
       "step1": {
-        "title": "Catalog, checkout, orders, and invoices in one dashboard loop."
+        "title": "Dashboard with orders & product management"
       },
       "step2": {
-        "title": "Orders with payment and delivery status"
+        "title": "Products & categories"
       },
       "step3": {
-        "title": "Products with variants, sales, and stock"
+        "title": "Coupons & delivery settings"
       },
       "step4": {
-        "title": "PDF invoice ready to send"
+        "title": "PDF invoices & shop pages"
       }
     }
   },
@@ -621,5 +632,113 @@
     "contactSupport": "Contact support",
     "expiry": "The verification link expires in 24 hours. If you're still having trouble,",
     "contactSupportLink": "contact support"
+  },
+  "privacy": {
+    "backToHome": "Back to Home",
+    "titlePart1": "Privacy",
+    "titlePart2": " Policy",
+    "section1": {
+      "title": "Who we are",
+      "content": "Stallio gives sellers a hosted shop link and a dashboard to manage products and orders. Stallio is responsible for the account and platform data described below."
+    },
+    "section2": {
+      "title": "What we collect",
+      "accountDetails": "Account details:",
+      "accountDetailsDesc": "email, password (stored securely), shop name, username, country, currency, logo, and dashboard settings.",
+      "shopContent": "Shop content:",
+      "shopContentDesc": "products, images, categories, coupons, delivery settings, and pages you publish (Home, About, Contact, and similar).",
+      "orders": "Orders on your shop:",
+      "ordersDesc": "customer name, phone, address, optional email, cart items, and order totals. You choose how customers pay. Stallio does not process customer payments for your shop.",
+      "messages": "Messages:",
+      "messagesDesc": "contact form submissions and support chat between you and Stallio.",
+      "technical": "Technical data:",
+      "technicalDesc": "sign-in session, theme or language preference in your browser, and standard security logs from our hosting and email providers."
+    },
+    "section3": {
+      "title": "How we use your data",
+      "content": "We use this information to run the platform, sign you in, host your shop, send orders to your dashboard, send service emails (password reset, welcome, order alerts, subscription reminders), prevent abuse, and reply to support requests.",
+      "note": "We do not sell your personal information."
+    },
+    "section4": {
+      "title": "Sharing and storage",
+      "content": "We use trusted providers for hosting, image storage, and email. They may only process data to run the service for us.",
+      "providers": "We may share information if the law requires it or to protect users and the platform.",
+      "legal": "Data may be stored or processed in countries where our providers operate.",
+      "storage": "Data is encrypted and stored securely."
+    },
+    "section5": {
+      "title": "How long we keep data",
+      "content": "We keep your information while your account is active and for a reasonable time after that for backups, security, and legal needs.",
+      "deleteNote": "You can delete your seller account from dashboard settings. This removes your account and shop data from our systems, except where we must keep some records by law."
+    },
+    "section6": {
+      "title": "Your rights and updates",
+      "content": "Depending on your location, you may ask us to access, correct, export, or delete personal data we hold about you. Use the Contact page to make a request.",
+      "updateNote": "We may update this policy by posting a new version on this page."
+    }
+  },
+  "terms": {
+    "backToHome": "Back to Home",
+    "titlePart1": "Terms of",
+    "titlePart2": " Service",
+    "lastUpdated": "Last updated",
+    "date": "1st June 2026",
+    "section1": {
+      "title": "What Stallio provides",
+      "content": "Stallio gives you a hosted shop at stallio.shop/your-username and a dashboard to manage products, orders, coupons, delivery settings, and shop pages. Stallio does not process or settle payments between you and your customers. You tell customers how to pay and mark orders paid in your dashboard. We may add, change, or remove features with reasonable notice when possible."
+    },
+    "section2": {
+      "title": "Your account",
+      "content": "You must give accurate signup details and keep your login secure. You are responsible for activity on your account. We may suspend your shop or dashboard for non-payment, abuse, or risk to other users, as described on the Pricing page or in messages we send you."
+    },
+    "section3": {
+      "title": "Acceptable use",
+      "content": "Do not use Stallio for illegal products or services, fraud, harassment, malware, or content you do not have rights to use. We may remove content or close accounts that break these rules."
+    },
+    "section4": {
+      "title": "Your content",
+      "content": "You own the content you upload. You give Stallio permission to host and display it only to run the service for your shop. You are responsible for your shop content and for handling customer data in a lawful way.",
+      "note": "You are fully responsible for all content you publish on your shop."
+    },
+    "section5": {
+      "title": "Subscriptions and fees",
+      "content": "You can start without a payment card. Paid plans and prices are shown on the Pricing page. Subscription payments are collected as described on Pricing or by our team and recorded on your account. Taxes may apply. Cancelling a monthly plan stops future charges as explained on Pricing or in your account messages."
+    },
+    "section6": {
+      "title": "Liability and general",
+      "content": "The service is provided as is and as available, to the extent allowed by law. Where the law allows, Stallio's liability for claims about the service is limited to the fees you paid us in the twelve months before the claim, or fifty US dollars if you paid no fees.",
+      "note": "We may update these terms by posting a new version on this page. Questions: use the Contact page."
+    }
+  },
+  "refund": {
+    "backToHome": "Back to Home",
+    "titlePart1": "Refund",
+    "titlePart2": " Policy",
+    "section1": {
+      "title": "What this policy covers",
+      "content": "This policy applies only to subscription fees you pay Stallio for seller plans on stallio.shop.",
+      "note": "It does not cover orders placed on your shop. You handle refunds for your own shop orders with your customers."
+    },
+    "section2": {
+      "title": "Free plan",
+      "content": "You can create a seller account and use free features without a payment card. No subscription fee means no refund applies."
+    },
+    "section3": {
+      "title": "Monthly plans",
+      "content": "When you cancel a monthly paid plan, future billing stops. You keep access until the end of the period you already paid for, as shown on the Pricing page or in your account messages. We usually do not refund unused days in a month you already paid for, unless the law requires it or we confirm a billing mistake on our side."
+    },
+    "section4": {
+      "title": "Yearly plans",
+      "content": "Yearly plans are paid in advance for the full term shown on the Pricing page. If you cancel early, we do not automatically refund the remaining months unless we confirm it in writing or your local law requires it."
+    },
+    "section5": {
+      "title": "Billing mistakes",
+      "content": "If we charged you twice for the same period, charged the wrong amount, or kept billing after a confirmed cancellation, contact us within 30 days of the charge. After we verify the issue, we will fix the charge or send a refund to the same payment method when possible."
+    },
+    "section6": {
+      "title": "How to request a refund",
+      "content": "Use the Contact page on this website. Include your account email, shop username, charge date, and a short description of the issue. We may ask for more details to verify the request.",
+      "note": "Approved refunds are usually processed within 5 to 10 business days, depending on your payment provider. We may update this policy by posting a new version on this page."
+    }
   }
-}
+  }

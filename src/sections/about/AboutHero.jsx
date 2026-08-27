@@ -82,8 +82,7 @@ export default function AboutHero() {
             </div>
 
             <h1 className={`font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl ${isRTL ? 'text-right' : 'text-left'}`}>
-              {t("aboutHero.title1")}
-              <br />
+              {t("aboutHero.title1")}{" "}
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
                 {t("aboutHero.titleHighlight")}
               </span>

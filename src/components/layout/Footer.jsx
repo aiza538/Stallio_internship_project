@@ -1,7 +1,7 @@
 // src/components/layout/Footer.jsx
-import { Mail, Linkedin, Instagram, Facebook, X } from "lucide-react";
+import { Mail, Linkedin, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom"; 
-import Logo from "../ui/Logo"; // ✅ Logo import same hai
+import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import { useTranslation } from "react-i18next";
 
@@ -12,10 +12,8 @@ export default function Footer() {
   // Desktop ke liye order set karna (md se upar)
   const getDesktopOrder = (section) => {
     if (!isRTL) {
-      // English LTR: Logo(1), Product(2), Company(3), Contact(4)
       return { logo: 'md:order-1', product: 'md:order-2', company: 'md:order-3', contact: 'md:order-4' }[section];
     } else {
-      // Arabic RTL: Contact(1), Product(2), Company(3), Logo(4) -> Right side par Logo
       return { logo: 'md:order-4', product: 'md:order-2', company: 'md:order-3', contact: 'md:order-1' }[section];
     }
   };
@@ -23,10 +21,8 @@ export default function Footer() {
   // Mobile ke liye order set karna (md se neeche)
   const getMobileOrder = (section) => {
     if (!isRTL) {
-      // English LTR: Logo(1), Product(2), Company(3), Contact(4)
       return { logo: 'order-1', product: 'order-2', company: 'order-3', contact: 'order-4' }[section];
     } else {
-      // Arabic RTL Mobile: Logo(1) sab se upar, Product(2), Company(3), Contact(4) sab se neeche
       return { logo: 'order-1', product: 'order-2', company: 'order-3', contact: 'order-4' }[section];
     }
   };
@@ -36,13 +32,12 @@ export default function Footer() {
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="grid grid-cols-2 gap-y-6 gap-x-14 sm:gap-6 lg:gap-12 md:grid-cols-4">
           
-          {/* 1. LOGO COLUMN - Logo bilkul same rahega */}
+          {/* 1. LOGO COLUMN */}
           <div className={`flex flex-col gap-3 col-span-2 md:col-span-1 mb-2 sm:mb-0 
             ${getMobileOrder('logo')} 
             ${getDesktopOrder('logo')} 
             ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
-            <Logo /> {/* ✅ Logo untouched */}
-            {/* RTL mein text size + bold */}
+            <Logo />
             <p className={`${isRTL ? 'text-base font-bold' : 'text-xs sm:text-sm'} text-slate-500 dark:text-slate-400 leading-relaxed max-w-[80%] sm:max-w-xs break-words`}>
               {t("footer.tagline")}
             </p>
@@ -108,8 +103,18 @@ export default function Footer() {
                   <a href="#" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-indigo-200/50 text-slate-500 transition-colors hover:border-brand-400 hover:bg-brand-50 hover:text-brand-600 dark:border-indigo-800/30 dark:text-slate-400 dark:hover:border-brand-500 dark:hover:bg-brand-500/10 dark:hover:text-brand-400">
                     <Facebook className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </a>
+                  {/* ✅ Twitter/X Icon - Fixed with SVG */}
                   <a href="#" className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-indigo-200/50 text-slate-500 transition-colors hover:border-brand-400 hover:bg-brand-50 hover:text-brand-600 dark:border-indigo-800/30 dark:text-slate-400 dark:hover:border-brand-500 dark:hover:bg-brand-500/10 dark:hover:text-brand-400">
-                    <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="16" 
+                      height="16" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor" 
+                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                    >
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                   </a>
                 </div>
               </div>

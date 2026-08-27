@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.jsx
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Home as HomeIcon, Info, ListChecks, Zap, CreditCard, Mail, LogIn, UserPlus } from "lucide-react";
@@ -20,6 +19,9 @@ const NAV_LINKS = [
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  // ✅ NEW: track mobile language dropdown open/close so we can release
+  // the panel's overflow-hidden clipping while it's open.
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const isRTL = i18n.language === 'ar';
 
   // ✅ FIX: Language switch hone par mobile panel band kar dena
@@ -129,7 +131,10 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Panel */}
-      <div className={`relative overflow-hidden border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? "max-h-[34rem]" : "max-h-0"}`}>
+      {/* ✅ FIX: overflow-hidden is released to overflow-visible while the
+          language dropdown is open, so the dropdown list is no longer
+          clipped by the panel's collapse/expand transition wrapper. */}
+      <div className={`relative border-t border-indigo-200/30 bg-gradient-to-br from-indigo-50/60 via-purple-50/40 to-white/80 transition-[max-height] duration-300 ease-snappy dark:border-indigo-800/20 dark:bg-gradient-to-br dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-slate-900/80 lg:hidden ${isOpen ? (langDropdownOpen ? "max-h-[44rem]" : "max-h-[34rem]") : "max-h-0"} ${langDropdownOpen ? "overflow-visible" : "overflow-hidden"}`}>
         <div className={`flex flex-col gap-1 px-6 py-4 ${isRTL ? 'items-end' : 'items-start'}`}>
           {NAV_LINKS.map(({ labelKey, to, icon: Icon, isRoute }) => {
             const mobileBase = `flex items-center gap-2.5 rounded-lg transition-colors duration-300 ${isRTL ? 'flex-row-reverse px-3.5 py-3 text-[16px] font-extrabold' : 'px-3 py-2.5 text-sm font-medium'}`;
@@ -159,7 +164,11 @@ export default function Navbar() {
           })}
 
           <div className={`relative z-10 mt-3 border-t border-indigo-200/30 pt-4 dark:border-indigo-800/20 ${isRTL ? 'w-full flex justify-end' : ''}`}>
-            <LanguageSwitcher />
+            {/* ✅ NEW: onOpenChange lets Navbar know when this dropdown opens/closes.
+                variant="mobile" makes the option list render inline (normal flow)
+                so it pushes the Login/Start Free buttons down instead of
+                overlapping them. */}
+            <LanguageSwitcher onOpenChange={setLangDropdownOpen} variant="mobile" />
           </div>
 
           <div className={`mt-3 flex flex-col gap-2 ${isRTL ? 'items-end' : 'items-start'} w-full`}>

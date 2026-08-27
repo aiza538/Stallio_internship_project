@@ -9,7 +9,13 @@ const LANGUAGES = [
   { code: "ar", label: "العربية" },
 ];
 
-export default function LanguageSwitcher() {
+// ✅ NEW: accepts an optional onOpenChange(isOpen) callback so parent
+// components (like Navbar's mobile panel) can react when this dropdown
+// opens or closes — e.g. to release an overflow-hidden clip.
+// ✅ NEW: variant="mobile" renders the option list inline (normal document
+// flow) instead of absolutely positioned, so it pushes elements below it
+// down instead of overlapping them — used in the mobile nav panel.
+export default function LanguageSwitcher({ onOpenChange, variant = "desktop" }) {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(
@@ -17,6 +23,11 @@ export default function LanguageSwitcher() {
   );
   const dropdownRef = useRef(null);
   const isRTL = i18n.language === 'ar';
+
+  // ✅ NEW: notify parent whenever open state changes
+  useEffect(() => {
+    onOpenChange?.(isOpen);
+  }, [isOpen, onOpenChange]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -49,8 +60,8 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full z-50 mt-2 w-40 overflow-hidden rounded-xl border border-indigo-200/50 bg-white/95 shadow-lg backdrop-blur-md dark:border-indigo-800/30 dark:bg-slate-900/95 ${
-          isRTL ? 'right-0' : 'left-0 sm:left-auto sm:right-0'
+        <div className={`${variant === "mobile" ? "relative mt-2 w-full" : "absolute top-full z-50 mt-2 w-40"} overflow-hidden rounded-xl border border-indigo-200/50 bg-white/95 shadow-lg backdrop-blur-md dark:border-indigo-800/30 dark:bg-slate-900/95 ${
+          variant === "mobile" ? "" : (isRTL ? 'right-0' : 'left-0 sm:left-auto sm:right-0')
         }`}>
           {LANGUAGES.map((lang) => (
             <button
