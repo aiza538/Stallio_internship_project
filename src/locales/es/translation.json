@@ -21,7 +21,28 @@
     "rights": "Todos los derechos reservados."
   },
   "hero": { "trustedBy": "Usado por más de 10,000 vendedores en todo el mundo", "title1": "Convierte tu catálogo en una", "title2": "Tienda online real", "subtitle": "Un enlace para tu catálogo y pedidos, para que los clientes sepan dónde comprar y tú te mantengas organizado.", "getStarted": "Empieza gratis", "viewDemo": "Ver tienda de demostración", "activeSellers": "Vendedores activos", "ordersProcessed": "Pedidos procesados", "rating": "Calificación 4.9/5" },
-  "beforeAfter": { "beforeLabel": "Antes vs Después", "title": "Mira la", "titleHighlight": "Diferencia", "subtitle": "Mira cómo Stallio transforma tu experiencia de venta.", "withoutStallio": "Sin Stallio", "withStallio": "Con Stallio", "beforeItems": ["Múltiples enlaces compartidos con clientes", "Los clientes se confunden dónde comprar", "Te mantienes desorganizado", "Difícil rastrear pedidos"], "afterItems": ["Un enlace para catálogo y pedidos", "Los clientes ordenan directamente", "Te mantienes organizado", "Fácil rastreo de pedidos"], "confusing": "Confuso", "clearSimple": "Claro y simple" },
+  "beforeAfter": {
+    "badgeLabel": "Antes y Después",
+    "title": "Ve la",
+    "titleHighlight": "Diferencia",
+    "subtitle": "Así es como Stallio transforma tu experiencia de venta.",
+    "withoutStallio": "Sin Stallio",
+    "withStallio": "Con Stallio",
+    "confusing": "Confuso",
+    "clearSimple": "Claro y simple",
+    "beforeItems": [
+      "Pedidos dispersos en chats",
+      "No hay un solo lugar para precios y fotos",
+      "Los clientes hacen las mismas preguntas repetidamente",
+      "Pagos y entregas improvisados"
+    ],
+    "afterItems": [
+      "Un enlace: catálogo + carrito",
+      "Páginas de productos claras que puedes compartir en cualquier lugar",
+      "Menos mensajes de '¿cuánto cuesta?'",
+      "Una tienda que se ve profesional"
+    ]
+  },
   "finalCta": {
     "startJourney": "Comienza tu viaje",
     "title1": "¿Listo para",
@@ -113,26 +134,27 @@
   },
     "auth": {
     "login": {
-      "welcomeBack": "Bienvenido",
-      "back": "de nuevo",
-      "title1": "Tu tienda,",
-      "titleHighlight": "a un enlace de distancia.",
-      "subtitle": "Gestiona tu catálogo, pedidos y clientes desde un solo panel hermoso.",
-      "sellerLogin": "Inicio de sesión de vendedor",
-      "signIn": "Inicia sesión en tu panel de Stallio",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
-      "rememberMe": "Recuérdame",
-      "forgotPassword": "¿Olvidaste tu contraseña?",
-      "signInButton": "Iniciar sesión",
-      "noAccount": "¿No tienes una cuenta?",
-      "signUpFree": "Regístrate gratis",
-      "secureReliable": "Seguro y confiable",
-      "dataProtected": "Los datos de tu negocio están protegidos.",
-      "emailRequired": "El correo electrónico es obligatorio",
-      "passwordRequired": "La contraseña es obligatoria",
-      "fillAllFields": "Por favor, completa todos los campos obligatorios."
-    },
+  "welcomeBack": "Bienvenido",
+  "back": "de nuevo",
+  "title1": "Tu tienda,",
+  "titleHighlight": "a un enlace de distancia.",
+  "subtitle": "Gestiona tu catálogo, pedidos y clientes desde un solo panel hermoso.",
+  "sellerLogin": "Inicio de sesión de vendedor",
+  "signIn": "Inicia sesión en tu panel de Stallio",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "passwordPlaceholder": "Ingresa tu contraseña",
+  "rememberMe": "Recuérdame",
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "signInButton": "Iniciar sesión",
+  "noAccount": "¿No tienes una cuenta?",
+  "signUpFree": "Regístrate gratis",
+  "secureReliable": "Seguro y confiable",
+  "dataProtected": "Los datos de tu negocio están protegidos.",
+  "emailRequired": "El correo electrónico es obligatorio",
+  "passwordRequired": "La contraseña es obligatoria",
+  "fillAllFields": "Por favor, completa todos los campos obligatorios."
+},
     "signup": {
       "sellerSignup": "Registro de vendedor",
       "createYourShop": "Crea tu",
@@ -742,5 +764,29 @@
       "content": "Usa la página de Contacto en este sitio web. Incluye tu correo electrónico de cuenta, nombre de usuario de la tienda, fecha del cargo y una breve descripción del problema. Es posible que solicitemos más detalles para verificar la solicitud.",
       "note": "Los reembolsos aprobados generalmente se procesan dentro de 5 a 10 días hábiles, dependiendo de tu proveedor de pago. Podemos actualizar esta política publicando una nueva versión en esta página."
     }
+  },
+  "sidebar": {
+    "dashboard": "Panel",
+    "products": "Productos",
+    "orders": "Pedidos",
+    "shop": "Tienda",
+    "coupons": "Cupones",
+    "delivery": "Envío",
+    "messages": "Mensajes",
+    "analytics": "Analítica",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido a tu Panel",
+    "welcomeDesc": "Esto es lo que está pasando con tu tienda hoy.",
+    "revenue": "Ingresos",
+    "orders": "Pedidos",
+    "rating": "Calificación",
+    "recentOrders": "Pedidos Recientes",
+    "paid": "Pagado",
+    "shipped": "Enviado",
+    "pending": "Pendiente"
   }
+
 }

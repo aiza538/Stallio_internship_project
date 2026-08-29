@@ -21,7 +21,28 @@
     "rights": "All rights reserved."
   },
   "hero": { "trustedBy": "Used by 10,000+ sellers worldwide", "title1": "Turn Your Catalog Into A", "title2": "Real Online Storefront", "subtitle": "One link for your catalog and orders, so customers know where to buy and you stay organized.", "getStarted": "Get Started Free",  "viewDemo": "View Demo Store", "activeSellers": "Active Sellers", "ordersProcessed": "Orders Processed", "rating": "4.9/5 Rating" },
-  "beforeAfter": { "beforeLabel": "Before vs After", "title": "See The", "titleHighlight": "Difference", "subtitle": "See how Stallio transforms your selling experience.", "withoutStallio": "Without Stallio", "withStallio": "With Stallio", "beforeItems": ["Multiple links shared with customers", "Customers get confused where to buy", "You stay unorganized", "Hard to track orders"], "afterItems": ["One link for catalog and orders", "Customers order directly", "You stay organized", "Easy order tracking"], "confusing": "Confusing", "clearSimple": "Clear & Simple" },
+  "beforeAfter": {
+    "badgeLabel": "Before & After",
+    "title": "See The",
+    "titleHighlight": "Difference",
+    "subtitle": "Here is how Stallio transforms your selling experience.",
+    "withoutStallio": "Without Stallio",
+    "withStallio": "With Stallio",
+    "confusing": "Confusing",
+    "clearSimple": "Clear & Simple",
+    "beforeItems": [
+      "Orders scattered across chats",
+      "No single place for prices & photos",
+      "Customers ask the same questions on repeat",
+      "Payments and delivery feel improvised"
+    ],
+    "afterItems": [
+      "One link: catalog + cart",
+      "Clear product pages you can share anywhere",
+      "Fewer 'how much?' messages",
+      "A storefront that looks intentional"
+    ]
+  },
   "finalCta": {
     "startJourney": "Start Your Journey",
     "title1": "Ready to",
@@ -113,26 +134,27 @@
   },
     "auth": {
     "login": {
-      "welcomeBack": "Welcome",
-      "back": "back",
-      "title1": "Your store,",
-      "titleHighlight": "one link away.",
-      "subtitle": "Manage your catalog, orders, and customers from a single beautiful dashboard.",
-      "sellerLogin": "Seller Login",
-      "signIn": "Sign in to your Stallio dashboard",
-      "email": "Email address",
-      "password": "Password",
-      "rememberMe": "Remember me",
-      "forgotPassword": "Forgot password?",
-      "signInButton": "Sign in",
-      "noAccount": "Don't have an account?",
-      "signUpFree": "Sign up free",
-      "secureReliable": "Secure & Reliable",
-      "dataProtected": "Your business data is protected.",
-      "emailRequired": "Email is required",
-      "passwordRequired": "Password is required",
-      "fillAllFields": "Please fill in all required fields."
-    },
+  "welcomeBack": "Welcome",
+  "back": "back",
+  "title1": "Your store,",
+  "titleHighlight": "one link away.",
+  "subtitle": "Manage your catalog, orders, and customers from a single beautiful dashboard.",
+  "sellerLogin": "Seller Login",
+  "signIn": "Sign in to your Stallio dashboard",
+  "email": "Email address",
+  "password": "Password",
+  "passwordPlaceholder": "Your Password",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot password?",
+  "signInButton": "Sign in",
+  "noAccount": "Don't have an account?",
+  "signUpFree": "Sign up free",
+  "secureReliable": "Secure & Reliable",
+  "dataProtected": "Your business data is protected.",
+  "emailRequired": "Email is required",
+  "passwordRequired": "Password is required",
+  "fillAllFields": "Please fill in all required fields."
+},
     "signup": {
       "sellerSignup": "Seller Signup",
       "createYourShop": "Create your",

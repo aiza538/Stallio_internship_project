@@ -63,11 +63,18 @@ export default function Hero() {
           </Link>
           {/* ✅ View Demo Store - Learn More replaced */}
           <Link
-            to="/about"
+            to="#"
             className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             {t("hero.viewDemo")}
           </Link>
+
+           {/* <Link
+            to="/seller/dashboard"
+            className={`inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 px-8 py-3.5 text-base font-semibold text-slate-600 transition-colors duration-300 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-md dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:bg-white/15 dark:hover:text-indigo-400 ${isRTL ? 'flex-row-reverse' : ''}`}
+          >
+            {t("hero.viewDemo")}
+          </Link> */}
         </div>
 
         <div className={`mt-12 flex flex-wrap items-center justify-center gap-8 text-center ${isRTL ? 'flex-row-reverse' : ''}`}>

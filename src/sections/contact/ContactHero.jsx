@@ -42,13 +42,16 @@ export default function ContactHero() {
           <span className={`mb-2 inline-block font-mono text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300 ${isRTL ? 'block' : ''}`}>
             {t("contactHero.label")}
           </span>  
-          <h1 className={`font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 dark:text-white ${isRTL ? 'text-right' : 'text-center'}`}>
+          {/* ✅ FIX: mobile heading text-3xl (was text-2xl) so it's clearly bigger
+              than the "Contact info" sub-heading (text-2xl) inside ContactForm.jsx */}
+          <h1 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white ${isRTL ? 'text-right' : 'text-center'}`}>
             {t("contactHero.title1")}{" "}
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-300 dark:to-violet-300">
               {t("contactHero.titleHighlight")}
             </span>
           </h1>
-          <p className={`mt-3 text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed max-w-3xl mx-auto ${isRTL ? 'text-right' : 'text-center'}`}>
+          {/* ✅ FIX: mobile description text-base (was text-sm) to match the bigger heading */}
+          <p className={`mt-3 text-base sm:text-lg md:text-xl text-slate-700 dark:text-slate-200 leading-relaxed max-w-3xl mx-auto ${isRTL ? 'text-right' : 'text-center'}`}>
             {t("contactHero.description")}
           </p>
         </div>
