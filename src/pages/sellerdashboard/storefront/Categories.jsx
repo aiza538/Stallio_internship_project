@@ -7,4 +7,4 @@ export default function Categories() {
       <p className="text-gray-600 mt-2">Manage your store categories here.</p>
     </div>
   );
-}
+} 

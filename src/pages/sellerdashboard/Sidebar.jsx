@@ -30,6 +30,8 @@ export default function Sidebar() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
 
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   const isActive = (path) => {
     if (path === "/dashboard") {
       return location.pathname === "/dashboard";
@@ -47,40 +49,15 @@ export default function Sidebar() {
 
   const activeDot = (path) => (
     isActive(path) && (
-      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-purple-600 dark:bg-purple-400"></span>
+      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-full bg-purple-600 dark:bg-purple-400" />
     )
   );
 
-  return (
-    <aside className={`
-      w-64 h-screen flex flex-col fixed left-0 top-0 z-50
-      ${isDark 
-        ? 'bg-[#0d071a] border-r border-purple-900/30' 
-        : 'bg-white/90 backdrop-blur-lg border-r border-purple-100/50'
-      }
-    `}>
-      
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {!isDark && (
-          <>
-            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-purple-200/30 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-indigo-200/20 blur-3xl" />
-          </>
-        )}
-        {isDark && (
-          <>
-            <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl" />
-          </>
-        )}
-      </div>
-
-      {/* Store Brand */}
-      <div className={`
-        relative z-10 px-5 py-4 border-b
-        ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}
-      `}>
+  // Sidebar Content
+  const sidebarContent = (
+    <>
+      {/* Brand */}
+      <div className={`px-5 py-4 border-b ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}`}>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
             <LayoutDashboard className="w-5 h-5" />
@@ -93,8 +70,7 @@ export default function Sidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 flex-1 overflow-y-auto px-3 py-4 space-y-1">
-        
+      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         <Link to="/dashboard" className={navLinkClass("/dashboard")}>
           {activeDot("/dashboard")}
           <LayoutDashboard className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
@@ -106,25 +82,21 @@ export default function Sidebar() {
           <div className="px-3 py-2 text-xs font-semibold text-purple-500 dark:text-purple-400 uppercase tracking-wider">
             From Buyers
           </div>
-          
           <div className="mt-1 space-y-0.5">
             <Link to="/dashboard/messages" className={navLinkClass("/dashboard/messages")}>
               {activeDot("/dashboard/messages")}
               <MessageSquare className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
               <span>Messages</span>
-              {/* ✅ Badge removed */}
             </Link>
             <Link to="/dashboard/orders" className={navLinkClass("/dashboard/orders")}>
               {activeDot("/dashboard/orders")}
               <ShoppingBag className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
               <span>Orders</span>
-              {/* ✅ Badge removed */}
             </Link>
             <Link to="/dashboard/notifications" className={navLinkClass("/dashboard/notifications")}>
               {activeDot("/dashboard/notifications")}
               <Bell className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
               <span>Notifications</span>
-              {/* ✅ Badge removed */}
             </Link>
           </div>
         </div>
@@ -134,7 +106,6 @@ export default function Sidebar() {
           <div className="px-3 py-2 text-xs font-semibold text-purple-500 dark:text-purple-400 uppercase tracking-wider">
             Your Storefront
           </div>
-          
           <div className="mt-1 space-y-0.5">
             <Link to="/dashboard/home" className={navLinkClass("/dashboard/home")}>
               {activeDot("/dashboard/home")}
@@ -184,7 +155,6 @@ export default function Sidebar() {
           <div className="px-3 py-2 text-xs font-semibold text-purple-500 dark:text-purple-400 uppercase tracking-wider">
             Settings
           </div>
-          
           <div className="mt-1 space-y-0.5">
             <Link to="/dashboard/chat" className={navLinkClass("/dashboard/chat")}>
               {activeDot("/dashboard/chat")}
@@ -201,30 +171,18 @@ export default function Sidebar() {
       </nav>
 
       {/* Bottom Actions */}
-      <div className={`
-        relative z-10 px-3 py-4 border-t space-y-1
-        ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}
-      `}>
-        
-        {/* Dark Mode Toggle */}
+      <div className={`px-3 py-4 border-t space-y-1 ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}`}>
         <button
           onClick={toggleTheme}
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-slate-600 dark:text-slate-300 hover:bg-purple-50/50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-300"
         >
           {isDark ? (
-            <>
-              <Sun className="w-4.5 h-4.5 text-yellow-500" />
-              <span>Light Mode</span>
-            </>
+            <><Sun className="w-4.5 h-4.5 text-yellow-500" /> <span>Light Mode</span></>
           ) : (
-            <>
-              <Moon className="w-4.5 h-4.5 text-purple-500" />
-              <span>Dark Mode</span>
-            </>
+            <><Moon className="w-4.5 h-4.5 text-purple-500" /> <span>Dark Mode</span></>
           )}
         </button>
 
-        {/* View Store */}
         <button 
           className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-slate-600 dark:text-slate-300 hover:bg-purple-50/50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-300 cursor-default"
           onClick={(e) => e.preventDefault()}
@@ -233,12 +191,41 @@ export default function Sidebar() {
           <span>View Store</span>
         </button>
 
-        {/* Logout */}
         <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-red-500 dark:text-red-400 hover:bg-red-50/50 dark:hover:bg-red-900/20">
           <LogOut className="w-4.5 h-4.5" />
           <span>Logout</span>
         </button>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Mobile Hamburger */}
+      <button
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-purple-600 text-white shadow-lg"
+      >
+        <LayoutDashboard className="w-5 h-5" />
+      </button>
+
+      {/* Mobile Overlay */}
+      {isMobileOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-black/50 z-40"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`
+        w-64 h-screen flex flex-col fixed left-0 top-0 z-50
+        transition-transform duration-300 ease-in-out
+        ${isDark ? 'bg-[#0d071a] border-r border-purple-900/30' : 'bg-white/90 backdrop-blur-lg border-r border-purple-100/50'}
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        {sidebarContent}
+      </aside>
+    </>
   );
 }
