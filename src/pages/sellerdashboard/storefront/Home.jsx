@@ -25,6 +25,7 @@ import {
   Heart,
   Zap,
   Gift,
+  FileText
 } from "lucide-react";
 
 // ===== Icon library =====
@@ -475,10 +476,14 @@ export default function HomeStorefront() {
         </div>
       )}
 
-      {/* Header */}
+      {/* ✅ Header with "Your Storefront" */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
         <div>
-          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+          <span className="flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase text-purple-500 dark:text-purple-400">
+            <FileText className="w-3.5 h-3.5" />
+            Your Storefront
+          </span>
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap mt-1">
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Home</h1>
             <span className={`px-2 py-0.5 text-[10px] sm:text-xs font-bold rounded-full border-2 ${homeData?.status === 'published' ? 'bg-emerald-100 dark:bg-emerald-900/40 border-emerald-300 dark:border-emerald-600 text-emerald-700 dark:text-emerald-300' : 'bg-amber-100 dark:bg-amber-900/40 border-amber-300 dark:border-amber-600 text-amber-700 dark:text-amber-300'}`}>
               ● {homeData?.status === 'published' ? 'Live' : 'Draft'}

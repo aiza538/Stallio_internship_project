@@ -21,7 +21,8 @@ import {
   AlertCircle,
   CheckCircle,
   X,
-  Save
+  Save,
+  FileText
 } from "lucide-react";
 
 function CustomDropdown({ value, options, onChange, isDark, placeholder = "Select...", icon: Icon = null, rounded = "rounded-xl" }) {
@@ -46,7 +47,7 @@ function CustomDropdown({ value, options, onChange, isDark, placeholder = "Selec
         type="button"
         onClick={() => setIsOpen(prev => !prev)}
         className={`w-full ${Icon ? 'pl-9 pr-7' : 'px-3'} py-2 ${rounded} text-xs sm:text-sm border-2 flex items-center justify-between gap-2 transition-colors ${
-          isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500 hover:bg-purple-500/10' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500 hover:bg-purple-50'
+          isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500 hover:bg-purple-500/10' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500 hover:bg-purple-50'
         } ${isOpen ? 'ring-2 ring-purple-500 border-purple-500' : ''} focus:outline-none`}
       >
         {Icon && <Icon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />}
@@ -57,7 +58,7 @@ function CustomDropdown({ value, options, onChange, isDark, placeholder = "Selec
       {isOpen && (
         <div
           className={`absolute z-20 mt-1.5 w-full rounded-xl border-2 shadow-2xl overflow-hidden py-1 max-h-56 overflow-y-auto ${
-            isDark ? 'bg-gray-800 border-purple-500/40' : 'bg-white border-purple-300'
+            isDark ? 'bg-gray-800 border-purple-500/60' : 'bg-white border-purple-300'
           }`}
         >
           {options.map(opt => (
@@ -315,7 +316,7 @@ export default function ProductsStorefront() {
     <div className="space-y-4 sm:space-y-5">
 
       {toastMessage && (
-        <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 px-4 py-3 rounded-xl shadow-lg border-2 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} flex items-center gap-2 max-w-sm mx-auto sm:mx-0`}>
+        <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 px-4 py-3 rounded-xl shadow-lg border-2 ${isDark ? 'bg-gray-800 border-purple-500' : 'bg-white border-gray-200'} flex items-center gap-2 max-w-sm mx-auto sm:mx-0`}>
           <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
           <span className="text-sm font-medium text-gray-800 dark:text-gray-200 flex-1">{toastMessage}</span>
           <button onClick={() => setToastMessage(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
@@ -324,9 +325,14 @@ export default function ProductsStorefront() {
         </div>
       )}
       
+      {/* ✅ Header with "Your Storefront" */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Products</h1>
+          <span className="flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase text-purple-500 dark:text-purple-400">
+            <FileText className="w-3.5 h-3.5" />
+            Your Storefront
+          </span>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">Products</h1>
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
             Manage the products shown on your store.
           </p>
@@ -352,7 +358,7 @@ export default function ProductsStorefront() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className={`
               w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-lg border-2
-              ${isDark ? 'bg-gray-800/50 border-purple-500/30 text-white placeholder-gray-400 hover:border-purple-500' : 'bg-white border-purple-300 text-gray-900 placeholder-gray-400 hover:border-purple-500'}
+              ${isDark ? 'bg-gray-800/50 border-purple-500/60 text-white placeholder-gray-400 hover:border-purple-500' : 'bg-white border-purple-300 text-gray-900 placeholder-gray-400 hover:border-purple-500'}
               focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500
               transition-colors duration-200
             `}
@@ -395,7 +401,7 @@ export default function ProductsStorefront() {
       </div>
 
       {filteredProducts.length === 0 ? (
-        <div className={`py-8 sm:py-12 text-center rounded-xl ${isDark ? 'bg-gray-800/50 border border-gray-700' : 'bg-white border border-gray-100'}`}>
+        <div className={`py-8 sm:py-12 text-center rounded-xl ${isDark ? 'bg-gray-800/50 border-2 border-purple-500/60' : 'bg-white border-2 border-purple-200'}`}>
           <Package className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">No Products Yet</h3>
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">Add your first product to show it on your shop.</p>
@@ -413,7 +419,7 @@ export default function ProductsStorefront() {
                 key={product.id}
                 className={`
                   rounded-xl overflow-hidden transition-colors duration-200
-                  ${isDark ? 'bg-gray-800/50 border-2 border-purple-500/25 hover:border-purple-500 hover:bg-purple-500/5' : 'bg-white border-2 border-purple-200 hover:border-purple-500 hover:bg-purple-50/50'}
+                  ${isDark ? 'bg-gray-800/50 border-2 border-purple-600/50 hover:border-purple-500 hover:bg-purple-500/5' : 'bg-white border-2 border-purple-200 hover:border-purple-500 hover:bg-purple-50/50'}
                   ${!product.visible ? 'opacity-50 border-dashed border-red-400 dark:border-red-600' : ''}
                 `}
               >
@@ -543,7 +549,7 @@ export default function ProductsStorefront() {
       {/* ===== Edit Modal ===== */}
       {isEditModalOpen && editingProduct && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
-          <div className={`w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl p-4 sm:p-6 border-2 ${isDark ? 'bg-gray-900 border-purple-500/40' : 'bg-white border-purple-300'} shadow-2xl`}>
+          <div className={`w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl p-4 sm:p-6 border-2 ${isDark ? 'bg-gray-900 border-purple-500/60' : 'bg-white border-purple-300'} shadow-2xl`}>
             
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">Edit Product</h3>
@@ -559,7 +565,7 @@ export default function ProductsStorefront() {
                   type="text"
                   value={editForm.name}
                   onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                 />
               </div>
 
@@ -570,7 +576,7 @@ export default function ProductsStorefront() {
                     type="number"
                     value={editForm.price}
                     onChange={(e) => setEditForm({ ...editForm, price: e.target.value })}
-                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                   />
                 </div>
                 <div>
@@ -580,7 +586,7 @@ export default function ProductsStorefront() {
                     value={editForm.salePrice}
                     onChange={(e) => setEditForm({ ...editForm, salePrice: e.target.value })}
                     placeholder="Optional"
-                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                   />
                 </div>
               </div>
@@ -612,11 +618,11 @@ export default function ProductsStorefront() {
                   value={editForm.description}
                   onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
                   rows={3}
-                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm resize-none border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm resize-none border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                 />
               </div>
 
-              {/* ✅ Featured Toggle - FIXED (no more overlap on narrow widths) */}
+              {/* Featured Toggle */}
               <div className="flex items-center justify-between gap-3">
                 <label className="text-xs font-bold text-gray-500 dark:text-gray-400 flex-shrink-0">
                   Featured Product
@@ -658,7 +664,7 @@ export default function ProductsStorefront() {
       {/* ===== Add Product Modal ===== */}
       {isAddModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
-          <div className={`w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl p-4 sm:p-6 border-2 ${isDark ? 'bg-gray-900 border-purple-500/40' : 'bg-white border-purple-300'} shadow-2xl`}>
+          <div className={`w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl p-4 sm:p-6 border-2 ${isDark ? 'bg-gray-900 border-purple-500/60' : 'bg-white border-purple-300'} shadow-2xl`}>
 
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">Add Product</h3>
@@ -675,7 +681,7 @@ export default function ProductsStorefront() {
                   value={addForm.name}
                   onChange={(e) => setAddForm({ ...addForm, name: e.target.value })}
                   placeholder="e.g. Chocolate Fudge Cake"
-                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                 />
               </div>
 
@@ -687,7 +693,7 @@ export default function ProductsStorefront() {
                     value={addForm.price}
                     onChange={(e) => setAddForm({ ...addForm, price: e.target.value })}
                     placeholder="e.g. 2000"
-                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                   />
                 </div>
                 <div>
@@ -697,7 +703,7 @@ export default function ProductsStorefront() {
                     value={addForm.salePrice}
                     onChange={(e) => setAddForm({ ...addForm, salePrice: e.target.value })}
                     placeholder="Optional"
-                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                    className={`mt-1 w-full px-3 py-2 rounded-xl text-sm border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                   />
                 </div>
               </div>
@@ -731,7 +737,7 @@ export default function ProductsStorefront() {
                   onChange={(e) => setAddForm({ ...addForm, image: e.target.value })}
                   placeholder="e.g. 🎂"
                   maxLength={4}
-                  className={`w-20 px-3 py-2 rounded-xl text-lg text-center border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                  className={`w-20 px-3 py-2 rounded-xl text-lg text-center border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                 />
               </div>
 
@@ -742,7 +748,7 @@ export default function ProductsStorefront() {
                   onChange={(e) => setAddForm({ ...addForm, description: e.target.value })}
                   rows={3}
                   placeholder="Short description of the product"
-                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm resize-none border-2 ${isDark ? 'bg-gray-800 border-purple-500/30 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
+                  className={`mt-1 w-full px-3 py-2 rounded-xl text-sm resize-none border-2 ${isDark ? 'bg-gray-800 border-purple-500/60 text-white hover:border-purple-500' : 'bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500'} focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors`}
                 />
               </div>
 
