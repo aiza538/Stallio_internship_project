@@ -301,8 +301,8 @@ export default function HomeStorefront() {
     fetchData();
   }, []);
 
-  const showToast = (message) => {
-    setToastMessage(message);
+  const showToast = (message, isError = false) => {
+    setToastMessage({ text: message, isError });
     setTimeout(() => setToastMessage(null), 3000);
   };
 
@@ -314,7 +314,7 @@ export default function HomeStorefront() {
       showToast('Home page saved successfully! ✅');
       setTimeout(() => setIsSaved(false), 3000);
     } catch (err) {
-      showToast('Failed to save. Please try again. ❌');
+      showToast('Failed to save. Please try again. ❌', true);
     } finally {
       setIsSaving(false);
     }
@@ -465,13 +465,21 @@ export default function HomeStorefront() {
   return (
     <div className="space-y-6">
 
-      {/* Toast */}
+      {/* ✅ Toast - Chota Box */}
       {toastMessage && (
-        <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 px-4 py-3 rounded-xl shadow-lg border-2 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} flex items-center gap-2 max-w-sm mx-auto sm:mx-0`}>
-          <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-          <span className="text-sm font-medium text-gray-800 dark:text-gray-200 flex-1">{toastMessage}</span>
+        <div className={`fixed top-4 right-4 z-50 px-3 py-2 rounded-xl shadow-lg border max-w-xs w-auto flex items-center gap-2 ${
+          toastMessage.isError 
+            ? isDark ? "bg-red-900/80 border-red-600 text-white" : "bg-red-50 border-red-400 text-red-700"
+            : isDark ? "bg-gray-800 border-purple-700" : "bg-white border-gray-200"
+        }`}>
+          {toastMessage.isError ? (
+            <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+          ) : (
+            <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+          )}
+          <span className="text-xs font-medium flex-1">{toastMessage.text}</span>
           <button onClick={() => setToastMessage(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
-            <X className="w-4 h-4" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
       )}

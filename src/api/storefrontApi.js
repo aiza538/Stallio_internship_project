@@ -307,3 +307,96 @@ export const saveCategoriesPage = async (data) => {
     }, 1500);
   });
 };
+
+// ============================================================
+// 5. CONTACT PAGE API — WITH DATA STORE ✅
+// ============================================================
+
+let contactDataStore = {
+  phone: "",
+  email: "",
+  address: "",
+  socialLinks: [], // ✅ Empty array
+};
+
+export const getContactPage = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: contactDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const saveContactPage = async (data) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      contactDataStore = data;
+      console.log("✅ Contact page saved:", contactDataStore);
+      resolve({ success: true, message: "Contact page updated successfully!" });
+    }, 1500);
+  });
+};
+
+// ============================================================
+// 6. FOOTER PAGE API — WITH DATA STORE ✅
+// ============================================================
+
+let footerDataStore = {
+  enabled: true,
+  logo: "",
+  title: "",
+  description: "",
+};
+
+export const getFooterPage = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: footerDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const saveFooterPage = async (data) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      footerDataStore = data;
+      console.log("✅ Footer page saved:", footerDataStore);
+      resolve({ success: true, message: "Footer page updated successfully!" });
+    }, 1500);
+  });
+};
+
+// ============================================================
+// 7. COUPON CODES PAGE API — WITH DATA STORE ✅
+// ============================================================
+
+let couponsDataStore = [
+  // { id: 1, code: "SAVE10", discount: 10, type: "percentage", expires: "2024-12-31" },
+];
+
+export const getCouponsPage = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: couponsDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const saveCouponsPage = async (data) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      couponsDataStore = data;
+      console.log("✅ Coupons saved:", couponsDataStore);
+      resolve({ success: true, message: "Coupons updated successfully!" });
+    }, 1500);
+  });
+};

@@ -1,6 +1,6 @@
 // src/pages/sellerdashboard/Sidebar.jsx
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   LayoutDashboard, 
   MessageSquare, 
@@ -20,7 +20,10 @@ import {
   Users,
   Settings,
   MessageCircle,
-  Store
+  Store,
+  Ticket,
+  Menu,
+  X
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
@@ -31,6 +34,32 @@ export default function Sidebar() {
   const isDark = theme === 'dark';
 
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [location.pathname]);
+
+  // Close sidebar on escape key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setIsMobileOpen(false);
+    };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, []);
+
+  // Prevent body scroll when sidebar is open on mobile
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileOpen]);
 
   const isActive = (path) => {
     if (path === "/dashboard") {
@@ -56,16 +85,26 @@ export default function Sidebar() {
   // Sidebar Content
   const sidebarContent = (
     <>
-      {/* Brand */}
-      <div className={`px-5 py-4 border-b ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}`}>
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
-            <LayoutDashboard className="w-5 h-5" />
+      {/* Brand with Close Button (Mobile) */}
+      <div className={`relative px-5 py-4 border-b ${isDark ? 'border-purple-900/30' : 'border-purple-100/50'}`}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
+              <LayoutDashboard className="w-5 h-5" />
+            </div>
+            <div>
+              <h1 className={`font-semibold text-base ${isDark ? 'text-white' : 'text-slate-900'}`}>Dashboard</h1>
+              <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Sweet Cravings Studio</p>
+            </div>
           </div>
-          <div>
-            <h1 className={`font-semibold text-base ${isDark ? 'text-white' : 'text-slate-900'}`}>Dashboard</h1>
-            <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Sweet Cravings Studio</p>
-          </div>
+          {/* Close Button - Mobile Only */}
+          <button
+            onClick={() => setIsMobileOpen(false)}
+            className="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Close sidebar"
+          >
+            <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+          </button>
         </div>
       </div>
 
@@ -139,7 +178,7 @@ export default function Sidebar() {
             </Link>
             <Link to="/dashboard/coupons" className={navLinkClass("/dashboard/coupons")}>
               {activeDot("/dashboard/coupons")}
-              <Gift className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
+              <Ticket className="w-4.5 h-4.5 text-purple-500 dark:text-purple-400" />
               <span>Coupons</span>
             </Link>
             <Link to="/dashboard/others" className={navLinkClass("/dashboard/others")}>
@@ -201,28 +240,31 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Hamburger */}
+      {/* ✅ Hamburger Menu - Mobile Only */}
       <button
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-purple-600 text-white shadow-lg"
+        onClick={() => setIsMobileOpen(true)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300"
+        aria-label="Open sidebar"
       >
-        <LayoutDashboard className="w-5 h-5" />
+        <Menu className="w-5 h-5" />
       </button>
 
-      {/* Mobile Overlay */}
+      {/* ✅ Overlay - Click to close */}
       {isMobileOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/50 z-40"
+          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
 
-      {/* Sidebar */}
+      {/* ✅ Sidebar with Smooth Slide Animation */}
       <aside className={`
         w-64 h-screen flex flex-col fixed left-0 top-0 z-50
         transition-transform duration-300 ease-in-out
         ${isDark ? 'bg-[#0d071a] border-r border-purple-900/30' : 'bg-white/90 backdrop-blur-lg border-r border-purple-100/50'}
-        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
+        lg:translate-x-0
+        shadow-2xl lg:shadow-none
       `}>
         {sidebarContent}
       </aside>

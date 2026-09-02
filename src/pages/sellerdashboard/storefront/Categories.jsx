@@ -37,7 +37,7 @@ const FILTER_LANGUAGES = [
   { value: "AR", label: "AR" },
 ];
 
-// ===== Reusable Custom Dropdown (Same as About page) =====
+// ===== Reusable Custom Dropdown =====
 function CustomDropdown({ label, icon: Icon, value, options, onChange, isDark, placeholder = "Select..." }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -252,17 +252,12 @@ export default function CategoriesStorefront() {
     currentPage * itemsPerPage
   );
 
-  // Reset to page 1 whenever the search term or language filter changes,
-  // otherwise the seller can be left staring at an empty page (e.g. was on
-  // page 2, filter now only has 1 page of results).
+  // Reset to page 1 whenever search or filter changes
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedLanguage]);
 
-  // If the currently selected page no longer exists — e.g. the seller
-  // deleted the last category on the last page, or a delete/filter shrank
-  // the result set — clamp back to the last valid page instead of getting
-  // stuck on an empty page.
+  // If current page no longer exists, clamp to last valid page
   useEffect(() => {
     if (currentPage > totalPages) {
       setCurrentPage(Math.max(totalPages, 1));
@@ -297,9 +292,9 @@ export default function CategoriesStorefront() {
   return (
     <div className="space-y-4 sm:space-y-5">
 
-      {/* Toast */}
+      {/* ✅ Toast - Chota Box */}
       {toastMessage && (
-        <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 z-50 px-4 py-3 rounded-xl shadow-lg border-2 max-w-sm mx-auto sm:mx-0 flex items-center gap-2 ${
+        <div className={`fixed top-4 right-4 z-50 px-3 py-2 rounded-xl shadow-lg border max-w-xs w-auto flex items-center gap-2 ${
           toastMessage.isError 
             ? isDark ? "bg-red-900/80 border-red-600 text-white" : "bg-red-50 border-red-400 text-red-700"
             : isDark ? "bg-gray-800 border-purple-700" : "bg-white border-gray-200"
@@ -309,9 +304,9 @@ export default function CategoriesStorefront() {
           ) : (
             <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
           )}
-          <span className="text-sm font-medium flex-1">{toastMessage.text}</span>
+          <span className="text-xs font-medium flex-1">{toastMessage.text}</span>
           <button onClick={() => setToastMessage(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
-            <X className="w-4 h-4" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
       )}
@@ -364,7 +359,6 @@ export default function CategoriesStorefront() {
           />
         </div>
 
-        {/* ✅ Custom Dropdown for Language Filter */}
         <div className="min-w-[140px]">
           <CustomDropdown
             icon={Filter}
@@ -478,7 +472,7 @@ export default function CategoriesStorefront() {
         </>
       )}
 
-      {/* ===== Add/Edit Modal — With Custom Dropdown ===== */}
+      {/* ===== Add/Edit Modal ===== */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
           <div className={`w-full max-w-md max-h-[85vh] overflow-y-auto rounded-2xl p-4 sm:p-6 border-2 ${isDark ? 'bg-gray-900 border-purple-500/60' : 'bg-white border-purple-300'} shadow-2xl`}>
@@ -493,7 +487,7 @@ export default function CategoriesStorefront() {
             </div>
 
             <div className="space-y-4">
-              {/* Category Name */}
+              {/* Category Name - ✅ Error Message NEE CHE */}
               <div>
                 <label className="text-xs font-bold flex items-center gap-1.5">
                   Category Name <span className="text-red-500">*</span>
@@ -514,8 +508,12 @@ export default function CategoriesStorefront() {
                         : "bg-gray-50 border-purple-300 text-gray-900 hover:border-purple-500"
                   } focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500`}
                 />
+                {/* ✅ Error message YAHAN - Input ke NEE CHE */}
                 {nameError && (
-                  <p className="text-xs text-red-500 mt-1">Category name is required</p>
+                  <p className="text-xs text-red-500 mt-1.5 flex items-start gap-1.5">
+                    <AlertCircle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
+                    <span className="break-words">Category name is required</span>
+                  </p>
                 )}
               </div>
 
@@ -540,7 +538,7 @@ export default function CategoriesStorefront() {
                 </div>
               </div>
 
-              {/* ✅ Language — Custom Dropdown */}
+              {/* Language — Custom Dropdown */}
               <CustomDropdown
                 label="Language"
                 icon={Globe}
