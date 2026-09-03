@@ -1,3 +1,5 @@
+// src/routes/AppRoutes.jsx
+
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -17,11 +19,12 @@ import Refund from "../pages/Refund";
 import DashboardLayout from "../pages/sellerdashboard/DashboardLayout";
 import Overview from "../pages/sellerdashboard/Overview";
 import Orders from "../pages/sellerdashboard/Orders";
-import Messages from "../pages/sellerdashboard/Messages";
+import Messages from "../pages/sellerdashboard/Messages";   // ✅ File exist karti hai
 import Notifications from "../pages/sellerdashboard/Notifications";
 import Settings from "../pages/sellerdashboard/Settings";
+import ChatWithAdmin from "../pages/sellerdashboard/Chat";
 
-// ✅ Storefront Imports — NO DUPLICATES
+// ✅ Storefront Imports
 import Products from "../pages/sellerdashboard/storefront/Products";
 import Categories from "../pages/sellerdashboard/storefront/Categories";
 import AboutStorefront from "../pages/sellerdashboard/storefront/About";
@@ -29,6 +32,7 @@ import ContactStorefront from "../pages/sellerdashboard/storefront/Contact";
 import FooterStorefront from "../pages/sellerdashboard/storefront/Footer";
 import HomeStorefront from "../pages/sellerdashboard/storefront/Home";
 import CouponsStorefront from "../pages/sellerdashboard/storefront/Coupons";
+import OthersStorefront from "../pages/sellerdashboard/storefront/Others";
 
 export default function AppRoutes() {
   return (
@@ -64,6 +68,8 @@ export default function AppRoutes() {
         <Route path="home" element={<HomeStorefront />} />
         <Route path="coupons" element={<CouponsStorefront />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="others" element={<OthersStorefront />} />
+        <Route path="chat" element={<ChatWithAdmin />} />
       </Route>
     </Routes>
   );

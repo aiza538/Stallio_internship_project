@@ -400,3 +400,299 @@ export const saveCouponsPage = async (data) => {
     }, 1500);
   });
 };
+
+// src/api/storefrontApi.js
+
+// ============================================================
+// 8. OTHERS PAGE API — WITH DATA STORE ✅
+// ============================================================
+
+let othersDataStore = {
+  announcement: {
+    enabled: false,
+    text: "",
+  },
+  delivery: {
+    enabled: false,
+    estimatedTime: "",
+    codEnabled: false,
+  },
+  checkout: {
+    note: "",
+  },
+  returnPolicy: {
+    enabled: false,
+  },
+  shopLanguages: ["EN"],
+};
+
+export const getOthersPage = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: othersDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const saveOthersPage = async (data) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      othersDataStore = data;
+      console.log("✅ Others page saved:", othersDataStore);
+      resolve({
+        success: true,
+        message: "Others settings updated successfully!",
+      });
+    }, 1500);
+  });
+};
+// ============================================================
+// 9. NOTIFICATIONS API — WITH DATA STORE ✅
+// ============================================================
+
+let notificationsDataStore = [
+  {
+    id: 1,
+    type: "order",
+    title: "New Order Received",
+    message: "John Doe placed a new order #1234 for Chocolate Dream Cake",
+    read: false,
+    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 2,
+    type: "review",
+    title: "New Customer Review",
+    message: "Sarah Ahmed left a 5-star review on your store",
+    read: false,
+    createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 3,
+    type: "message",
+    title: "New Message Received",
+    message: "You have a new message from Muhammad Ali regarding order #1233",
+    read: true,
+    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 4,
+    type: "customer",
+    title: "New Customer",
+    message: "Fatima Khan just signed up and joined your store",
+    read: true,
+    createdAt: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 5,
+    type: "product",
+    title: "Product Out of Stock",
+    message:
+      "Your product 'Strawberry Delight Cupcake' is low on stock (2 remaining)",
+    read: false,
+    createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+  },
+];
+
+export const getNotifications = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: notificationsDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const markAllAsRead = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      notificationsDataStore = notificationsDataStore.map((n) => ({
+        ...n,
+        read: true,
+      }));
+      console.log("✅ All notifications marked as read");
+      resolve({ success: true, message: "All notifications marked as read!" });
+    }, 500);
+  });
+};
+
+export const deleteAllNotifications = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      notificationsDataStore = [];
+      console.log("✅ All notifications deleted");
+      resolve({ success: true, message: "All notifications deleted!" });
+    }, 500);
+  });
+};
+
+// ============================================================
+// 10. CHAT API — WITH DATA STORE ✅
+// ============================================================
+
+let chatMessagesDataStore = [
+  {
+    id: 1,
+    sender: "admin",
+    message: "Hello! Welcome to Stallio Support 👋 How can I help you today?",
+    timestamp: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 2,
+    sender: "seller",
+    message: "Hi! I'm having trouble setting up my store. Can you help?",
+    timestamp: new Date(Date.now() - 25 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 3,
+    sender: "admin",
+    message: "Of course! I'd be happy to help. What seems to be the issue?",
+    timestamp: new Date(Date.now() - 20 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 4,
+    sender: "seller",
+    message:
+      "I'm trying to add products but the save button isn't working properly.",
+    timestamp: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 5,
+    sender: "admin",
+    message:
+      "Let me check that for you. Are you able to see any error messages?",
+    timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+  },
+];
+
+export const getChatMessages = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: chatMessagesDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const sendMessage = async (message) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const newMessage = {
+        id: Date.now(),
+        sender: "seller",
+        message: message,
+        timestamp: new Date().toISOString(),
+      };
+      chatMessagesDataStore = [...chatMessagesDataStore, newMessage];
+      console.log("✅ Message sent:", newMessage);
+
+      // Simulate admin reply
+      setTimeout(() => {
+        const adminReply = {
+          id: Date.now() + 1,
+          sender: "admin",
+          message:
+            "Thanks for your message! Our team will review it shortly. 🚀",
+          timestamp: new Date().toISOString(),
+        };
+        chatMessagesDataStore = [...chatMessagesDataStore, adminReply];
+        console.log("✅ Admin reply:", adminReply);
+      }, 3000);
+
+      resolve({ success: true, data: newMessage });
+    }, 500);
+  });
+};
+// src/api/storefrontApi.js
+
+// ============================================================
+// 11. MESSAGES API — WITH DATA STORE ✅
+// ============================================================
+
+let messagesDataStore = [
+  {
+    id: 1,
+    senderName: "John Doe",
+    subject: "Order #1234 - Delivery Question",
+    preview:
+      "Hi, I was wondering when my order will be delivered? I need it by Friday.",
+    read: false,
+    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 2,
+    senderName: "Sarah Ahmed",
+    subject: "Custom Cake Inquiry",
+    preview:
+      "Hello! I'd like to order a custom cake for my daughter's birthday. Do you offer customization?",
+    read: false,
+    createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 3,
+    senderName: "Muhammad Ali",
+    subject: "Order #1233 - Return Request",
+    preview:
+      "I received my order but the product was damaged during shipping. Can I return it?",
+    read: true,
+    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 4,
+    senderName: "Fatima Khan",
+    subject: "Bulk Order Discount",
+    preview:
+      "I'm interested in placing a bulk order for my event. Do you offer discounts for large orders?",
+    read: true,
+    createdAt: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 5,
+    senderName: "Ahmed Hassan",
+    subject: "Product Suggestion",
+    preview:
+      "Just wanted to suggest adding more vegan options to your menu. I love your products!",
+    read: false,
+    createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+  },
+];
+
+export const getMessages = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: messagesDataStore,
+      });
+    }, 800);
+  });
+};
+
+export const markMessageAsRead = async (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      messagesDataStore = messagesDataStore.map((msg) =>
+        msg.id === id ? { ...msg, read: true } : msg,
+      );
+      console.log(`✅ Message ${id} marked as read`);
+      resolve({ success: true, message: "Message marked as read!" });
+    }, 500);
+  });
+};
+
+export const deleteMessage = async (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      messagesDataStore = messagesDataStore.filter((msg) => msg.id !== id);
+      console.log(`✅ Message ${id} deleted`);
+      resolve({ success: true, message: "Message deleted!" });
+    }, 500);
+  });
+};
